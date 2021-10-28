@@ -6,7 +6,7 @@
   <link href="http://xiaoxiaoxy1.github.io/atom.xml" rel="self"/>
   
   <link href="http://xiaoxiaoxy1.github.io/"/>
-  <updated>2021-10-28T04:22:41.504Z</updated>
+  <updated>2021-10-28T04:35:05.490Z</updated>
   <id>http://xiaoxiaoxy1.github.io/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>get_shell</title>
+    <link href="http://xiaoxiaoxy1.github.io/2021/10/28/get-shell/"/>
+    <id>http://xiaoxiaoxy1.github.io/2021/10/28/get-shell/</id>
+    <published>2021-10-28T04:28:45.000Z</published>
+    <updated>2021-10-28T04:35:05.490Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先，我们看到题目：</p><p><img src="image-20211028122944618.png" alt="image-20211028122944618"></p><p>下载附件&amp;获取场景：</p><p><img src="image-20211028122959729.png" alt="image-20211028122959729"></p><p>因为题目中说运行即可拿到shell，那我们就直接进虚拟机连接到该ip去看看</p><p>发现nc指令连不上去，之前用ssh也连不上，根本没反应,我姐说可能是防火墙的原因 </p><p><img src="image-20211028123019714.png" alt="image-20211028123019714"></p><p>那我们换个思路，写个脚本试试：</p><p><img src="image-20211028123056923.png" alt="image-20211028123056923"></p><p>运行该脚本：</p><p><img src="image-20211028123302612.png" alt="image-20211028123302612"></p><p>$ ls 查看当前目录文件，发现flag，cat一下  $ cat flag 发现能够得到flag，提交即可</p><p>flag：cyberpeace{c2414b5c0583aef5e2d7b2bbd7a98a83}</p><p><strong>拓展：</strong></p><p>但题目说运行即可拿到flag，我们并没有运行本题附件，接下来下载附件运行一下</p><p><img src="image-20211028123403958.png" alt="image-20211028123403958"></p><p>这是我/Desktop目录下的文件：</p><p><img src="image-20211028123422849.png" alt="image-20211028123422849"></p><p>显然，这个附件帮我拿到了我自己电脑的shell，所以我只能查看我自己电脑上的文件</p><p>这时我们打开ida反编译一下附件：</p><p>打开main函数后可以发现，这里直接调用了system（）函数获取shell</p><p><img src="image-20211028123450549.png" alt="image-20211028123450549"></p><p><strong>综述：</strong></p><p>本地执行本题附件只会拿到当前机器的shell，而该题的flag存在远端服务器上，并未存储在我们的个人PC上，所以我们要连接到远端服务器上，去服务器上执行该文件才能在服务器上拿到该题的flag</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span>*                          <span class="comment">#导入pwn模块</span></span><br><span class="line">p = remote(<span class="string">&#x27;111.200.241.244&#x27;</span>,<span class="string">&#x27;63031&#x27;</span>)     <span class="comment">#远程连接</span></span><br><span class="line">p.interactive()                           <span class="comment">#接收服务器的交互</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag：cyberpeace&#123;c2414b5c0583aef5e2d7b2bbd7a98a83&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">攻防世界-get_shell</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>flag</title>
