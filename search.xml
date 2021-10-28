@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>flag</title>
+      <link href="/2021/10/28/flag/"/>
+      <url>/2021/10/28/flag/</url>
+      
+        <content type="html"><![CDATA[<p><strong>1：</strong>拿到题目，借助网址下载相应文件<strong>1：</strong>拿到题目，借助网址下载相应文件</p><p><img src="image-20211028121819871.png" alt="image-20211028121819871"></p><p><img src="image-20211028121841578.png" alt="image-20211028121841578"></p><p>命令1：wget <a href="http://pwnable.kr/bin/flag">http://pwnable.kr/bin/flag</a></p><p><strong>2：</strong>通过网络资料知：</p><p>  “用个16进制查看器看一下,是elf文件,并且加了upx壳,要脱下upx壳才好分析”</p><p><img src="image-20211028121911536.png" alt="image-20211028121911536"></p><p>这16进制查看器我不知道咋弄的，该图也是从网上搬来的。</p><p><strong>3：</strong>由于upx不为自带文件，需自行下载，相应Linux指令附着于下：</p><p>（1）：下载upx：命令2：</p><p>wget <a href="https://github.com/upx/upx/releases/download/v3.95/upx-3.95-amd64_linux.tar.xz">https://github.com/upx/upx/releases/download/v3.95/upx-3.95-amd64_linux.tar.xz</a></p><p>（2）：解压二进制：命令3：</p><p>tar -Jxf upx*.tar.xz</p><p>（3）：为了方便使用移动 upx 到系统变量目录，如果不愿意使用 root 的话可以将 upx 目录添加到环境变量：命令4：</p><p>sudo cp upx*/upx /usr/bin</p><p><strong>4：</strong>利用upx 进行解压，upx -d filename：</p><p><img src="image-20211028121940998.png" alt="image-20211028121940998"></p><p>基本操作不做过多赘述，实在不理解请自行百度查找（其实我也不理解，会用就行）</p><p>命令6：upx -d flag</p><p>5：查看文件是否下载至当前路径（我的当前路径为Desktop（桌面））：</p><p><img src="image-20211028122002870.png" alt="image-20211028122002870"></p><p>此处进行了权限赋予操作（赘余操作，可不必进行）</p><p>命令7：chmod 777 flag</p><p><strong>6：</strong>运用file命令查看flag文件的位数情况（32位 or 64位）：</p><p><img src="image-20211028122020834.png" alt="image-20211028122020834"></p><p>命令8：file flag</p><p>由此得知flag文件为64位文件</p><p><strong>7：</strong>现在只需将flag文件拖动至Windows界面中的64位ida中进行反编译即可，具体操作在此不做赘述（拖动文件会吧？不用教了吧，拖不出来的话考虑换一个虚拟机吧）</p><p><strong>8：</strong>接下来就是常规操作，按下ok，找到main函数按下F5，结果如下：</p><p><img src="image-20211028122043880.png" alt="image-20211028122043880"></p><p><strong>9：</strong>分析main函数，并无特别之处，但那flag格外显眼，经合情推理，flag内置于内存之中，这时我们只需双击flag便可进入如下界面，并发现flag地址处存储的一组字符串：</p><p><img src="image-20211028122118485.png" alt="image-20211028122118485"></p><p>UPX…? sounds like a delivery service但这并不是flag</p><p>10：双击字符串后进入另一界面，此时flag便出现了：</p><p><img src="image-20211028122203449.png" alt="image-20211028122203449"></p><p>正解flag：UPX…? sounds like a delivery service :)</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag：UPX...? sounds like a delivery service :)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>bof</title>
       <link href="/2021/10/28/bof/"/>
       <url>/2021/10/28/bof/</url>
