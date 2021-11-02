@@ -6,7 +6,7 @@
   <link href="http://xiaoxiaoxy1.github.io/atom.xml" rel="self"/>
   
   <link href="http://xiaoxiaoxy1.github.io/"/>
-  <updated>2021-10-28T04:35:05.490Z</updated>
+  <updated>2021-11-02T05:46:42.145Z</updated>
   <id>http://xiaoxiaoxy1.github.io/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>misc</title>
+    <link href="http://xiaoxiaoxy1.github.io/2021/11/02/misc/"/>
+    <id>http://xiaoxiaoxy1.github.io/2021/11/02/misc/</id>
+    <published>2021-11-02T05:39:47.000Z</published>
+    <updated>2021-11-02T05:46:42.145Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>this_is_flag:</strong></p><p>flag就在题目描述中</p><p>flag{th1s_!s_a_d4m0_4la9}</p><p><strong>pdf：</strong></p><p>下载附件-&gt;<a href="https://smallpdf.com/cn/pdf-converter">PDF转换器 – 在线免费转换PDF文件 (smallpdf.com)</a>-&gt;转换为ppt格式下载再打开即可拖动，转换成word再下载也能看到字</p><p><img src="image-20211102134142425.png" alt="image-20211102134142425"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;security_through_obscurity&#125;</span><br></pre></td></tr></table></figure><p><strong>如来十三掌：</strong></p><p>打开附件：</p><p><img src="image-20211102134230550.png" alt="image-20211102134230550"></p><p>复制文字，进入<a href="https://www.keyfc.net/bbs/tools/tudoucode.aspx">与佛论禅 (keyfc.net)</a></p><p>粘贴文字并在前加上佛曰：</p><p><img src="image-20211102134250167.png" alt="image-20211102134250167"></p><p>得到一串字符，复制，百度搜索rot-13解码，这里直接复制链接在此：<a href="https://www.jisuan.mobi/puzzm6z1B1HH6yXW.html">ROT13解码计算器 - 计算专家 (jisuan.mobi)</a></p><p><img src="image-20211102134317437.png" alt="image-20211102134317437"></p><p>再将解码结果进行Base64解码，解码器链接：<a href="https://tool.ip138.com/base64/">base64解码 base64编码 在线base64解码/编码工具 (ip138.com)</a></p><p><img src="image-20211102134332825.png" alt="image-20211102134332825"></p><p>得到flag{bdscjhbkzmnfrdhbvckijndskvbkjdsab}</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;bdscjhbkzmnfrdhbvckijndskvbkjdsab&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">攻防世界-misc-新手区</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>get_shell</title>
