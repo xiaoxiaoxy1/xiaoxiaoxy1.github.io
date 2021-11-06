@@ -49,8 +49,16 @@
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/02/misc/image-20211102135813253.png">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/02/misc/image-20211102174948168.png">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/02/misc/image-20211102175006281.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/02/misc/image-20211106231651844.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/02/misc/7-Zip.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/02/misc/image-20211106232237594.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/02/misc/image-20211106232612472.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/02/misc/image-20211106232656439.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/02/misc/image-20211106232802773.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/02/misc/image-20211106232839219.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/02/misc/image-20211106233059315.png">
 <meta property="article:published_time" content="2021-11-02T05:39:47.000Z">
-<meta property="article:modified_time" content="2021-11-02T13:44:11.397Z">
+<meta property="article:modified_time" content="2021-11-06T15:42:40.380Z">
 <meta property="article:author" content="xiaoxiaoxy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2021/11/02/misc/image-20211102134142425.png">
@@ -206,10 +214,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-11-02 13:39:47 / Modified: 21:44:11" itemprop="dateCreated datePublished" datetime="2021-11-02T13:39:47+08:00">2021-11-02</time>
+      <time title="Created: 2021-11-02 13:39:47" itemprop="dateCreated datePublished" datetime="2021-11-02T13:39:47+08:00">2021-11-02</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-11-06 23:42:40" itemprop="dateModified" datetime="2021-11-06T23:42:40+08:00">2021-11-06</time>
+      </span>
 
   
 </div>
@@ -338,6 +352,31 @@
 
 <p>其中的re模块、findall（）函数等请自行百度查阅了解</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36556893/article/details/89182067">https://blog.csdn.net/qq_36556893/article/details/89182067</a></p>
+<p><strong>ext3：</strong></p>
+<p>首先，下载7-Zip</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://www.7-zip.org/">https://www.7-zip.org/</a></p>
+<p><img src="image-20211106231651844.png" alt="image-20211106231651844"></p>
+<p>安装过程选项全默认即可，期间可能会有小差错，总之最后去你选定的安装路径查看是否安装完成，我的是下载在C盘下的Program Files文件夹中</p>
+<p><img src="7-Zip.png" alt="7-Zip"></p>
+<p>打开该路径</p>
+<p><img src="image-20211106232237594.png" alt="image-20211106232237594"></p>
+<p>有这些文件说明下载成功</p>
+<p>接着找到已经下载好的本题的附件</p>
+<p><img src="image-20211106232612472.png" alt="image-20211106232612472"></p>
+<p>接着在最近下载中出现了该文件夹</p>
+<p><img src="image-20211106232656439.png" alt="image-20211106232656439"></p>
+<p>双击打开，搜索中输入flag并按下回车</p>
+<p><img src="image-20211106232802773.png" alt="image-20211106232802773"></p>
+<p>得到flag.txt</p>
+<p><img src="image-20211106232839219.png" alt="image-20211106232839219"></p>
+<p>打开看到一串字符，以 ” = “ 结尾，说明是base64加密，百度上查找base64解密即可得到flag</p>
+<p><img src="image-20211106233059315.png" alt="image-20211106233059315"></p>
+<p>以上是Windows中的解法，Linux下的解法以后再看写不写吧</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;sajbcibzskjjcnbhsbvcjbjszcszbkzj&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>SimpleRAR：</strong></p>
 
     </div>
 
