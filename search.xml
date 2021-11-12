@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title>xiaoxiao-Note1</title>
+      <link href="/2021/11/12/xiaoxiao-Note1/"/>
+      <url>/2021/11/12/xiaoxiao-Note1/</url>
+      
+        <content type="html"><![CDATA[<p>NX保护  ：<a href="https://blog.csdn.net/weixin_39194641/article/details/101113761">https://blog.csdn.net/weixin_39194641/article/details/101113761</a></p><p>​                   <a href="https://blog.csdn.net/weixin_46711318/article/details/107686188">https://blog.csdn.net/weixin_46711318/article/details/107686188</a></p><p>保护机制：<a href="https://www.cnblogs.com/Spider-spiders/p/8798628.html">https://www.cnblogs.com/Spider-spiders/p/8798628.html</a>  *</p><p>C语言函数调用规定：<a href="http://blog.csdn.net/adcxf/article/details/2699323">http://blog.csdn.net/adcxf/article/details/2699323</a>  *</p><p>​                                     <a href="https://blog.csdn.net/hellokandy/article/details/54603055">https://blog.csdn.net/hellokandy/article/details/54603055</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>攻防世界-level2</title>
+      <link href="/2021/11/12/level2/"/>
+      <url>/2021/11/12/level2/</url>
+      
+        <content type="html"><![CDATA[<p>首先，我们看看文件的基本信息以及文件开启的保护机制</p><p><img src="image-20211112084610889.png" alt="image-20211112084610889"></p><p>32位文件&amp;栈不可执行保护（NX保护机制），注：No xxx就是未开启该保护</p><p>接着我们用32位ida打开文件：</p><p><img src="image-20211112085034275.png" alt="image-20211112085034275"></p><p>刚打开就看见了调用system()函数的一个函数，但并没有看见/bin/sh，不管它，我们找到main函数看看：</p><p><img src="image-20211112085550145.png" alt="image-20211112085550145"></p><p>不用多提了吧，跟进vulnerable_function()就完事了：</p><p><img src="image-20211112085710607.png" alt="image-20211112085710607"></p><p>ok 136 字符大小的buf数组，以及读入0x100= 256 个字符的read函数，明显的栈溢出题</p><p>先到这吧，下午再写</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>攻防世界-level0</title>
       <link href="/2021/11/11/level0/"/>
       <url>/2021/11/11/level0/</url>
