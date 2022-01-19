@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xiaoxiaoxy1.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="新手区(题训)-----------------之前的博客不看也罢-----------------------">
+<meta property="og:type" content="article">
+<meta property="og:title" content="攻防世界-Web">
+<meta property="og:url" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/index.html">
+<meta property="og:site_name" content="xiaoxiaoxy">
+<meta property="og:description" content="新手区(题训)-----------------之前的博客不看也罢-----------------------">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118165024826.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118165258439.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118165356266.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118165603028.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118165724094.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118165800464.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118170132006.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118170341396.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118170455065.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118170532433.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118170747113.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118193027278.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118212332148.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118211145802.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118213012303.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118213056927.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118211344388.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118211507617.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118211439592.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118211840368.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118212014731.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118213828075.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118210913233.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118214025101.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118210653461.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220119160004865.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220119160141262.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220119160215794.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220119160313717.png">
+<meta property="article:published_time" content="2022-01-17T14:58:59.000Z">
+<meta property="article:modified_time" content="2022-01-19T09:11:29.310Z">
+<meta property="article:author" content="xiaoxiaoxy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/image-20220118165024826.png">
+
+
+<link rel="canonical" href="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/","path":"2022/01/17/攻防世界-Web/","title":"攻防世界-Web"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>攻防世界-Web | xiaoxiaoxy</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="xiaoxiaoxy" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">xiaoxiaoxy</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">xiaoxiaoxy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://xiaoxiaoxy1.github.io/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xiaoxiaoxy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xiaoxiaoxy">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          攻防世界-Web
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-01-17 22:58:59" itemprop="dateCreated datePublished" datetime="2022-01-17T22:58:59+08:00">2022-01-17</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-01-19 17:11:29" itemprop="dateModified" datetime="2022-01-19T17:11:29+08:00">2022-01-19</time>
+      </span>
+
+  
+</div>
+
+            <div class="post-description">新手区(题训)-----------------之前的博客不看也罢-----------------------</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <br/>
+
+<p>** view_source **</p>
+<p>右键点击查看网页源代码不可用</p>
+<p>F12、ctrl+u、地址栏前面加上view-source查看网页源代码</p>
+<p>view-source:URL</p>
+<p><br/><br/></p>
+<p>** robots **</p>
+<p>网页爬虫robots协议，地址栏后加  /robots.txt  即可查看爬虫可检测的资源数据</p>
+<p>URL/robots.txt</p>
+<p><br/><br/></p>
+<p>*** backup ***</p>
+<p>常见的六种备忘文件格式 .git .svn .swp .~ .bak .bash_history</p>
+<p>URL/index.php.bak</p>
+<p><br/><br/></p>
+<p>** cookie **</p>
+<p>之前想用Brup Suite抓包，但是捣鼓了半天没弄好，只能换Wireshark来抓包</p>
+<p>Brup Suite下载：（自己去找）</p>
+<p>（Brup Suite帮助文档：<a target="_blank" rel="noopener" href="https://t0data.gitbooks.io/burpsuite%EF%BC%89">https://t0data.gitbooks.io/burpsuite）</a></p>
+<p>Wireshark下载&amp;安装：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Qi2456/article/details/95033886">https://blog.csdn.net/Qi2456/article/details/95033886</a></p>
+<p>Wireshark使用速成：<a target="_blank" rel="noopener" href="https://b23.tv/nFBRoYS">https://b23.tv/nFBRoYS</a></p>
+<br/>
+
+<p>有了以上基础，这里就直接给图了：</p>
+<p>看IP地址选择数据包，查看到以下字段</p>
+<p><img src="image-20220118165024826.png" alt="image-20220118165024826"></p>
+<p>url后添加  /cookie.php  获取指定资源:</p>
+<p><img src="image-20220118165258439.png" alt="image-20220118165258439"></p>
+<p>返回这一界面（See the http response：查看服务器响应报文）：</p>
+<p><img src="image-20220118165356266.png" alt="image-20220118165356266"></p>
+<p>查看Wireshark，发现捕捉到有关/cookie.php的数据包</p>
+<p><img src="image-20220118165603028.png" alt="image-20220118165603028"></p>
+<p>右键点击，查看TCP流：</p>
+<p><img src="image-20220118165724094.png" alt="image-20220118165724094"></p>
+<p>拿到flag：</p>
+<p><img src="image-20220118165800464.png" alt="image-20220118165800464"></p>
+<br/>
+
+<p>另外，由浏览器的自带开发工具也可以解这道题：</p>
+<p>首先，F12打开控制台，按以下图片操作：</p>
+<p><img src="image-20220118170132006.png" alt="image-20220118170132006"></p>
+<p><img src="image-20220118170341396.png" alt="image-20220118170341396"></p>
+<p>它叫我们看cookie.php，那我们就看呗，地址栏写入相应资源：</p>
+<p><img src="image-20220118170455065.png" alt="image-20220118170455065"></p>
+<p><img src="image-20220118170532433.png" alt="image-20220118170532433"></p>
+<p>进入查看，找到flag：</p>
+<p><img src="image-20220118170747113.png" alt="image-20220118170747113"></p>
+<br/>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag:cyberpeace&#123;17adcb29931a37eedfd9b45d4573af98&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br/><br/></p>
+<p>** disabled_button **</p>
+<p>F12,删除disabled再按按钮即可</p>
+<p><img src="image-20220118193027278.png" alt="image-20220118193027278"></p>
+<p><br/><br/></p>
+<p>** weak_auth **</p>
+<p>随机输入账户密码登录，发现提示以用户名admin登录（密码未提示）：</p>
+<p><img src="image-20220118212332148.png" alt="image-20220118212332148"></p>
+<br/>
+
+<p>接下来利用Brup （详细点说吧，我弄的时候挺头疼的）,创建网页：</p>
+<p><img src="image-20220118211145802.png" alt="image-20220118211145802"></p>
+<p>地址栏输入题目给的URL（显示加载中，进Brup点forward即可显示）：</p>
+<p><img src="image-20220118213012303.png" alt="image-20220118213012303"></p>
+<p><img src="image-20220118213056927.png" alt="image-20220118213056927"></p>
+<p>Forward抓包（或Drop丢包）：</p>
+<p><img src="image-20220118211344388.png" alt="image-20220118211344388"></p>
+<br/>
+
+<p>输入用户admin（），密码123，回车：</p>
+<p><img src="image-20220118211507617.png" alt="image-20220118211507617"></p>
+<p>返回Brup Suite抓包，抓到如下包：</p>
+<p><img src="image-20220118211439592.png" alt="image-20220118211439592"></p>
+<p>点击Forward抓包，前往HTTP history查看，找到刚刚对应的包：</p>
+<p><img src="image-20220118211840368.png" alt="image-20220118211840368"></p>
+<p>右键Send to Intruder，前往Intruder查看：</p>
+<p><img src="image-20220118212014731.png" alt="image-20220118212014731"></p>
+<p>将admin 两端的 $ 符号去掉，因为admin是正确的，不需要爆破：</p>
+<p><img src="image-20220118213828075.png" alt="image-20220118213828075"></p>
+<p>点进Payloads，点击Load写好以下字典txt（密码：123456，提前知道的，这里就随便写几组），并装载至Payload Options</p>
+<p><img src="image-20220118210913233.png" alt="image-20220118210913233"></p>
+<p><img src="image-20220118214025101.png" alt="image-20220118214025101"></p>
+<p>最后点击右上侧的Start attack即可。</p>
+<p>一个一个看响应（Response），发现密码为123456时得到flag</p>
+<p><img src="image-20220118210653461.png" alt="image-20220118210653461"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag:cyberpeace&#123;fcfc4fd91884d261c2bb7f0f115abce1&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br/><br/></p>
+<p>** simple_php **</p>
+<p>PHP基本语法：（自己去学）</p>
+<p>Get传参：URL//?a=00a&amp;&amp;b=12345s</p>
+<p><br/><br/></p>
+<p>** get_post **</p>
+<p>get简单的说就是直接在url后面添加参数<br>post需要在http包里面添加参数或者在Firefox的hackbar里面可以直接添加参数</p>
+<p>GET：URL/?a=1</p>
+<p>POST：hackbar</p>
+<p>———↑ 废话 ——–</p>
+<br/>
+
+<p>（本来打算自己用Brup Suite通过拦截/构造请求报文做这道题的，最后还是用了hackbar插件）搜了诸多资料后，了解到GET请求方式将请求数据放在了HTTP协议头＜request-line＞中，POST请求把提交的数据放置在HTTP包的包体＜request-body＞中，然后我就去构造请求报文，尝试了半天都没弄出来，一气之下便打开火狐下载hackbar插件，借助Wireshark抓包将三组请求数据报文抓出来一一对比，看完之后本人就无语了……。</p>
+<p>贴个链接：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/biyeymyhjob/archive/2012/07/28/2612910.html">HTTP请求报文和HTTP响应报文 - as_ - 博客园 (cnblogs.com)</a></p>
+<p>再贴一个：<a target="_blank" rel="noopener" href="https://www.csdn.net/tags/NtTacg2sODkwNDEtYmxvZwO0O0OO0O0O.html"> 以post方式随便提交一个名为b的变量 - CSDN</a></p>
+<p>链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/liuno0/article/details/100542194"> Burpsuite拦截并修改request/response_liuno0的博客-CSDN博客_burp如何修改response</a></p>
+<p>hackbar下载：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Drifter_Galaxy/article/details/118692054">hackbar2.1.3 安装教程（附下载地址 ）Firefox &amp; Chrome_coderge的博客-CSDN博客_hackbar</a></p>
+<br/>
+
+<p>解题过程：</p>
+<p>火狐安装hackbar插件，F12：</p>
+<p><img src="image-20220119160004865.png" alt="image-20220119160004865"></p>
+<p>解题完毕。</p>
+<br/>
+
+<p>拓展：</p>
+<p>以上操作过程全程Wireshark监控，抓到以下三个包，无参请求、Get请求、POST请求：</p>
+<p><img src="image-20220119160141262.png" alt="image-20220119160141262"></p>
+<p>对比无请求、Get参数请求、Post参数请求：</p>
+<p><img src="image-20220119160215794.png" alt="image-20220119160215794"></p>
+<p>将第三张图片的POST请求报文粘贴至Brup Suite查看效果：</p>
+<p><img src="image-20220119160313717.png" alt="image-20220119160313717"></p>
+<p>响应报文中出现flag。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag:cyberpeace&#123;b30d28348d309b6e811d82eb7baa91d3&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br/><br/></p>
+<p>** xff_referer **</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_54929891/article/details/119933139">https://blog.csdn.net/qq_54929891/article/details/119933139</a></p>
+<br/>
+
+<br/>
+
+<p>先到这吧，我先去学几本web书再来做题</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/11/12/xiaoxiao-Note1/" rel="prev" title="xiaoxiao-Note1">
+                  <i class="fa fa-chevron-left"></i> xiaoxiao-Note1
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaoxiaoxy</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
