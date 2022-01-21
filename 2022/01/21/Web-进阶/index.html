@@ -20,37 +20,31 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"xiaoxiaoxy1.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="pwnable-flag">
+<meta name="description" content="进阶区(题训)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="flag">
-<meta property="og:url" content="http://xiaoxiaoxy1.github.io/2021/10/28/flag/index.html">
+<meta property="og:title" content="攻防世界-Web">
+<meta property="og:url" content="http://xiaoxiaoxy1.github.io/2022/01/21/Web-%E8%BF%9B%E9%98%B6/index.html">
 <meta property="og:site_name" content="xiaoxiaoxy">
-<meta property="og:description" content="pwnable-flag">
+<meta property="og:description" content="进阶区(题训)">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/10/28/flag/image-20211028121819871.png">
-<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/10/28/flag/image-20211028121841578.png">
-<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/10/28/flag/image-20211028121911536.png">
-<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/10/28/flag/image-20211028121940998.png">
-<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/10/28/flag/image-20211028122002870.png">
-<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/10/28/flag/image-20211028122020834.png">
-<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/10/28/flag/image-20211028122043880.png">
-<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/10/28/flag/image-20211028122118485.png">
-<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/10/28/flag/image-20211028122203449.png">
-<meta property="article:published_time" content="2021-10-28T04:17:24.000Z">
-<meta property="article:modified_time" content="2021-10-28T04:22:41.504Z">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/21/Web-%E8%BF%9B%E9%98%B6/image-20220121141900584.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/21/Web-%E8%BF%9B%E9%98%B6/image-20220121142655450.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/21/Web-%E8%BF%9B%E9%98%B6/image-20220121143011644.png">
+<meta property="article:published_time" content="2022-01-21T05:42:58.000Z">
+<meta property="article:modified_time" content="2022-01-21T06:30:20.641Z">
 <meta property="article:author" content="xiaoxiaoxy">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2021/10/28/flag/image-20211028121819871.png">
+<meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/01/21/Web-%E8%BF%9B%E9%98%B6/image-20220121141900584.png">
 
 
-<link rel="canonical" href="http://xiaoxiaoxy1.github.io/2021/10/28/flag/">
+<link rel="canonical" href="http://xiaoxiaoxy1.github.io/2022/01/21/Web-%E8%BF%9B%E9%98%B6/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://xiaoxiaoxy1.github.io/2021/10/28/flag/","path":"2021/10/28/flag/","title":"flag"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://xiaoxiaoxy1.github.io/2022/01/21/Web-%E8%BF%9B%E9%98%B6/","path":"2022/01/21/Web-进阶/","title":"攻防世界-Web"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>flag | xiaoxiaoxy</title>
+<title>攻防世界-Web | xiaoxiaoxy</title>
   
 
 
@@ -105,7 +99,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -118,6 +112,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#baby-web"><span class="nav-number">1.</span> <span class="nav-text">baby_web</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#warmup"><span class="nav-number">2.</span> <span class="nav-text">warmup</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -170,7 +165,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://xiaoxiaoxy1.github.io/2021/10/28/flag/">
+    <link itemprop="mainEntityOfPage" href="http://xiaoxiaoxy1.github.io/2022/01/21/Web-%E8%BF%9B%E9%98%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -183,7 +178,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          flag
+          攻防世界-Web
         </h1>
 
         <div class="post-meta-container">
@@ -195,13 +190,13 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-10-28 12:17:24 / Modified: 12:22:41" itemprop="dateCreated datePublished" datetime="2021-10-28T12:17:24+08:00">2021-10-28</time>
+      <time title="Created: 2022-01-21 13:42:58 / Modified: 14:30:20" itemprop="dateCreated datePublished" datetime="2022-01-21T13:42:58+08:00">2022-01-21</time>
     </span>
 
   
 </div>
 
-            <div class="post-description">pwnable-flag</div>
+            <div class="post-description">进阶区(题训)</div>
         </div>
       </header>
 
@@ -209,50 +204,32 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><strong>1：</strong>拿到题目，借助网址下载相应文件<strong>1：</strong>拿到题目，借助网址下载相应文件</p>
-<p><img src="image-20211028121819871.png" alt="image-20211028121819871"></p>
-<p><img src="image-20211028121841578.png" alt="image-20211028121841578"></p>
-<p>命令1：wget <a target="_blank" rel="noopener" href="http://pwnable.kr/bin/flag">http://pwnable.kr/bin/flag</a></p>
-<p><strong>2：</strong>通过网络资料知：</p>
-<p>  “用个16进制查看器看一下,是elf文件,并且加了upx壳,要脱下upx壳才好分析”</p>
-<p><img src="image-20211028121911536.png" alt="image-20211028121911536"></p>
-<p>这16进制查看器我不知道咋弄的，该图也是从网上搬来的。</p>
-<p><strong>3：</strong>由于upx不为自带文件，需自行下载，相应Linux指令附着于下：</p>
-<p>（1）：下载upx：命令2：</p>
-<p>wget <a target="_blank" rel="noopener" href="https://github.com/upx/upx/releases/download/v3.95/upx-3.95-amd64_linux.tar.xz">https://github.com/upx/upx/releases/download/v3.95/upx-3.95-amd64_linux.tar.xz</a></p>
-<p>（2）：解压二进制：命令3：</p>
-<p>tar -Jxf upx*.tar.xz</p>
-<p>（3）：为了方便使用移动 upx 到系统变量目录，如果不愿意使用 root 的话可以将 upx 目录添加到环境变量：命令4：</p>
-<p>sudo cp upx*/upx /usr/bin</p>
-<p><strong>4：</strong>利用upx 进行解压，upx -d filename：</p>
-<p><img src="image-20211028121940998.png" alt="image-20211028121940998"></p>
-<p>基本操作不做过多赘述，实在不理解请自行百度查找（其实我也不理解，会用就行）</p>
-<p>命令6：upx -d flag</p>
-<p>5：查看文件是否下载至当前路径（我的当前路径为Desktop（桌面））：</p>
-<p><img src="image-20211028122002870.png" alt="image-20211028122002870"></p>
-<p>此处进行了权限赋予操作（赘余操作，可不必进行）</p>
-<p>命令7：chmod 777 flag</p>
-<p><strong>6：</strong>运用file命令查看flag文件的位数情况（32位 or 64位）：</p>
-<p><img src="image-20211028122020834.png" alt="image-20211028122020834"></p>
-<p>命令8：file flag</p>
-<p>由此得知flag文件为64位文件</p>
-<p><strong>7：</strong>现在只需将flag文件拖动至Windows界面中的64位ida中进行反编译即可，具体操作在此不做赘述（拖动文件会吧？不用教了吧，拖不出来的话考虑换一个虚拟机吧）</p>
-<p><strong>8：</strong>接下来就是常规操作，按下ok，找到main函数按下F5，结果如下：</p>
-<p><img src="image-20211028122043880.png" alt="image-20211028122043880"></p>
-<p><strong>9：</strong>分析main函数，并无特别之处，但那flag格外显眼，经合情推理，flag内置于内存之中，这时我们只需双击flag便可进入如下界面，并发现flag地址处存储的一组字符串：</p>
-<p><img src="image-20211028122118485.png" alt="image-20211028122118485"></p>
-<p>UPX…? sounds like a delivery service但这并不是flag</p>
-<p>10：双击字符串后进入另一界面，此时flag便出现了：</p>
-<p><img src="image-20211028122203449.png" alt="image-20211028122203449"></p>
-<p>正解flag：UPX…? sounds like a delivery service :)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag：UPX...? sounds like a delivery service :)</span><br></pre></td></tr></table></figure>
+        <br/>
 
+<h2 id="baby-web"><a href="#baby-web" class="headerlink" title="baby_web"></a>baby_web</h2><p>链接（题解）：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Catherine_qingzhu/article/details/105335243">https://blog.csdn.net/Catherine_qingzhu/article/details/105335243</a></p>
+<br/>
 
+<p>对于初始页面，查询到以下资料：</p>
+<p>Apache服务器的默认首页（初始页面）:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DirectoryIndex index.php index.html</span><br><span class="line">或</span><br><span class="line">DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm</span><br></pre></td></tr></table></figure>
 
+<p>链接：<a target="_blank" rel="noopener" href="https://www.php.cn/apache/441264.html">配置Apache服务器的默认首页-Apache-PHP中文网</a></p>
+<p>链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhang44429824/article/details/80002105">关于配置Apache网站根目录以及默认页面_zhang44429824的博客-CSDN博客_apache默认网站根目录</a></p>
+<br/>
 
+<p>本题的flag隐藏在请求   URL/index.php   这一资源后服务器返回的响应报文的报文首部中。</p>
+<p><img src="image-20220121141900584.png" alt="image-20220121141900584"></p>
+<p>收获：</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;1、了解到响应报文的报文首部中可以隐藏一些有用的信息。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;2、重新回顾了一下《图解HTTP》56页的知识，对301、302状态码有了更深一步的认识。</p>
+<br/>
 
+<br/>
 
-
+<h2 id="warmup"><a href="#warmup" class="headerlink" title="warmup"></a>warmup</h2><p>根据注释中的source.php，我们在地址栏IP地址后添加/source.php,得到以下界面</p>
+<p><img src="image-20220121142655450.png" alt="image-20220121142655450"></p>
+<p>然后呢，我觉得我的先去学一下php才行</p>
+<p><img src="image-20220121143011644.png" alt="image-20220121143011644"></p>
 
     </div>
 
@@ -266,14 +243,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/10/28/bof/" rel="prev" title="bof">
-                  <i class="fa fa-chevron-left"></i> bof
+                <a href="/2022/01/17/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-Web/" rel="prev" title="攻防世界-Web">
+                  <i class="fa fa-chevron-left"></i> 攻防世界-Web
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/10/28/get-shell/" rel="next" title="get_shell">
-                  get_shell <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

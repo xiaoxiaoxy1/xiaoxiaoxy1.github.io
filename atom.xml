@@ -6,7 +6,7 @@
   <link href="http://xiaoxiaoxy1.github.io/atom.xml" rel="self"/>
   
   <link href="http://xiaoxiaoxy1.github.io/"/>
-  <updated>2022-01-20T22:39:49.147Z</updated>
+  <updated>2022-01-21T06:30:20.641Z</updated>
   <id>http://xiaoxiaoxy1.github.io/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>攻防世界-Web</title>
+    <link href="http://xiaoxiaoxy1.github.io/2022/01/21/Web-%E8%BF%9B%E9%98%B6/"/>
+    <id>http://xiaoxiaoxy1.github.io/2022/01/21/Web-%E8%BF%9B%E9%98%B6/</id>
+    <published>2022-01-21T05:42:58.000Z</published>
+    <updated>2022-01-21T06:30:20.641Z</updated>
+    
+    <content type="html"><![CDATA[<br/><h2 id="baby-web"><a href="#baby-web" class="headerlink" title="baby_web"></a>baby_web</h2><p>链接（题解）：<a href="https://blog.csdn.net/Catherine_qingzhu/article/details/105335243">https://blog.csdn.net/Catherine_qingzhu/article/details/105335243</a></p><br/><p>对于初始页面，查询到以下资料：</p><p>Apache服务器的默认首页（初始页面）:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DirectoryIndex index.php index.html</span><br><span class="line">或</span><br><span class="line">DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm</span><br></pre></td></tr></table></figure><p>链接：<a href="https://www.php.cn/apache/441264.html">配置Apache服务器的默认首页-Apache-PHP中文网</a></p><p>链接：<a href="https://blog.csdn.net/zhang44429824/article/details/80002105">关于配置Apache网站根目录以及默认页面_zhang44429824的博客-CSDN博客_apache默认网站根目录</a></p><br/><p>本题的flag隐藏在请求   URL/index.php   这一资源后服务器返回的响应报文的报文首部中。</p><p><img src="image-20220121141900584.png" alt="image-20220121141900584"></p><p>收获：</p><p>&nbsp;&nbsp;&nbsp;&nbsp;1、了解到响应报文的报文首部中可以隐藏一些有用的信息。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;2、重新回顾了一下《图解HTTP》56页的知识，对301、302状态码有了更深一步的认识。</p><br/><br/><h2 id="warmup"><a href="#warmup" class="headerlink" title="warmup"></a>warmup</h2><p>根据注释中的source.php，我们在地址栏IP地址后添加/source.php,得到以下界面</p><p><img src="image-20220121142655450.png" alt="image-20220121142655450"></p><p>然后呢，我觉得我的先去学一下php才行</p><p><img src="image-20220121143011644.png" alt="image-20220121143011644"></p>]]></content>
+    
+    
+    <summary type="html">进阶区(题训)</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>攻防世界-Web</title>
