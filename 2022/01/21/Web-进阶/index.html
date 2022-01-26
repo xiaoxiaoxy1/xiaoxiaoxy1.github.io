@@ -28,8 +28,9 @@
 <meta property="og:description" content="进阶区(题训)">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/21/Web-%E8%BF%9B%E9%98%B6/image-20220121141900584.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/21/Web-%E8%BF%9B%E9%98%B6/image-20220126163200306.png">
 <meta property="article:published_time" content="2022-01-21T05:42:58.000Z">
-<meta property="article:modified_time" content="2022-01-23T14:35:55.409Z">
+<meta property="article:modified_time" content="2022-01-26T08:40:19.668Z">
 <meta property="article:author" content="xiaoxiaoxy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/01/21/Web-%E8%BF%9B%E9%98%B6/image-20220121141900584.png">
@@ -110,7 +111,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#baby-web"><span class="nav-number">1.</span> <span class="nav-text">baby_web</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#warmup"><span class="nav-number">2.</span> <span class="nav-text">warmup</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#baby-web"><span class="nav-number">1.</span> <span class="nav-text">baby_web</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Training-WWW-Robots"><span class="nav-number">2.</span> <span class="nav-text">Training-WWW-Robots</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP2"><span class="nav-number">3.</span> <span class="nav-text">PHP2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#warmup"><span class="nav-number">4.</span> <span class="nav-text">warmup</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -194,7 +195,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-01-23 22:35:55" itemprop="dateModified" datetime="2022-01-23T22:35:55+08:00">2022-01-23</time>
+        <time title="Modified: 2022-01-26 16:40:19" itemprop="dateModified" datetime="2022-01-26T16:40:19+08:00">2022-01-26</time>
       </span>
 
   
@@ -226,6 +227,30 @@
 <p>收获：</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;1、了解到响应报文的报文首部中可以隐藏一些有用的信息。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;2、重新回顾了一下《图解HTTP》56页的知识，对301、302状态码有了更深一步的认识。</p>
+<br/>
+
+<br/>
+
+<h2 id="Training-WWW-Robots"><a href="#Training-WWW-Robots" class="headerlink" title="Training-WWW-Robots"></a>Training-WWW-Robots</h2><p>Robots协议，与新手区的robots解题过程相似</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">URL/robots.txt</span><br><span class="line">URL/fl0g.php</span><br><span class="line">cyberpeace&#123;76f058b55f56b5f5b05fb69fe2ff8de6&#125;</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<br/>
+
+<h2 id="PHP2"><a href="#PHP2" class="headerlink" title="PHP2"></a>PHP2</h2><p>解题过程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">URL/index.phps   //先记住吧，有空去找扫描工具试试</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    // $_GET[id]：以 GET 方式传入一个名为 id 的变量值，变量值赋给 $_GET[id]</span><br><span class="line">    //若&quot;admin&quot;完全等价于传入值，则执行该if语句内的代码</span><br><span class="line">    if(&quot;admin&quot;===$_GET[id]) &#123;</span><br><span class="line">      echo(&quot;&lt;p&gt;not allowed!&lt;/p&gt;&quot;);</span><br><span class="line">      exit();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //将 $_GET[id] 值进行一次 urldecode 解码</span><br><span class="line">    $_GET[id] = urldecode($_GET[id]);</span><br><span class="line">    </span><br><span class="line">    //再次判断，若为真则执行if语句中的代码</span><br><span class="line">    if($_GET[id] == &quot;admin&quot;)</span><br><span class="line">    &#123;</span><br><span class="line">      echo &quot;&lt;p&gt;Access granted!&lt;/p&gt;&quot;;</span><br><span class="line">      echo &quot;&lt;p&gt;Key: xxxxxxx &lt;/p&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">Can you anthenticate to this website?</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">因此该题借助 urlencode 编码 &quot;admin&quot; 中任意数量的任意字符即可绕过第一个if判断。</span><br><span class="line">但由于地址栏传入参数id时，浏览器会自动对URL后面的非ASCII码的字符进行一次urlencode</span><br><span class="line">因此我们要进行两次 urlencode 编码</span><br><span class="line">admin-&gt;%61%64%6D%69%6E-&gt;%2561%2564%256D%2569%256E</span><br><span class="line">因此构造payload：URL/?id=%2561%2564%256D%2569%256E</span><br><span class="line">当然，只对一个字符进行两次 urlencode 编码也可 admin-&gt;%61dmin-&gt;%2561dmin</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">地址栏输入：URL/?id=%2561%2564%256D%2569%256E 后自动解码一次</span><br><span class="line">因此第一个if语句的比较判断为：if(&quot;admin&quot;===&quot;%61%64%6D%69%6E&quot;) </span><br><span class="line">之后解码一次：urldecode(%61%64%6D%69%6E)=admin</span><br><span class="line">最后第二个if语句的比较判断为：if(&quot;admin&quot;===&quot;admin&quot;)，从而拿到flag</span><br><span class="line">flag：cyberpeace&#123;91d2e75adf3715a0f492b9864c0eb73a&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20220126163200306.png" alt="image-20220126163200306"></p>
+<br/>
+
+<p>推荐题解：<a target="_blank" rel="noopener" href="https://blog.csdn.net/wyj_1216/article/details/95235159">https://blog.csdn.net/wyj_1216/article/details/95235159</a></p>
 <br/>
 
 <br/>
