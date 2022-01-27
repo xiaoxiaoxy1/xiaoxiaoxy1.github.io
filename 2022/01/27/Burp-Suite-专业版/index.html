@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xiaoxiaoxy1.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="安装教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Burp Suite_专业版">
+<meta property="og:url" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/index.html">
+<meta property="og:site_name" content="xiaoxiaoxy">
+<meta property="og:description" content="安装教程">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127161805395.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163321039.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163347339.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163406354.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163425538.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163452793.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163509625.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163523681.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163535688.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163548330.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163559696.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163616907.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163631335.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163644656.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163700289.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163712299.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127162213250.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127162444943.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127162854533.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163756552.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163811582.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163825565.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163841642.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163850360.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163903949.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163911979.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163919813.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163927300.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163934098.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163942277.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163950066.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127163957634.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127164045075.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127164053203.png">
+<meta property="article:published_time" content="2022-01-27T08:10:16.000Z">
+<meta property="article:modified_time" content="2022-01-27T08:41:02.754Z">
+<meta property="article:author" content="xiaoxiaoxy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/image-20220127161805395.png">
+
+
+<link rel="canonical" href="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/","path":"2022/01/27/Burp-Suite-专业版/","title":"Burp Suite_专业版"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Burp Suite_专业版 | xiaoxiaoxy</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="xiaoxiaoxy" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">xiaoxiaoxy</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Burp-suite%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B-%E4%B8%93%E4%B8%9A%E7%89%88"><span class="nav-number">1.</span> <span class="nav-text">Burp_suite安装及使用教程(专业版)</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">xiaoxiaoxy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://xiaoxiaoxy1.github.io/2022/01/27/Burp-Suite-%E4%B8%93%E4%B8%9A%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xiaoxiaoxy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xiaoxiaoxy">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Burp Suite_专业版
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-01-27 16:10:16 / Modified: 16:41:02" itemprop="dateCreated datePublished" datetime="2022-01-27T16:10:16+08:00">2022-01-27</time>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">安装教程</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <br/>
+
+<p>原文链接：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zewutest/p/13895187.html">Burp_suite安装及使用教程(专业版) - 停泊2019 - 博客园 (cnblogs.com)</a></p>
+<p>因为担心博主删除博文，在此copy一份原博文。（注：本文在以上文章的内容基础上有稍作添加）</p>
+<br/>
+
+<h1 id="Burp-suite安装及使用教程-专业版"><a href="#Burp-suite安装及使用教程-专业版" class="headerlink" title="Burp_suite安装及使用教程(专业版)"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zewutest/p/13895187.html">Burp_suite安装及使用教程(专业版)</a></h1><p>1、工具下载地址：<a target="_blank" rel="noopener" href="https://down.52pojie.cn/Tools/Network_Analyzer/Burp_Suite_Pro_v1.7.37_Loader_Keygen.zip">https://down.52pojie.cn/Tools/Network_Analyzer/Burp_Suite_Pro_v1.7.37_Loader_Keygen.zip</a></p>
+<p>工具运行需要Java环境，请自行安装，此处不赘述。（注：检测java环境是否安装完成：cmd中输入java -version 、 java 、 javac 几个命令观察返回信息）</p>
+<p><img src="image-20220127161805395.png" alt="image-20220127161805395"></p>
+<br/>
+
+<p>解压完成后右击burp-loader-keygen.jar，以Java(TM) Platform SE binary的方式打开keygen</p>
+<p><img src="image-20220127163321039.png" alt="image-20220127163321039"></p>
+ <br/>
+
+<p>2、修改License Text为任意值</p>
+<p><img src="image-20220127163347339.png" alt="image-20220127163347339"></p>
+ <br/>
+
+<p>3、点击run启动burpsuite</p>
+<p><img src="image-20220127163406354.png" alt="image-20220127163406354"></p>
+ <br/>
+
+<p>4、如果上述方式没有成功启动burpsuite，打开cmd，进入burp-loader-keygen.jar所在目录，执行命令：java -Xbootclasspath/p:burp-loader-keygen.jar -jar burpsuite_pro_v1.7.37.jar</p>
+<p><img src="image-20220127163425538.png" alt="image-20220127163425538"></p>
+ <br/>
+
+<p>5、打开burpsuite成功</p>
+<p><img src="image-20220127163452793.png" alt="image-20220127163452793"></p>
+ <br/>
+
+ <br/>
+
+<p>6、将Keygen中License复制粘贴到burpsuite中</p>
+<p><img src="image-20220127163509625.png" alt="image-20220127163509625"></p>
+ <br/>
+
+<p>点击Next</p>
+<p><img src="image-20220127163523681.png" alt="image-20220127163523681"></p>
+ <br/>
+
+<br/>
+7、然后点击Manual activation
+
+<p><img src="image-20220127163535688.png" alt="image-20220127163535688"></p>
+ <br/>
+
+<p>8、点击Copy request</p>
+<p><img src="image-20220127163548330.png" alt="image-20220127163548330"></p>
+ <br/>
+
+<p>9、点击Copy request，复制完成之后，将字符串粘贴到keygen的Activation Request框里，然后Activation Response框里就有了结果，如下</p>
+<p><img src="image-20220127163559696.png" alt="image-20220127163559696"></p>
+ <br/>
+
+<p>10、复制完后，将字符串粘贴到BurpSuite剩下的那个框里，如图，再点击Next显示激活成功</p>
+<p><img src="image-20220127163616907.png" alt="image-20220127163616907"></p>
+ <br/>
+
+<p>11、再点击Next显示激活成功</p>
+<p><img src="image-20220127163631335.png" alt="image-20220127163631335"></p>
+ <br/>
+
+<p>然后点击Next</p>
+<p><img src="image-20220127163644656.png" alt="image-20220127163644656"></p>
+ <br/>
+
+<p>再点击Start Burp</p>
+<p><img src="image-20220127163700289.png" alt="image-20220127163700289"></p>
+ <br/>
+
+<p>12、burpsuite主界面</p>
+<p><img src="image-20220127163712299.png" alt="image-20220127163712299"></p>
+ <br/>
+
+<p>13、激活之后，不能通过双击BurpSuite主程序来启动，否则启动之后还是需要输入key，两个文件必须放在一个目录下，启动方式有两种：</p>
+<p>通过 keygen 上的 run 按钮来启动（注：本人无法通过此方法打开BurpSuite专业版）</p>
+<p>在文件目录下执行java -Xbootclasspath/p:burp-loader-keygen.jar -jar burpsuite_pro_v1.7.31.jar来启动.为了方便，可以将命令保存为一个bat</p>
+<br/>
+
+<p>注：bat方法：</p>
+<p>1、当前目录下新建txt文本文档：</p>
+<p><img src="image-20220127162213250.png" alt="image-20220127162213250"></p>
+<p>2、将以下指令写入新建文本文档中，点击另存为另存至当前目录，相关配置数据按下图修改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Xbootclasspath/p:burp-loader-keygen.jar -jar burpsuite_pro_v1.7.37.jar</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20220127162444943.png" alt="image-20220127162444943"></p>
+<p>3、创建快捷方式拖动到桌面即可在桌面打开BurpSuite专业版</p>
+<p><img src="image-20220127162854533.png" alt="image-20220127162854533"></p>
+<br/>
+
+<br/>
+
+<p>Burpsuite神奇常用功能使用方法总结</p>
+<p>Burpsuite介绍：</p>
+<p>一款可以进行再WEB应用程序的集成攻击测试平台。(抓https要在浏览器中导入证书)</p>
+<p>1、学习Proxy</p>
+<p><img src="image-20220127163756552.png" alt="image-20220127163756552"></p>
+ <br/>
+
+<p>首先看标红，intercept is on 为拦截状态 其对应的intercept is off 为非拦截状态,设置完代理后打开拦截状态，浏览器发起的请求会被burpsuite所拦截</p>
+<p><img src="image-20220127163811582.png" alt="image-20220127163811582"></p>
+ <br/>
+
+<p>forward: 进行请求后被拦截，点击forward可以继续此次请求，如果你点击drop则丢弃此请求数据。继续请求后能够看到返回结果</p>
+<p><img src="image-20220127163825565.png" alt="image-20220127163825565"></p>
+ <br/>
+
+<p>可以在消息分析选项卡查看这次请求的所有内容</p>
+<p>1）Raw 这个视图主要显示web请求的raw格式，包含请求地址， http协议版本， 主机头， 浏览器信息，accept可接受的内容类型，字符集，编码方式，cookies等,  可以手动修改这些内容，然后在点击forward进行渗透测试</p>
+<p>2） params 这个视图主要是显示客户端请求的参数信息，get或者post的参数，cookies参数，也可以修改</p>
+<p>3）headers是头部信息和Raw其实差不多，展示更直观</p>
+<p>4）Hex 这个视图显示Raw的二进制内容</p>
+ <br/>
+
+<p>注意： 默认情况下，BurpProxy只拦截请求的消息，普通的文件如css,js,图片是不会拦截的，当然，想拦截什么都可以设置,我们现在知道了怎么设置代理，怎么安装，怎么进行请求拦截，怎么修改请求发起的内容向服务端进行渗透，接下来我们学习一下怎么控制这些拦截</p>
+<p> <img src="image-20220127163841642.png" alt="image-20220127163841642"></p>
+ <br/>
+
+ <br/>
+
+<p>上图为http history 所有拦截的历史均会被记录起来</p>
+<p> <img src="image-20220127163850360.png" alt="image-20220127163850360"></p>
+ <br/>
+
+ <br/>
+
+<p>Burp Proxy的拦截功能主要由Intercept选项卡中的Forward、Drop、Interception is on/off、Action构成，它们的功能分别是： Forward的功能是当你查看过消息或者重新编辑过消息之后，点击此按钮，将发送消息至服务器端。 Drop的功能是你想丢失当前拦截的消息，不再forward到服务器端。Interception is on表示拦截功能打开，拦截所有通过Burp Proxy的请求数据；Interception is off表示拦截功能关闭，不再拦截通过Burp Proxy的所有请求数据。 Action的功能是除了将当前请求的消息传递到Spider、Scanner、Repeater、Intruder、Sequencer、Decoder、Comparer组件外，还可以做一些请求消息的修改，如改变GET或者POST请求方式、改变请求body的编码，同时也可以改变请求消息的拦截设置，如不再拦截此主机的消息、不再拦截此IP地址的消息、不再拦截此种文件类型的消息、不再拦截此目录的消息，也可以指定针对此消息拦截它的服务器端返回消息。                                                      </p>
+<p>2、burpsuite使用（抓包、截包、改包）</p>
+<p>这里推荐火狐浏览器来配合burp使用。</p>
+<p>1）设置浏览器</p>
+<p>工具-选项-网络设置-设置，将连接设置改为手动代理配置</p>
+<p><img src="image-20220127163903949.png" alt="image-20220127163903949"></p>
+ <br/>
+
+<p>输入127.0.0.1:8080，点击回车，进入burp证书下载页面</p>
+<p> <img src="image-20220127163911979.png" alt="image-20220127163911979"></p>
+ <br/>
+
+<p>点击右上角，下载证书</p>
+<p> <img src="image-20220127163919813.png" alt="image-20220127163919813"></p>
+ <br/>
+
+<p>在选项里搜索证书，点击【查看证书】</p>
+<p> <img src="image-20220127163927300.png" alt="image-20220127163927300"></p>
+ <br/>
+
+<p>点击【导入】，导入刚刚下载的burp证书，这样就可以使用burp抓取https请求了</p>
+<p> <img src="image-20220127163934098.png" alt="image-20220127163934098"></p>
+ <br/>
+
+<p>这时候计算机上的火狐浏览器也设置为了代理模式。代理设置成功之后，访问网页是访问不了的，因为我们没有将请求转发，接下来就需要配置burp来转发浏览器的请求。</p>
+<p>2）配置burp监听端口</p>
+<p>然后打开burp</p>
+<p> <img src="image-20220127163942277.png" alt="image-20220127163942277"></p>
+ <br/>
+
+<p>在监听的端口设置与代理的端口相同</p>
+<p>3）抓包</p>
+<p> 将burp设置为Intercept is on，在火狐浏览器里输入baike.baidu.com</p>
+<p> <img src="image-20220127163950066.png" alt="image-20220127163950066"></p>
+ <br/>
+
+<p>将Intercept is on设置为Intercept is off</p>
+<p> <img src="image-20220127163957634.png" alt="image-20220127163957634"></p>
+ <br/>
+
+ <br/>
+
+<p>4）截包</p>
+<p>这时候就需要打开拦截功能了</p>
+<p>之前在抓包的时候可以看到，百度搜索一次要发送很多个请求，这个时候停留在第一个请求上面，这时候，如果不听地点击forward的话，就会一直发送接下来的请求。如果不停点击drop，就会把这些请求的包一个个丢掉。</p>
+<p>5）改包</p>
+<p>比如水果网<a target="_blank" rel="noopener" href="http://www.guo68.com/%E6%90%9C%E7%B4%A2%E6%B0%B4%E6%9E%9C%EF%BC%9Apingguo%EF%BC%88%E6%90%9C%E7%B4%A2%E4%B8%AD%E6%96%87%E7%9A%84%E6%97%B6%E5%80%99%E6%8A%93%E7%9A%84%E5%8C%85%E6%98%AF%E4%B9%B1%E7%A0%81%EF%BC%8C%E4%B8%8D%E5%88%A9%E8%A7%82%E5%AF%9F%EF%BC%89">http://www.guo68.com/搜索水果：pingguo（搜索中文的时候抓的包是乱码，不利观察）</a></p>
+<p>一直点击forward，并且查看params选项，直到参数的内容中出现pingguo</p>
+<p> <img src="image-20220127164045075.png" alt="image-20220127164045075"></p>
+ <br/>
+
+<p>这时候把pingguo改成putao，继续点击forward或者关闭拦截功能。</p>
+<p> <img src="image-20220127164053203.png" alt="image-20220127164053203"></p>
+ <br/>
+
+<p>便会搜索putao了。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/26/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-crypto/" rel="prev" title="攻防世界-crypto">
+                  <i class="fa fa-chevron-left"></i> 攻防世界-crypto
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaoxiaoxy</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
