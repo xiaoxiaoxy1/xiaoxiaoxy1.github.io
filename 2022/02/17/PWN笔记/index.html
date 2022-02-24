@@ -28,7 +28,7 @@
 <meta property="og:description" content="xy对pwn的一点理解">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-17T08:00:21.000Z">
-<meta property="article:modified_time" content="2022-02-24T12:51:55.474Z">
+<meta property="article:modified_time" content="2022-02-24T13:03:07.307Z">
 <meta property="article:author" content="xiaoxiaoxy">
 <meta name="twitter:card" content="summary">
 
@@ -108,7 +108,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">寄存器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#x86%E5%AF%84%E5%AD%98%E5%99%A8-32%E4%BD%8D"><span class="nav-number">2.</span> <span class="nav-text">x86寄存器(32位)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#x86%E5%AF%84%E5%AD%98%E5%99%A8-64%E4%BD%8D"><span class="nav-number">3.</span> <span class="nav-text">x86寄存器(64位)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80"><span class="nav-number"></span> <span class="nav-text">汇编基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%AC%A6%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">指令符：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hello-world"><span class="nav-number"></span> <span class="nav-text">hello world</span></a></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">寄存器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#x86%E5%AF%84%E5%AD%98%E5%99%A8-32%E4%BD%8D"><span class="nav-number">1.1.</span> <span class="nav-text">x86寄存器(32位)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#x86%E5%AF%84%E5%AD%98%E5%99%A8-64%E4%BD%8D"><span class="nav-number">1.2.</span> <span class="nav-text">x86寄存器(64位)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">汇编基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%AC%A6%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">指令符：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hello-world"><span class="nav-number">2.2.</span> <span class="nav-text">hello world</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -192,7 +192,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-02-24 20:51:55" itemprop="dateModified" datetime="2022-02-24T20:51:55+08:00">2022-02-24</time>
+        <time title="Modified: 2022-02-24 21:03:07" itemprop="dateModified" datetime="2022-02-24T21:03:07+08:00">2022-02-24</time>
       </span>
 
   
@@ -206,7 +206,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h2><br/>
+        <h1 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h1><br/>
 
 <h2 id="x86寄存器-32位"><a href="#x86寄存器-32位" class="headerlink" title="x86寄存器(32位)"></a>x86寄存器(32位)</h2><p>学习链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/choufu1408/article/details/100655739">https://blog.csdn.net/choufu1408/article/details/100655739</a></p>
 <p>学习链接（荐）：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhu2695/article/details/16813425">代码人生。。。-CSDN博客_esi寄存器</a></p>
@@ -268,7 +268,7 @@
 
 <br/>
 
-<h1 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h1><p><strong>P55：</strong></p>
+<h2 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h2><p><strong>P55：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">.data</span><br><span class="line">msg:</span><br><span class="line">	.ascii &quot;hello world!&quot;</span><br><span class="line">	len = . - msg</span><br><span class="line">	</span><br><span class="line">.text</span><br><span class="line">	.global _start</span><br><span class="line">	</span><br><span class="line">_start:</span><br><span class="line">	movl $len, %edx</span><br><span class="line">	movl $msg, %ecx</span><br><span class="line">	movl $1, %ebx</span><br><span class="line">	movl $4, %eax</span><br><span class="line">	int $0x80</span><br><span class="line">	</span><br><span class="line">	movl $0, %ebx</span><br><span class="line">	movl $1, %eax</span><br><span class="line">	int $0x80</span><br></pre></td></tr></table></figure>
 
 <p>注（个人理解）：</p>
