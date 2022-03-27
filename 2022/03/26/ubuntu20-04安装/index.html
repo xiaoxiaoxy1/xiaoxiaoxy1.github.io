@@ -96,8 +96,11 @@
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327155314298.png">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327155555806.png">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327164455192.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327174130219.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327174311425.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327174323894.png">
 <meta property="article:published_time" content="2022-03-26T09:42:17.000Z">
-<meta property="article:modified_time" content="2022-03-27T09:31:30.432Z">
+<meta property="article:modified_time" content="2022-03-27T09:59:04.721Z">
 <meta property="article:author" content="xiaoxiaoxy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326175648163.png">
@@ -178,7 +181,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ubuntu20-04%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">ubuntu20.04安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9root%E5%AF%86%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">修改root密码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%88%E7%AB%AF%E9%A2%9C%E8%89%B2%E9%A3%8E%E6%A0%BC%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">终端颜色风格设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%87%E6%8D%A2apt%E6%BA%90"><span class="nav-number">4.</span> <span class="nav-text">切换apt源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pwntools%E5%AE%89%E8%A3%85"><span class="nav-number">5.</span> <span class="nav-text">Pwntools安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pwngdb-Pwndbg-%E7%9A%84%E8%81%94%E5%90%88%E4%BD%BF%E7%94%A8"><span class="nav-number">6.</span> <span class="nav-text">Pwngdb + Pwndbg 的联合使用</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ubuntu20-04%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">ubuntu20.04安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9root%E5%AF%86%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">修改root密码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%88%E7%AB%AF%E9%A2%9C%E8%89%B2%E9%A3%8E%E6%A0%BC%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">终端颜色风格设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%87%E6%8D%A2apt%E6%BA%90"><span class="nav-number">4.</span> <span class="nav-text">切换apt源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pwntools%E5%AE%89%E8%A3%85"><span class="nav-number">5.</span> <span class="nav-text">Pwntools安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pwngdb-Pwndbg-%E7%9A%84%E8%81%94%E5%90%88%E4%BD%BF%E7%94%A8"><span class="nav-number">6.</span> <span class="nav-text">Pwngdb + Pwndbg 的联合使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ROPGadget-amp-one-gadget"><span class="nav-number">7.</span> <span class="nav-text">ROPGadget &amp; one_gadget</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#32%E4%BD%8Dlib%E5%BA%93"><span class="nav-number">8.</span> <span class="nav-text">32位lib库</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -262,7 +265,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-27 17:31:30" itemprop="dateModified" datetime="2022-03-27T17:31:30+08:00">2022-03-27</time>
+        <time title="Modified: 2022-03-27 17:59:04" itemprop="dateModified" datetime="2022-03-27T17:59:04+08:00">2022-03-27</time>
       </span>
 
   
@@ -475,7 +478,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pwndbg源码下载</span></span><br><span class="line">	~目录下以普通用户输入指令(注：切忌使用root用户进行下载)</span><br><span class="line">	$ git <span class="built_in">clone</span> https://github.com/pwndbg/pwndbg</span><br></pre></td></tr></table></figure>
 
 <p><img src="image-20220327154050673.png" alt="image-20220327154050673"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pwndbg文件下载好后，终端执行以下两条指令进行安装</span></span><br><span class="line">$ <span class="built_in">cd</span> pwndbg</span><br><span class="line">$./setup.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pwndbg文件下载好后，终端执行以下两条指令进行安装</span></span><br><span class="line">	$ <span class="built_in">cd</span> pwndbg</span><br><span class="line">	$./setup.sh</span><br></pre></td></tr></table></figure>
 
 <p><img src="image-20220327163551136.png" alt="image-20220327163551136"></p>
 <br/>
@@ -483,12 +486,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Pwngdb源码下载</span></span><br><span class="line">	~目录下以普通用户输入指令(注：下载东西时别用root用户)</span><br><span class="line">	$ git <span class="built_in">clone</span> https://github.com/scwuaptx/Pwngdb.git</span><br></pre></td></tr></table></figure>
 
 <p><img src="image-20220327154905108.png" alt="image-20220327154905108"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#将.gdbinit复制到~目录下</span><br><span class="line"></span><br><span class="line">	$ cp ~/Pwngdb/.gdbinit ~/</span><br><span class="line">	</span><br><span class="line">或在~目录下执行如下指令：</span><br><span class="line"></span><br><span class="line">	$ cp ./Pwngdb/.gdbinit ./</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将.gdbinit复制到~目录下</span></span><br><span class="line"></span><br><span class="line">	$ cp ~/Pwngdb/.gdbinit ~/</span><br><span class="line">	</span><br><span class="line">或在~目录下执行如下指令：</span><br><span class="line"></span><br><span class="line">	$ cp ./Pwngdb/.gdbinit ./</span><br></pre></td></tr></table></figure>
 
 <p><img src="image-20220327155314298.png" alt="image-20220327155314298"></p>
 <br/>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#最后，修改.gdbinit文件为如下即可</span><br><span class="line"></span><br><span class="line">source ~/pwndbg/gdbinit.py</span><br><span class="line">source ~/Pwngdb/pwngdb.py</span><br><span class="line">source ~/angelheap/gdbinit.py</span><br><span class="line"></span><br><span class="line">define hook-run</span><br><span class="line">python</span><br><span class="line">import angelheap</span><br><span class="line">angelheap.init_angelheap()</span><br><span class="line">end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#最后，修改.gdbinit文件为如下即可</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/pwndbg/gdbinit.py</span><br><span class="line"><span class="built_in">source</span> ~/Pwngdb/pwngdb.py</span><br><span class="line"><span class="built_in">source</span> ~/angelheap/gdbinit.py</span><br><span class="line"></span><br><span class="line">define hook-run</span><br><span class="line">python</span><br><span class="line">import angelheap</span><br><span class="line">angelheap.init_angelheap()</span><br><span class="line">end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 
 <p><img src="image-20220327155555806.png" alt="image-20220327155555806"></p>
 <p>ok，可以开始使用pwndbg了</p>
@@ -505,6 +508,33 @@
 <br/>
 
 <br/>
+
+<h1 id="ROPGadget-amp-one-gadget"><a href="#ROPGadget-amp-one-gadget" class="headerlink" title="ROPGadget &amp; one_gadget"></a>ROPGadget &amp; one_gadget</h1><p>参考链接：<a target="_blank" rel="noopener" href="https://blingblingxuanxuan.github.io/2020/02/23/paper/#%E5%AE%89%E8%A3%85ROPGadget">ctf堆入门 - paper | Clang鱼塘 (blingblingxuanxuan.github.io)</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ROPGadget</span></span><br><span class="line">	$ sudo pip install capstone</span><br><span class="line">	$ git <span class="built_in">clone</span> https://github.com/JonathanSalwan/ROPgadget.git</span><br><span class="line">	$ <span class="built_in">cd</span> ROPgadget</span><br><span class="line">	$ sudo python3 setup.py install</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20220327174130219.png" alt="image-20220327174130219"></p>
+<br/>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#one_gadget</span></span><br><span class="line">	$ sudo apt -y install ruby</span><br><span class="line">	$ sudo gem install one_gadget</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20220327174311425.png" alt="image-20220327174311425"></p>
+<p><img src="image-20220327174323894.png" alt="image-20220327174323894"></p>
+<br/>
+
+<br/>
+
+<br/>
+
+<h1 id="32位lib库"><a href="#32位lib库" class="headerlink" title="32位lib库"></a>32位lib库</h1><p>参考链接：<a target="_blank" rel="noopener" href="https://blingblingxuanxuan.github.io/2020/02/23/paper/#%E5%AE%89%E8%A3%8532%E4%BD%8Dlibc">ctf堆入门 - paper | Clang鱼塘 (blingblingxuanxuan.github.io)</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一步，确认系统的架构</span></span><br><span class="line">dpkg --print-architecture  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二步，确认打开了多架构支持功能</span></span><br><span class="line">dpkg --print-foreign-architectures </span><br><span class="line"></span><br><span class="line"><span class="comment"># 第三步，安装对应的32位库  (注：这条指令我没使用)</span></span><br><span class="line">sudo apt-get dist-upgrade <span class="comment">#这一步是更新所有的软件，如果你对新版本软件的需求不是那么迫切，可以不执行 </span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装相关库  </span></span><br><span class="line">sudo apt-get install lib32z1</span><br><span class="line">sudo apt-get install lib32ncurses5-dev <span class="comment">#有的还需要32位stdc++库lib32stdc++6-4.8-dbg</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装gcc multilab  </span></span><br><span class="line">sudo apt-get install gcc-multilib g++-multilib  </span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<p>ok，先配到这吧，之后缺啥再安装，整整捣鼓了一个周末。。。。。。</p>
 
     </div>
 
