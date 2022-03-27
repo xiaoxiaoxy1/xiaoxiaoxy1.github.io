@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"xiaoxiaoxy1.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="题录&amp;实操笔记">
+<meta name="description" content="题录&amp;知识精记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PWN">
 <meta property="og:url" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN/index.html">
 <meta property="og:site_name" content="xiaoxiaoxy">
-<meta property="og:description" content="题录&amp;实操笔记">
+<meta property="og:description" content="题录&amp;知识精记">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN/image-20220321190453216.png">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN/image-20220321191631835.png">
@@ -40,7 +40,7 @@
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN/image-20220321212317869.png">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN/image-20220321212258169.png">
 <meta property="article:published_time" content="2022-02-17T08:00:39.000Z">
-<meta property="article:modified_time" content="2022-03-27T15:03:29.235Z">
+<meta property="article:modified_time" content="2022-03-27T15:10:32.002Z">
 <meta property="article:author" content="xiaoxiaoxy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN/image-20220321190453216.png">
@@ -205,13 +205,13 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-27 23:03:29" itemprop="dateModified" datetime="2022-03-27T23:03:29+08:00">2022-03-27</time>
+        <time title="Modified: 2022-03-27 23:10:32" itemprop="dateModified" datetime="2022-03-27T23:10:32+08:00">2022-03-27</time>
       </span>
 
   
 </div>
 
-            <div class="post-description">题录&实操笔记</div>
+            <div class="post-description">题录&知识精记</div>
         </div>
       </header>
 
@@ -225,7 +225,7 @@
 
 <br/>
 
-<h1 id="exp编写记录"><a href="#exp编写记录" class="headerlink" title="exp编写记录"></a>exp编写记录</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##!/usr/bin/env python			#python文本标识头</span></span><br><span class="line">from pwn import *				<span class="comment">#导入pwntools中的所有模块</span></span><br><span class="line"></span><br><span class="line">sh = process(<span class="string">&#x27;./ret2shellcode&#x27;</span>)	<span class="comment">#创建本地</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="exp编写记录"><a href="#exp编写记录" class="headerlink" title="exp编写记录"></a>exp编写记录</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##!/usr/bin/env python			  #python文本标识头</span></span><br><span class="line">from pwn import *				  <span class="comment">#导入pwntools中的所有模块</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#连接：</span></span><br><span class="line">sh = process(<span class="string">&#x27;./ret2shellcode&#x27;</span>)   <span class="comment">#创建本地连接</span></span><br><span class="line">sh = remote(<span class="string">&quot;127.0.0.1&quot;</span>,10001)    <span class="comment">#远程</span></span><br><span class="line">sh.close()                        <span class="comment">#关闭连接</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#I/O模块</span></span><br><span class="line">sh.send(data)                     <span class="comment">#发送数据</span></span><br><span class="line">sh.sendline(data)  				  <span class="comment">#发送一行数据，相当于在数据后面加\n</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <br/>
 
@@ -244,7 +244,7 @@
 <p>———————————————————————-分界线———————————————————————————————————–</p>
 <br/>
 
-<h1 id="ctf-wiki-pwn"><a href="#ctf-wiki-pwn" class="headerlink" title="ctf-wiki-pwn"></a><font color="red">ctf-wiki-pwn</font></h1><h2 id="栈溢出"><a href="#栈溢出" class="headerlink" title="栈溢出"></a>栈溢出</h2><h3 id="基本ROP"><a href="#基本ROP" class="headerlink" title="基本ROP"></a>基本ROP</h3><h4 id="ret2text"><a href="#ret2text" class="headerlink" title="ret2text"></a>ret2text</h4><p>知识点：pwn相关的一些小技巧，偏移寻找、cyclic</p>
+<h1 id="ctf-wiki-pwn"><a href="#ctf-wiki-pwn" class="headerlink" title="ctf-wiki-pwn"></a><center><font color="red">ctf-wiki-pwn</font></center></h1><h2 id="栈溢出"><a href="#栈溢出" class="headerlink" title="栈溢出"></a>栈溢出</h2><h3 id="基本ROP"><a href="#基本ROP" class="headerlink" title="基本ROP"></a>基本ROP</h3><h4 id="ret2text"><a href="#ret2text" class="headerlink" title="ret2text"></a>ret2text</h4><p>知识点：pwn相关的一些小技巧，偏移寻找、cyclic</p>
 <p>注：个人笔记，重在个人对知识点的复习。</p>
 <p>解题思路：存在 system(“/bin/sh”);  利用溢出修改ret指令处的地址控制程序跳转过去</p>
 <p>原文链接：<a target="_blank" rel="noopener" href="https://ctf-wiki.org/pwn/linux/user-mode/stackoverflow/x86/basic-rop/#ret2text">ctf-wiki-ret2text</a></p>
