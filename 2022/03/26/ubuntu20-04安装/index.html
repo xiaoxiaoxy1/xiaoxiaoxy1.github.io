@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xiaoxiaoxy1.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="ubuntu20.04安装参考教程：https:&#x2F;&#x2F;blog.csdn.net&#x2F;Thanlon&#x2F;article&#x2F;details&#x2F;100072462 下载链接（也可以去官网找）：Index of &#x2F;ubuntu-releases&#x2F;20.04&#x2F; | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror   1、我们选择 ubuntu-20.04.4-desktop-amd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu20.04安装">
+<meta property="og:url" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="xiaoxiaoxy">
+<meta property="og:description" content="ubuntu20.04安装参考教程：https:&#x2F;&#x2F;blog.csdn.net&#x2F;Thanlon&#x2F;article&#x2F;details&#x2F;100072462 下载链接（也可以去官网找）：Index of &#x2F;ubuntu-releases&#x2F;20.04&#x2F; | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror   1、我们选择 ubuntu-20.04.4-desktop-amd">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326175648163.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326185139002.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326185315371.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326185432213.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326185525514.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326185635539.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326185851308.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326190909119.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326191049792.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326191136709.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326191231706.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326191307807.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326191409945.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326191749299.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326191841352.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326191943163.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326192331571.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326192638151.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326192835116.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326192957630.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326193419053.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326193606306.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326193718956.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326193904939.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326194129604.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326194314203.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326194718691.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326194913295.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326195130546.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326195221393.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326195600723.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326202731717.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326202942419.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326203451297.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327103040268.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327103239300.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327103414801.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327103443140.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327103620607.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327104054581.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327104243651.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327104545469.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327110946203.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327111845353.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327112352100.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327112917132.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327113227681.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327113439696.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327113944751.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327114155032.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327114411243.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327115637840.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327115709460.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327120048098.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327120158320.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327120222752.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327125630382.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327125718524.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327125836746.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327125924417.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327130210174.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327130457022.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327143156888.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327154050673.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327163551136.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327154905108.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327155314298.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327155555806.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220327164455192.png">
+<meta property="article:published_time" content="2022-03-26T09:42:17.000Z">
+<meta property="article:modified_time" content="2022-03-27T09:05:20.838Z">
+<meta property="article:author" content="xiaoxiaoxy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326175648163.png">
+
+
+<link rel="canonical" href="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/","path":"2022/03/26/ubuntu20-04安装/","title":"ubuntu20.04安装"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ubuntu20.04安装 | xiaoxiaoxy</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="xiaoxiaoxy" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">xiaoxiaoxy</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ubuntu20-04%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">ubuntu20.04安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9root%E5%AF%86%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">修改root密码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%88%E7%AB%AF%E9%A2%9C%E8%89%B2%E9%A3%8E%E6%A0%BC%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">终端颜色风格设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%87%E6%8D%A2apt%E6%BA%90"><span class="nav-number">4.</span> <span class="nav-text">切换apt源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pwntools%E5%AE%89%E8%A3%85"><span class="nav-number">5.</span> <span class="nav-text">Pwntools安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Pwngdb-Pwndbg-%E7%9A%84%E8%81%94%E5%90%88%E4%BD%BF%E7%94%A8"><span class="nav-number">6.</span> <span class="nav-text">Pwngdb + Pwndbg 的联合使用</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">xiaoxiaoxy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xiaoxiaoxy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xiaoxiaoxy">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ubuntu20.04安装
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-03-26 17:42:17" itemprop="dateCreated datePublished" datetime="2022-03-26T17:42:17+08:00">2022-03-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-03-27 17:05:20" itemprop="dateModified" datetime="2022-03-27T17:05:20+08:00">2022-03-27</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="ubuntu20-04安装"><a href="#ubuntu20-04安装" class="headerlink" title="ubuntu20.04安装"></a>ubuntu20.04安装</h1><p>参考教程：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Thanlon/article/details/100072462">https://blog.csdn.net/Thanlon/article/details/100072462</a></p>
+<p>下载链接（也可以去官网找）：<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/20.04/">Index of /ubuntu-releases/20.04/ | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror</a></p>
+<br/>
+
+<p>1、我们选择 ubuntu-20.04.4-desktop-amd64.iso 镜像文件进行下载</p>
+<p><img src="image-20220326175648163.png" alt="image-20220326175648163"></p>
+<p>2、打开VMware，新建虚拟机</p>
+<p><img src="image-20220326185139002.png" alt="image-20220326185139002"></p>
+<p>3、自定义安装，单击下一步</p>
+<p><img src="image-20220326185315371.png" alt="image-20220326185315371"></p>
+<p>4、默认，单击下一步</p>
+<p><img src="image-20220326185432213.png" alt="image-20220326185432213"></p>
+<p>5、稍后安装操作系统，单击下一步</p>
+<p><img src="image-20220326185525514.png" alt="image-20220326185525514"></p>
+<p>6、选择Ubuntu64位，单击下一步</p>
+<p><img src="image-20220326185635539.png" alt="image-20220326185635539"></p>
+<p>7、虚拟机名称可选默认，但我个人推荐写成操作系统+版本号；安装位置可以选默认，但我个人有存储虚拟机操作系统的文件夹，所以进行了修改；单击下一步</p>
+<p><img src="image-20220326185851308.png" alt="image-20220326185851308"></p>
+<p>8、网上找了一些有关Ubuntu虚拟机处理器配置的文章，不是很明白，先默认吧，反正之后应该能改，就算改不了大不了重新装一遍，默认，单击下一步</p>
+<p><img src="image-20220326190909119.png" alt="image-20220326190909119"></p>
+<p>9、内存推荐4GB，单击下一步</p>
+<p><img src="image-20220326191049792.png" alt="image-20220326191049792"></p>
+<p>10、网络地址转换，单击下一步</p>
+<p><img src="image-20220326191136709.png" alt="image-20220326191136709"></p>
+<p>11、默认，单击下一步</p>
+<p><img src="image-20220326191231706.png" alt="image-20220326191231706"></p>
+<p>12、默认，单击下一步</p>
+<p><img src="image-20220326191307807.png" alt="image-20220326191307807"></p>
+<p>13、创建新虚拟磁盘，单击下一步</p>
+<p><img src="image-20220326191409945.png" alt="image-20220326191409945"></p>
+<p>14、分配的大小根据个人情况来，常用且磁盘/硬盘容量足够，可以适当多分配一点；存储为单个文件；单击下一步</p>
+<p><img src="image-20220326191749299.png" alt="image-20220326191749299"></p>
+<p>15、默认，单击下一步</p>
+<p><img src="image-20220326191841352.png" alt="image-20220326191841352"></p>
+<p>16、默认，单击完成</p>
+<p><img src="image-20220326191943163.png" alt="image-20220326191943163"></p>
+<p>17、编辑虚拟机设置-&gt;CD/DVD(SATA)-&gt;使用ISO映像文件-&gt;装载第一步下载的 .iso 文件，单击确定（在下方，下图中没截出来）</p>
+<p><img src="image-20220326192331571.png" alt="image-20220326192331571"></p>
+<p>18、开启此虚拟机</p>
+<p><img src="image-20220326192638151.png" alt="image-20220326192638151"></p>
+<p>19、等待</p>
+<p><img src="image-20220326192835116.png" alt="image-20220326192835116"></p>
+<p>20、选择语言（中文简体），单击安装Ubuntu</p>
+<p><img src="image-20220326192957630.png" alt="image-20220326192957630"></p>
+<p>21、好家伙，看不到下面的继续按钮</p>
+<p><img src="image-20220326193419053.png" alt="image-20220326193419053"></p>
+<p>21-1：尝试挪动，无果，单击输入框</p>
+<p><img src="image-20220326193606306.png" alt="image-20220326193606306"></p>
+<p>21-2：查看别人的教程，得知继续按钮的位置</p>
+<p><img src="image-20220326193718956.png" alt="image-20220326193718956"></p>
+<p>21-3：返回21-1中键盘按下 ↓ ↓ → → ，不放心的话可以多按几个 ↓ →，然后回车，成了，但下一个界面又看不到下面的继续按钮，之后我直接贴别人的图了，方便看，我这我就自己用键盘解决（注：若勾选下图中安装Ubuntu时下载更新，安装过程会特别慢，对了，这里的更新只是更新一些程序，不会使Ubuntu的版本发生改变，觉得慢的话可以点skip跳过）</p>
+<p><img src="image-20220326193904939.png" alt="image-20220326193904939"></p>
+<p>22、默认，单击继续</p>
+<p><img src="image-20220326194129604.png" alt="image-20220326194129604"></p>
+<p>23、不知道为什么，我这突然又好了，这里清除的是你分配的磁盘空间，不是将你的磁盘清空，默认，单击现在安装</p>
+<p><img src="image-20220326194314203.png" alt="image-20220326194314203"></p>
+<p>24、单击继续</p>
+<p><img src="image-20220326194718691.png" alt="image-20220326194718691"></p>
+<p>25、选至中国，单击继续</p>
+<p><img src="image-20220326194913295.png" alt="image-20220326194913295"></p>
+<p>26、密码设简单一点吧，方便以后操作，姓名显示如步骤30（目前步骤26，下图中的姓名我在点继续之前改成了xy6666，以便观察）,用户名显示如图26-1，单击继续</p>
+<p><img src="image-20220326195130546.png" alt="image-20220326195130546"></p>
+<p>26-1：</p>
+<p><img src="image-20220326195221393.png" alt="image-20220326195221393"></p>
+<p>27、等待，有点难等 U•ェ•*U</p>
+<p><img src="image-20220326195600723.png" alt="image-20220326195600723"></p>
+<p>28、单击现在重启</p>
+<p><img src="image-20220326202731717.png" alt="image-20220326202731717"></p>
+<p>29、单击回车，图没截到 QAQ</p>
+<br/>
+
+<p>30、点击xy6666</p>
+<p><img src="image-20220326202942419.png" alt="image-20220326202942419"></p>
+<p>31、菜单栏找到终端右键添加至收藏夹，双击打开一个终端，ok了</p>
+<p><img src="image-20220326203451297.png" alt="image-20220326203451297"></p>
+<br/>
+
+<br/>
+
+<br/>
+
+<h1 id="修改root密码"><a href="#修改root密码" class="headerlink" title="修改root密码"></a>修改root密码</h1><p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/dmedaa/article/details/107992159">Ubuntu设置修改root密码（初始密码）_k3rw1n的博客-CSDN博客_ubuntu设置root密码</a></p>
+<p>在终端输入命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd root </span><br><span class="line"></span><br><span class="line">注：Ubuntu中的复制粘贴是 ctrl+<span class="built_in">shift</span>+c/v</span><br></pre></td></tr></table></figure>
+
+<p> 会显示以下内容，根据内容输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[sudo] password <span class="keyword">for</span> kerwin: <span class="comment">#输入当前用户密码</span></span><br><span class="line">New password:               <span class="comment">#输入root新密码</span></span><br><span class="line">Retype new password:        <span class="comment">#再次输入root密码</span></span><br><span class="line">passwd: password updated successfully   <span class="comment">#密码更新成功</span></span><br></pre></td></tr></table></figure>
+
+
+
+<br/>
+
+<br/>
+
+<br/>
+
+<h1 id="终端颜色风格设置"><a href="#终端颜色风格设置" class="headerlink" title="终端颜色风格设置"></a>终端颜色风格设置</h1><p>1、打开终端，感觉这暗绿色的前缀不太好看（个人对老版本的亮绿色前缀看习惯了），所以决定修改一下</p>
+<p><img src="image-20220327103040268.png" alt="image-20220327103040268"></p>
+<p>2、点击终端右上角的菜单，打开配置文件首选项</p>
+<p><img src="image-20220327103239300.png" alt="image-20220327103239300"></p>
+<p>3、点击配置文件后面的+号，新建一个配置文件（别直接在默认上的改，若新建的改崩了，还可以调回默认的配置文件），将新建的配置文件设为默认。</p>
+<p><img src="image-20220327103414801.png" alt="image-20220327103414801"></p>
+<p><img src="image-20220327103443140.png" alt="image-20220327103443140"></p>
+<p>4、光标形状默认是方块，我修改成了下划线，个人感觉方便观看一些</p>
+<p><img src="image-20220327103620607.png" alt="image-20220327103620607"></p>
+<p>5、ok，终端风格自己看着配吧</p>
+<p><img src="image-20220327104054581.png" alt="image-20220327104054581"></p>
+<p>6、新旧终端对比图</p>
+<p><img src="image-20220327104243651.png" alt="image-20220327104243651"></p>
+<br/>
+
+<br/>
+
+<br/>
+
+<h1 id="切换apt源"><a href="#切换apt源" class="headerlink" title="切换apt源"></a>切换apt源</h1><p>参考链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/142014944?utm_source=wechat_session&utm_medium=social&utm_oi=77684843479040">Ubuntu20.04软件源更换 - 知乎 (zhihu.com)</a></p>
+<p>链接：<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/?utm_source=wechat_session&utm_medium=social&utm_oi=77684843479040">ubuntu | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror</a></p>
+<p>1、Ubuntu安装完毕，现在准备为我的Ubuntu搭建一个pwn学习环境，但发现连个git都安装不了</p>
+<p><img src="image-20220327104545469.png" alt="image-20220327104545469"></p>
+<p>2、原因呢，可能是因为墙的原因（也有可能是因为我目前虚拟机的网络配置有问题），所以下不了国外网站的东西，先不管了，切换个apt源再说</p>
+<p>3、大致分三个步骤：</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）：备份文件（/etc/apt/sources.list）</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）：打开文件（/etc/apt/sources.list）并删除文件中的所有内容（/etc/apt/sources.list）</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3）：粘贴相应字段至文件（/etc/apt/sources.list）即可</p>
+<p>4、下面我们来操作，1）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输入指令：sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20220327110946203.png" alt="image-20220327110946203"></p>
+<p>可以看到，已经生成了备份的.bak文件</p>
+<p>5、现在执行2）：因为之前用的都是vim，但现在没翻墙vim下不了，vi捣鼓了半天不太会用，这里我选择直接  #rm sources.list   ，然后再 vi 新建一个同名文件</p>
+<p><img src="image-20220327111845353.png" alt="image-20220327111845353"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">上图末尾处输入：</span><br><span class="line">	<span class="comment"># vi sources.list</span></span><br></pre></td></tr></table></figure>
+
+<p>5-1：进入vi编辑器后，先按两下i，有如下显示后按DELETE键删除掉这个i（平时用来删除文字的BACKSPACE反正我用不了）</p>
+<p><img src="image-20220327112352100.png" alt="image-20220327112352100"></p>
+<p>6、现在来操作3）：，确保i删除文本中没有任何内容后，复制以下文字到文本中（注：Ubuntu中的复制粘贴是 ctrl+shift+c/v）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 预发布软件源，不建议启用</span></span><br><span class="line"><span class="comment"># deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20220327112917132.png" alt="image-20220327112917132"></p>
+<p>6-1：按下冒号键（shift+：），输入wq，回车</p>
+<p><img src="image-20220327113227681.png" alt="image-20220327113227681"></p>
+<p>6-2：# cat sources.list 查看内容是否修改成功，显示如下则表示修改成功</p>
+<p><img src="image-20220327113439696.png" alt="image-20220327113439696"></p>
+<br/>
+
+<p><strong>注：ok，换源操作到此为止，下面是我换源后遇到的一些问题，记录一下</strong></p>
+<p>（括号内这段是我后来加的：这些问题在我重启了虚拟机后得到了解决）</p>
+<br/>
+
+<p>7、不知道什么情况，准备打exit退出root模式的，结果弹出这些东西，记录一下：（可能是我在root模式时使用了apt install vim导致的）（输入：ctrl+D）</p>
+<p><img src="image-20220327113944751.png" alt="image-20220327113944751"></p>
+<p>8、既然它提示了个 vim:finished 下好了那我们试试，行吧，我想多了</p>
+<p><img src="image-20220327114155032.png" alt="image-20220327114155032"></p>
+<p>9、输入指令 $ sudo apt install vim  ， emm……什么鬼</p>
+<p><img src="image-20220327114411243.png" alt="image-20220327114411243"></p>
+<p>10、更新一下 apt-get ，.。。。。。。</p>
+<p><img src="image-20220327115637840.png" alt="image-20220327115637840"></p>
+<p>11、ping 一下本地，能通</p>
+<p><img src="image-20220327115709460.png" alt="image-20220327115709460"></p>
+<p>12、ping下百度</p>
+<p><img src="image-20220327120048098.png" alt="image-20220327120048098"></p>
+<p>12-1：Windows  cmd中 ping 下百度，记录ip</p>
+<p><img src="image-20220327120158320.png" alt="image-20220327120158320"></p>
+<p>12-2：ping不通，看来我这还得调下网络配置</p>
+<p><img src="image-20220327120222752.png" alt="image-20220327120222752"></p>
+<p>12-3：查找解决方案</p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/aaaaajiboke/article/details/86595305"> Linux解决ip ping不通百度的问题_aaaaajiboke的博客-CSDN博客_linux ping不通</a></p>
+<p>13、。。。。。。还要改配置文件，我先试试重启虚拟机吧。。。。。。重启过后，先来ping下百度，⊙∀⊙！，通了，那上面的解决方案目前就用不到了，行吧，这就这么过了，以后遇到网络问题就重启试试。</p>
+<p><img src="image-20220327125630382.png" alt="image-20220327125630382"></p>
+<p>13-1：vim装不了，试试先更新下apt</p>
+<p><img src="image-20220327125718524.png" alt="image-20220327125718524"></p>
+<p><img src="image-20220327125836746.png" alt="image-20220327125836746"></p>
+<p>13-2：再试试安装vim，成了</p>
+<p><img src="image-20220327125924417.png" alt="image-20220327125924417"></p>
+<p>13-3：输入不了中文，进入火狐浏览器–&gt;地址栏输入<a target="_blank" rel="noopener" href="http://www.baidu.com--&gt;搜索搜狗输入法/">www.baidu.com--&gt;搜索搜狗输入法</a></p>
+<p><img src="image-20220327130210174.png" alt="image-20220327130210174"></p>
+<p>13-4：点击输入法linux版，下载x86的就行，下载后有个教程，跟着做就行，注销计算机就是重启</p>
+<p><img src="image-20220327130457022.png" alt="image-20220327130457022"></p>
+<br/>
+
+<br/>
+
+<br/>
+
+<h1 id="Pwntools安装"><a href="#Pwntools安装" class="headerlink" title="Pwntools安装"></a>Pwntools安装</h1><p>参考链接：<a target="_blank" rel="noopener" href="https://blingblingxuanxuan.github.io/2020/02/23/paper/#5-%E6%96%B0%E6%9C%BA%E6%90%AD%E5%BB%BApwn%E7%8E%AF%E5%A2%83">ctf堆入门 - paper | Clang鱼塘 (blingblingxuanxuan.github.io)</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装Pwntools</span></span><br><span class="line"></span><br><span class="line">	$ apt-get update</span><br><span class="line">	</span><br><span class="line">	$ apt-get install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential</span><br><span class="line">	</span><br><span class="line">	$ python3 -m pip install --upgrade pip</span><br><span class="line">	</span><br><span class="line">	$ python3 -m pip install --upgrade pwntools</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+<p>测试：能导入pwn模块并使用cylic表示pwntools安装成功（注：上面的警报不用管）</p>
+<p><img src="image-20220327143156888.png" alt="image-20220327143156888"></p>
+<br/>
+
+<br/>
+
+<br/>
+
+<h1 id="Pwngdb-Pwndbg-的联合使用"><a href="#Pwngdb-Pwndbg-的联合使用" class="headerlink" title="Pwngdb + Pwndbg 的联合使用"></a>Pwngdb + Pwndbg 的联合使用</h1><p>参考链接：<a target="_blank" rel="noopener" href="https://lantern.cool/note-tool-pwndbg-pwngdb/">Pwngdb + Pwndbg 的联合使用 | Lantern’s 小站</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pwndbg源码下载</span></span><br><span class="line">	~目录下以普通用户输入指令(注：切忌使用root用户进行下载)</span><br><span class="line">	$ git <span class="built_in">clone</span> https://github.com/pwndbg/pwndbg</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20220327154050673.png" alt="image-20220327154050673"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pwndbg文件下载好后，终端执行以下两条指令进行安装</span></span><br><span class="line">$ <span class="built_in">cd</span> pwndbg</span><br><span class="line">$./setup.sh</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20220327163551136.png" alt="image-20220327163551136"></p>
+<br/>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Pwngdb源码下载</span></span><br><span class="line">	~目录下以普通用户输入指令(注：下载东西时别用root用户)</span><br><span class="line">	$ git <span class="built_in">clone</span> https://github.com/scwuaptx/Pwngdb.git</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20220327154905108.png" alt="image-20220327154905108"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#将.gdbinit复制到~目录下</span><br><span class="line"></span><br><span class="line">	$ cp ~/Pwngdb/.gdbinit ~/</span><br><span class="line">	</span><br><span class="line">或在~目录下执行如下指令：</span><br><span class="line"></span><br><span class="line">	$ cp ./Pwngdb/.gdbinit ./</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20220327155314298.png" alt="image-20220327155314298"></p>
+<br/>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#最后，修改.gdbinit文件为如下即可</span><br><span class="line"></span><br><span class="line">source ~/pwndbg/gdbinit.py</span><br><span class="line">source ~/Pwngdb/pwngdb.py</span><br><span class="line">source ~/angelheap/gdbinit.py</span><br><span class="line"></span><br><span class="line">define hook-run</span><br><span class="line">python</span><br><span class="line">import angelheap</span><br><span class="line">angelheap.init_angelheap()</span><br><span class="line">end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20220327155555806.png" alt="image-20220327155555806"></p>
+<p>ok，可以开始使用pwndbg了</p>
+<p><img src="image-20220327164455192.png" alt="image-20220327164455192"></p>
+<br/>
+
+<p>注：中间要是遇到了各种网络问题导致的文件下载失败，有以下几个解决方案</p>
+<p>1、主机换网络（wifi、手机热点、校园网等进行切换）</p>
+<p>2、重启虚拟机</p>
+<p>3、主机断网一小会儿再换网络</p>
+<p>4、重启主机 or 百度找解决方案 or 找大佬帮忙</p>
+<br/>
+
+<br/>
+
+<br/>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/03/04/wifi%E7%A0%B4%E8%A7%A3/" rel="prev" title="wifi破解">
+                  <i class="fa fa-chevron-left"></i> wifi破解
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaoxiaoxy</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
