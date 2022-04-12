@@ -33,8 +33,23 @@
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/image-20220315223144227.png">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/image-20220315223426214.png">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/image-20220315222941502.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/640.jpeg">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/640-16492519624892.jpeg">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/640-16492519649644.jpeg">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/640-16492519668146.jpeg">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/640-16492519707248.jpeg">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/640-164925197371610.jpeg">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/640-164925197641012.jpeg">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/640-164925197919214.jpeg">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/640-164925198134116.jpeg">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/640-164925198384318.jpeg">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/640-164925198558120.jpeg">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/640-164925198730622.jpeg">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/640-164925198974124.jpeg">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/640-164925199247626.jpeg">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/640-164925199651728.jpeg">
 <meta property="article:published_time" content="2022-02-17T08:00:21.000Z">
-<meta property="article:modified_time" content="2022-03-27T16:01:52.800Z">
+<meta property="article:modified_time" content="2022-04-10T07:18:32.935Z">
 <meta property="article:author" content="xiaoxiaoxy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/image-20220316102359067.png">
@@ -128,7 +143,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -199,7 +214,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-03-28 00:01:52" itemprop="dateModified" datetime="2022-03-28T00:01:52+08:00">2022-03-28</time>
+        <time title="Modified: 2022-04-10 15:18:32" itemprop="dateModified" datetime="2022-04-10T15:18:32+08:00">2022-04-10</time>
       </span>
 
   
@@ -398,7 +413,10 @@
 <p>需要复习的知识：栈</p>
 <br/>
 
-<p><strong>例2：</strong></p>
+
+
+
+
 <br/>
 
 <br/>
@@ -1516,6 +1534,86 @@
 
 <br/>
 
+<p>GPS劫持：</p>
+<p>暂时没空搞这个，为了防止原文被删除，本人在此copy一份</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://toutiao.io/posts/uax8a1p/preview">https://toutiao.io/posts/uax8a1p/preview</a></p>
+<p><strong>0x00 原理介绍</strong></p>
+<p>GPS劫持有一定的破坏强度，攻击者利用路由、伪基站等技术来伪造GPS信号用于产生虚假的定位，这个技术不仅仅针对于手机，对其他设备都有一定的威胁，安全问题令人深思</p>
+<p>HackRF是一个完全开源的项目，不管从软件还是硬件，已经国产化。设备可以在淘宝买，前提是我们需要借助 HackRF One</p>
+<p><img src="640.jpeg" alt="img"></p>
+<p><strong>0x01 GPS动态轨迹伪造</strong></p>
+<p>我们可以通过伪造一个定位来进行重放，可以借助Google Earth（官网可下）</p>
+<p>首先点击添加路径</p>
+<p><img src="640-16492519624892.jpeg" alt="img"></p>
+<p>选定一段道路并自定义名称，在此我们选择在巴厘岛库塔海滩走一趟</p>
+<p><img src="640-16492519649644.jpeg" alt="img"></p>
+<p>将路径另存为到本地</p>
+<p><img src="640-16492519668146.jpeg" alt="img"></p>
+<p>在此注意定存为格式选择.kml</p>
+<p><img src="640-16492519707248.jpeg" alt="img"></p>
+<p>然后我们需要把.kml文件转换成NMEA格式</p>
+<p>在此借助的工具在后台回复“GPS劫持”即可获得</p>
+<p>点击“Load KML file”打开文件</p>
+<p><img src="640-164925197371610.jpeg" alt="img"></p>
+<p>导出为NMEA文件</p>
+<p><img src="640-164925197641012.jpeg" alt="img"></p>
+<p>下载GPS数据</p>
+<p>下载地址:</p>
+<p><a href="ftp://cddis.gsfc.nasa.gov/pub/gps/data/daily/2019/brdc/">ftp://cddis.gsfc.nasa.gov/pub/gps/data/daily/2019/brdc/</a></p>
+<p>此地址为美国国家宇航局的GPS数据回传的ftp文件服务器</p>
+<p>将.txt文件拖到Ubuntu虚拟机中</p>
+<p><img src="640-164925197919214.jpeg" alt="img"></p>
+<p>选择最新文件下载 n.Z 文件</p>
+<p><img src="640-164925198134116.jpeg" alt="img"></p>
+<p>下载GPS-SDR-SIM</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/osqzss/gps-sdr-sim.git</span><br></pre></td></tr></table></figure>
+
+<p>若没有gcc可安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install gcc</span><br></pre></td></tr></table></figure>
+
+<p>进行编译</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd gps-sdr-simgcc gpssim.c -lm -O3 -o gps-sdr-sim</span><br></pre></td></tr></table></figure>
+
+<p><img src="640-164925198384318.jpeg" alt="img"></p>
+<p>gps-sdr-sim模块参数</p>
+<p><img src="640-164925198558120.jpeg" alt="img"></p>
+<p>运行， 生成 gpssim.bin 文件</p>
+<p>./gps-sdr-sim -e &lt;导航电文文件&gt; -u &lt;轨迹文件&gt; -b 8</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gps-sdr-sim -e brdc3650.19n -g position.txt -b 8</span><br></pre></td></tr></table></figure>
+
+<p><img src="640-164925198730622.jpeg" alt="img"></p>
+<p>最后使用 HackRF One 重放数据</p>
+<p>hackrf_transfer -t&lt;目标数据文件&gt;-f&lt;发射频率&gt;-s&lt;采样频率&gt;-a&lt;是否开启增益&gt;-x&lt;增益值&gt;-R</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hackrf_transfer -t gpssim.bin -f 1575420000 -s 2600000 -a 1 -x 47 –R</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>*0x02 GPS静态定位伪造*</strong></em></p>
+<p>同样下载最新 n.Z 文件</p>
+<p>下载地址:</p>
+<p><a href="ftp://cddis.gsfc.nasa.gov/pub/gps/data/daily/2019/brdc/">ftp://cddis.gsfc.nasa.gov/pub/gps/data/daily/2019/brdc/</a></p>
+<p><img src="640-164925198974124.jpeg" alt="img"></p>
+<p>设置经纬度并生成数据样本</p>
+<p><strong>这里的经纬度我们选择巴厘岛的经纬度</strong></p>
+<p><strong>经度：</strong><strong>-8.616147</strong></p>
+<p><strong>纬度：****115.674842</strong></p>
+<p>**<br>**</p>
+<p>./gps-sdr-sim -e &lt;GPS导航电文文件&gt; -l &lt;经度，纬度，海拔&gt; -b &lt;采样精度&gt;</p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gps-sdr-sim -e brdc3650.19n -l -8.616147,115.674842,100 -b 8</span><br></pre></td></tr></table></figure>
+
+<p><img src="640-164925199247626.jpeg" alt="img"></p>
+<p>插上Hackrf，发射GPS数据开始伪造GPS信号</p>
+<p>hackrf_transfer -t&lt;目标数据文件&gt;-f&lt;发射频率&gt;-s&lt;采样频率&gt;-a&lt;是否开启增益&gt;-x&lt;增益值&gt;-R</p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hackrf_transfer -t gpssim.bin -f 1575420000 -s 2600000 -a 1 -x 0 -R</span><br></pre></td></tr></table></figure>
+
+<p>HackRF One 发送完GPS信号100秒后会自动停止，若想循环发送信号，加参数-R，过程需要几十秒的等待时间</p>
+<p>这时候我们发现自己的定位已经在巴厘岛，说明<strong>欺骗成功</strong></p>
+<p><img src="640-164925199651728.jpeg" alt="img"></p>
+<p>本文仅用于学习研究，切勿用于违法途径！</p>
 <br/>
 
 <br/>

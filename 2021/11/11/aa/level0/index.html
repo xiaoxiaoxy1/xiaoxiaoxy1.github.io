@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xiaoxiaoxy1.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="gdb不会了来这看">
+<meta property="og:type" content="article">
+<meta property="og:title" content="攻防世界-level0">
+<meta property="og:url" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/index.html">
+<meta property="og:site_name" content="xiaoxiaoxy">
+<meta property="og:description" content="gdb不会了来这看">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111132507774.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111132702011.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111121543042.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111121559745.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111121943642.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111121626092.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111123918250.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111124116865.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111124215771.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111124252498.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111124406342.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111131103896.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111180900823.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111182045681.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111181911372.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111181922023.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111133656883.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111133614544.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111133956141.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111134431387.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111134649152.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111135202455.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111135316303.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111140118890.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111140308756.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111141422227.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111141759713.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111142824910.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111142227896.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111142256638.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111142558240.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111145430366.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111145641439.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111145852004.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111150359331.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111151035567.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111141422227.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111151348919.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111153939572.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111154115024.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111154230809.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111154428348.png">
+<meta property="article:published_time" content="2021-11-11T04:13:43.000Z">
+<meta property="article:modified_time" content="2021-11-11T12:23:34.249Z">
+<meta property="article:author" content="xiaoxiaoxy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/image-20211111132507774.png">
+
+
+<link rel="canonical" href="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/","path":"2021/11/11/aa/level0/","title":"攻防世界-level0"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>攻防世界-level0 | xiaoxiaoxy</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="xiaoxiaoxy" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">xiaoxiaoxy</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">解题过程：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%BD%AC%E5%85%A5%E6%AD%A3%E9%A2%98%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">转入正题：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%AA%E4%BA%BA%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">个人问题：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2021-11-11-18-06"><span class="nav-number">3.</span> <span class="nav-text">2021&#x2F;11&#x2F;11 18:06</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A1%A5%E5%85%85%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">补充：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#xiaoxiao%E7%96%91%E6%83%91"><span class="nav-number">4.1.</span> <span class="nav-text">xiaoxiao疑惑</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#gdb%E6%9C%AC%E5%9C%B0%E8%B0%83%E8%AF%95%EF%BC%9A"><span class="nav-number">4.2.</span> <span class="nav-text">gdb本地调试：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%AB%98%E8%83%BD%E9%A2%84%E8%AD%A6%EF%BC%9A"><span class="nav-number">4.3.</span> <span class="nav-text">高能预警：</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">xiaoxiaoxy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://xiaoxiaoxy1.github.io/2021/11/11/aa/level0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xiaoxiaoxy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xiaoxiaoxy">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          攻防世界-level0
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-11-11 12:13:43 / Modified: 20:23:34" itemprop="dateCreated datePublished" datetime="2021-11-11T12:13:43+08:00">2021-11-11</time>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">gdb不会了来这看</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h5 id="解题过程："><a href="#解题过程：" class="headerlink" title="解题过程："></a>解题过程：</h5><p>首先，将附件拖入Linux虚拟机中，查看一些基本信息：</p>
+<p>$ file [文件名]   （查看基本信息）：</p>
+<p><img src="image-20211111132507774.png" alt="image-20211111132507774"></p>
+<p>此处我们只要知道它是64位文件就行</p>
+<p>接着 $ checksec level0   （查看文件开启的保护机制）：</p>
+<p><img src="image-20211111132702011.png" alt="image-20211111132702011"></p>
+<p>这些保护机制是干嘛的自己去百度了解，或者阅读《CTF权威指南》</p>
+<h6 id="转入正题："><a href="#转入正题：" class="headerlink" title="转入正题："></a>转入正题：</h6><p>将附件拖入64位ida，找到main函数：</p>
+<p><img src="image-20211111121543042.png" alt="image-20211111121543042"></p>
+<p>发现只有一个写函数和一个跟在return后面的函数，我们跟进vulnerable_function：</p>
+<p><img src="image-20211111121559745.png" alt="image-20211111121559745"></p>
+<p>发现该函数中定义了一个128字符大小的字符数组，而后面的read函数最多可读入0x200（16进制）= 512 个字符，这也说明了这题是一道栈溢出题</p>
+<p><img src="image-20211111121943642.png" alt="image-20211111121943642"></p>
+<p>接着跟进buf数组，找到return标志“r”，再用buf的起始偏移地址（-80）减去“r”的偏移地址再取绝对值得 ：0x|-80-8|=0x88（0x表示16进制）=  136，也就是在输入136个冗余字符后，再输入的字符覆盖的地址空间就是这个“r”指向的地址空间，只要我们构造好这串接下来输入的字符串，就能依靠这个“r”将程序跳转到我们想要执行任何位置，使程序从跳转到的地址继续开始执行指令</p>
+<p><img src="image-20211111121626092.png" alt="image-20211111121626092"></p>
+<p>此时我们按下Shift+F12转入String window中看看有没有我们想要找的/bin/sh</p>
+<p><img src="image-20211111123918250.png" alt="image-20211111123918250"></p>
+<p>还真有，那我们跟进去看看：</p>
+<p><img src="image-20211111124116865.png" alt="image-20211111124116865"></p>
+<p>继续跟进callsystem+4↑o：</p>
+<p><img src="image-20211111124215771.png" alt="image-20211111124215771"></p>
+<p>F5切换视图，得知/bin/sh存在于callsystem函数当中：</p>
+<p><img src="image-20211111124252498.png" alt="image-20211111124252498"></p>
+<p>拓宽旁边的Functions window，查看callsystem函数的入口地址（起始地址）：</p>
+<p><img src="image-20211111124406342.png" alt="image-20211111124406342"></p>
+<p>ok，入口地址0x00400596，那么我们构造的payload = ‘a’*136+p64（0x00400596）</p>
+<p>因为这是64位文件所以用p64（），注：32位文件一定要用p32（），64位文件一定要用p64（），64位文件用p32（）的话数据前补0不够会错，32位文件用p64（）的话前补0过多也会错，不过我还没实践过</p>
+<p>脚本如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *                               <span class="comment">#导入pwn模块</span></span><br><span class="line">io = remote(<span class="string">&#x27;111.200.241.244&#x27;</span>,<span class="string">&#x27;51403&#x27;</span>)          <span class="comment">#远端连接</span></span><br><span class="line">io.sendline(<span class="string">&#x27;a&#x27;</span>*<span class="number">136</span> + p64(<span class="number">0x0000000000400596</span>))  <span class="comment">#发送数据  </span></span><br><span class="line">io.interactive()                                <span class="comment">#接收交互</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="个人问题："><a href="#个人问题：" class="headerlink" title="个人问题："></a>个人问题：</h5><p>emm…：</p>
+<p><img src="image-20211111131103896.png" alt="image-20211111131103896"></p>
+<p>上次新手赛的时候我就是因为这远端连接不上的问题导致我连那简单pwn的flag都没拿到，浪费了大量的时间，当时我还以为是举办方的服务器出问题了，现在看来是我的个人PC有问题⊙∀⊙！</p>
+<h5 id="2021-11-11-18-06"><a href="#2021-11-11-18-06" class="headerlink" title="2021/11/11 18:06"></a>2021/11/11 18:06</h5><p>ok，重启了下虚拟机我就能连上远端了。。。。。。要是早点知道就好了。。。。。。</p>
+<p>但愿能进校CTF队吧</p>
+<p><img src="image-20211111180900823.png" alt="image-20211111180900823"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag:cyberpeace&#123;f0ca5da1cdfb6340b7bf05a37ea6a8cc&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h5 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h5><h6 id="xiaoxiao疑惑"><a href="#xiaoxiao疑惑" class="headerlink" title="xiaoxiao疑惑"></a>xiaoxiao疑惑</h6><p><img src="image-20211111182045681.png" alt="image-20211111182045681"></p>
+<p>这里题目的端口号是50416，跟下面的51403不一样是因为每次创建场景的端口号都是随机的，下面的脚本是我在前一个场景下写的，所以端口号是前一个场景的端口号，与这张图的端口号不一样。</p>
+<p><img src="image-20211111181911372.png" alt="image-20211111181911372"></p>
+<p><img src="image-20211111181922023.png" alt="image-20211111181922023"></p>
+<p>为什么我的脚本里没有打开远端服务器level0文件的操作，只是发送了一串payload就拿到了远端服务器的shell？</p>
+<p>解答：在题目创建题目场景的时候，远端服务器已经启动了level0，并把level0的输入输出绑定到了51403端口，所以我用remote从51403端口接入时就已经是在跟level0交互了</p>
+<h6 id="gdb本地调试："><a href="#gdb本地调试：" class="headerlink" title="gdb本地调试："></a>gdb本地调试：</h6><p>gdb打开附件，在main函数和vulnerable_function函数（字符输入）处打下断点：</p>
+<p><img src="image-20211111133656883.png" alt="image-20211111133656883"></p>
+<p><img src="image-20211111133614544.png" alt="image-20211111133614544"></p>
+<p>注，用地址打断点要用 $ break *[16进制地址]</p>
+<p>首先：$ run运行程序，并停止在第一个断点main函数处，但停在这里没什么用</p>
+<p><img src="image-20211111133956141.png" alt="image-20211111133956141"></p>
+<p>我们使用 $ continue 指令使程序运行至下一断点vulnerable_function函数</p>
+<p><img src="image-20211111134431387.png" alt="image-20211111134431387"></p>
+<p>可以发现那里打印出了一个Hello，World，这是我们执行main函数的过程中打印出来的，由下面的反编译代码可知，main函数中有打印Hello，World的语句</p>
+<p><img src="image-20211111134649152.png" alt="image-20211111134649152"></p>
+<p>然后我们单走三步 $ si :</p>
+<p><img src="image-20211111135202455.png" alt="image-20211111135202455"></p>
+<p>code段出现了 &lt; read@plt &gt;，这对应着我们vulnerable_function函数中的read函数的调用</p>
+<p><img src="image-20211111135316303.png" alt="image-20211111135316303"></p>
+<p>接着我们再单走5步 $ si （前4步使指针指向read，第5步进入read）进入read函数查看，此时刚进入read函数：</p>
+<p><img src="image-20211111140118890.png" alt="image-20211111140118890"></p>
+<p>看到此时栈段的初始地址：</p>
+<p><img src="image-20211111140308756.png" alt="image-20211111140308756"></p>
+<p>使用 $ x/136wx 0x7fffffffdf08    从低地址向高地址打印136个内存地址（不标准术语）：</p>
+<p><img src="image-20211111141422227.png" alt="image-20211111141422227"></p>
+<p>记住此时栈的情况，如上↑</p>
+<p>再使用  $ x/180wx 0x7fffffffdf08    多打印一些栈空间存储情况用以与之后做对比：</p>
+<p><img src="image-20211111141759713.png" alt="image-20211111141759713"></p>
+<h6 id="高能预警："><a href="#高能预警：" class="headerlink" title="高能预警："></a>高能预警：</h6><p>接下来，我们返回ida去找到vulnerable_function函数的末尾地址，为什么要找？因为我们现在的指针刚进入read函数，指着read函数的初始地址，但<strong>我们调试的目的是</strong>要输入字符使输入的字符覆盖栈地址空间，然后查看栈情况看覆盖的地址对不对，而此时的指针位置离我们<strong>可输入字符的那条指令</strong>不知道还有多远（因为假如read函数还调用了其他系统函数的话，就会有很多额外指令，我们单走 $ si 不知道要走多少指令，单走一次 $ si 相当于系统执行一条普通指令，计算机执行指令的速度我在百度上搜了一下，1纳秒左右，不知道对不对，就算我们以1秒执行一次$ si 并查看当前指针位置的速度进行，跟1纳秒一条指令相比，差了10^9个数量级，简言之我们一步 $ si 执行一条指令,计算机相同时间内能执行10^9调指令）所以我们直接找到vulnerable_function函数的末尾地址，计算机在断到这个断点之前一定会先执行<strong>可输入字符的那条指令</strong>（这个可输入字符的指令是在vulnerable_function函数调用中出现的，所以我们执行到vulnerable_function函数的末尾一定会执行到这个可输入字符的指令）</p>
+<p>好吧，废话说多了，现在返回ida找末尾地址：</p>
+<p><img src="image-20211111142824910.png" alt="image-20211111142824910"></p>
+<p>因为我们要找末尾地址，所以我们点击return后按下tab键</p>
+<p><img src="image-20211111142227896.png" alt="image-20211111142227896"></p>
+<p>初始位置自动定位在leave处，leave的英文是什么我好像不知道，反正这就是vulnerable_function函数的末尾地址 0x004005C4</p>
+<p><img src="image-20211111142256638.png" alt="image-20211111142256638"></p>
+<p>现在我们再返回gdb下一个断点 $ break *0x004005c4</p>
+<p><img src="image-20211111142558240.png" alt="image-20211111142558240"></p>
+<p>ok，断点下好了，输入continue继续执行：</p>
+<p><img src="image-20211111145430366.png" alt="image-20211111145430366"></p>
+<p>很好，现在可以输入字符了，但我们要输入136个a，太多了，我们可以用python快速得出：</p>
+<p><img src="image-20211111145641439.png" alt="image-20211111145641439"></p>
+<p>将这136个a字符复制过去，按下回车</p>
+<p><img src="image-20211111145852004.png" alt="image-20211111145852004"></p>
+<p>此时我们再执行  $ x/136wx 0x7fffffffdf08 和  $ x/180wx 0x7fffffffdf08</p>
+<p>先是$ x/136wx 0x7fffffffdf08：</p>
+<p><img src="image-20211111150359331.png" alt="image-20211111150359331"></p>
+<p>诶，我去，我还以为这里全部都会被0x61（字符a的ascll码值）填满，分析了一下，一个字符是十进制的1，而我们$ x/136wx 0x7fffffffdf08 中的136是16进制的136，转成10进制是310，可是我拿打印出的最后地址0x7fffffffe118-0x7fffffffdf08 = 0x210 = 528，懵了懵了</p>
+<p><img src="image-20211111151035567.png" alt="image-20211111151035567"></p>
+<p>好奇怪啊，算了这不是重点，这里不纠结了</p>
+<p>把之前的图拿过来对比一下，之前栈里面是没有0x61616161的：</p>
+<p><img src="image-20211111141422227.png" alt="image-20211111141422227"></p>
+<p>我们继续看栈，这个在覆盖了136个a字符的栈后面第一个东西是什么？是0x0040050a，这跟那些函数的起始地址长得很像不是吗，所以这应该就是一个return调用的地址没错了，<em><strong>也就是说我们构造的payload是没有问题的，得到的这个结论就是gdb调试的意义</strong>，我们之前说的payload = ‘a’</em>136+p64（0x00400596），这个0x00400596就是要把这里0x0040050a覆盖掉的新地址，覆盖以后再执行程序，程序执行到这个return，return到0x0040050a，就能进入system函数（system（”/bin/sh“））拿到shell</p>
+<p><img src="image-20211111151348919.png" alt="image-20211111151348919"></p>
+<p>再重新理一遍本题原理：</p>
+<p>1、找到栈溢出函数（本题main() -&gt; vulnerable_function() -&gt; read()）</p>
+<p>2、覆盖buf相距0x88=136个字符的return的返回地址为带有system（”/bin/sh“）的callsystem的首地址0x00400596</p>
+<p><img src="image-20211111153939572.png" alt="image-20211111153939572"></p>
+<p><img src="image-20211111154115024.png" alt="image-20211111154115024"></p>
+<p><img src="image-20211111154230809.png" alt="image-20211111154230809"></p>
+<p>3、写好脚本就行</p>
+<p><img src="image-20211111154428348.png" alt="image-20211111154428348"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *                               <span class="comment">#导入pwn模块</span></span><br><span class="line">io = remote(<span class="string">&#x27;111.200.241.244&#x27;</span>,<span class="string">&#x27;51403&#x27;</span>)          <span class="comment">#远端连接</span></span><br><span class="line">io.sendline(<span class="string">&#x27;a&#x27;</span>*<span class="number">136</span> + p64(<span class="number">0x0000000000400596</span>))  <span class="comment">#发送数据  </span></span><br><span class="line">io.interactive()                                <span class="comment">#接收交互</span></span><br></pre></td></tr></table></figure>
+
+<p>写得好累，不过把基础知识打牢了很多，还行吧</p>
+<p>不知道我的文字描述别人看起来感觉怎么样，反正我自己看得有些吃力</p>
+<p>对了，如果发现有错误，欢迎指正（wx：xy1724252720）</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/11/07/aa/banker/" rel="prev" title="银行家算法">
+                  <i class="fa fa-chevron-left"></i> 银行家算法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/11/12/aa/level2/" rel="next" title="攻防世界-level2">
+                  攻防世界-level2 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaoxiaoxy</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
