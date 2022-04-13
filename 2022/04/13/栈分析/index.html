@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xiaoxiaoxy1.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Pwn-基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="栈分析">
+<meta property="og:url" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="xiaoxiaoxy">
+<meta property="og:description" content="Pwn-基础">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413140332809.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413095816044.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413100920439.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413100947928.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413101030564.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413104217132.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413104250916.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413104939500.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413105821968.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413110344050.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413110623204.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413111149492.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413111516961.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413112154187.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413115522038.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413120044419.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413141235714.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413141341649.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413141719535.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413142706205.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413144048372.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413144315964.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413144430194.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413145312729.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413145430209.png">
+<meta property="article:published_time" content="2022-04-12T16:04:45.000Z">
+<meta property="article:modified_time" content="2022-04-13T08:26:19.020Z">
+<meta property="article:author" content="xiaoxiaoxy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/image-20220413140332809.png">
+
+
+<link rel="canonical" href="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/","path":"2022/04/13/栈分析/","title":"栈分析"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>栈分析 | xiaoxiaoxy</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="xiaoxiaoxy" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">xiaoxiaoxy</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E8%A7%84%E5%87%BD%E6%95%B0%E8%BF%90%E8%A1%8C%E6%97%B6%E6%A0%88%E5%86%B5"><span class="nav-number">1.</span> <span class="nav-text">常规函数运行时栈况</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E7%9C%8B%E5%87%BD%E6%95%B0%E5%A4%B4%E4%B8%8E%E5%87%BD%E6%95%B0%E5%B0%BE"><span class="nav-number">1.1.</span> <span class="nav-text">单看函数头与函数尾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E6%BA%90%E7%A0%81%E4%B8%AD%E7%9A%84%E7%A8%8B%E5%BA%8F%E4%B8%BA%E4%BE%8B"><span class="nav-number">1.2.</span> <span class="nav-text">以源码中的程序为例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#libc%E5%BA%93%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%97%B6%E6%A0%88%E5%86%B5-plt%E3%80%81got"><span class="nav-number">2.</span> <span class="nav-text">libc库函数调用时栈况(plt、got)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E8%B7%9F%E8%BF%9Bprintf-plt%EF%BC%8C%E8%A7%82%E5%AF%9Febp%E3%80%81esp%E5%89%8D%E5%90%8E%E5%8F%98%E5%8C%96"><span class="nav-number">2.1.</span> <span class="nav-text">不跟进printf@plt，观察ebp、esp前后变化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%9F%E8%BF%9Bprintf-plt%E8%A1%A8"><span class="nav-number">2.2.</span> <span class="nav-text">跟进printf@plt表</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">xiaoxiaoxy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://xiaoxiaoxy1.github.io/2022/04/13/%E6%A0%88%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xiaoxiaoxy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xiaoxiaoxy">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          栈分析
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-04-13 00:04:45 / Modified: 16:26:19" itemprop="dateCreated datePublished" datetime="2022-04-13T00:04:45+08:00">2022-04-13</time>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">Pwn-基础</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="常规函数运行时栈况"><a href="#常规函数运行时栈况" class="headerlink" title="常规函数运行时栈况"></a>常规函数运行时栈况</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#源码</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">haha</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lala</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a,b,c;</span><br><span class="line">	haha();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">haha</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,y;</span><br><span class="line">	lala();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lala</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;wawa&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<p>如下得到 hawala.out ，复制到 widows 中丢进 ida 进行反编译</p>
+<p><img src="image-20220413140332809.png" alt="image-20220413140332809"></p>
+<p>对于 $ gcc -o hawala.out hawala.c -m32  ，(gcc -o &lt;生成文件名&gt; &lt;所要编译的文件名&gt; -m32，其中-m32表示编译为32位文件)</p>
+<p>以上得到的 hawala.out 复制到 windows 下，丢进32位ida得到反编译汇编码</p>
+<p>main()函数：</p>
+<p><img src="image-20220413095816044.png" alt="image-20220413095816044"></p>
+<p>haha()函数：</p>
+<p><img src="image-20220413100920439.png" alt="image-20220413100920439"></p>
+<p>lala()函数：</p>
+<p><img src="image-20220413100947928.png" alt="image-20220413100947928"></p>
+<p>从上面三个函数我们可以看到普通函数的函数头与函数尾的汇编指令大致与下图无异</p>
+<p><img src="image-20220413101030564.png" alt="image-20220413101030564"></p>
+<h2 id="单看函数头与函数尾"><a href="#单看函数头与函数尾" class="headerlink" title="单看函数头与函数尾"></a>单看函数头与函数尾</h2><p>图1（初始栈况）：地址值均为假设，栈左边为栈地址，栈中间为栈上存储的数据，ebp、esp存储的值为栈地址，栈从高地址向低地址生长。十六进制，一个数字代表4位</p>
+<p><img src="image-20220413104217132.png" alt="image-20220413104217132"></p>
+<p>图2（函数头）：push  ebp  ，效果，esp下移，ebp寄存器的值入栈（下图中ebp存储的是栈地址0xffff0080）</p>
+<p><img src="image-20220413104250916.png" alt="image-20220413104250916"></p>
+<p>图3（函数头）：mov  ebp, esp  ，效果，esp值赋给ebp</p>
+<p><img src="image-20220413104939500.png" alt="image-20220413104939500"></p>
+<p>图4（函数头）：and  esp, 0FFFFFFF0h  (注意这是9位数，带7个F，其中h表示16进制），将esp与0xfffffff0进行按位与操作，好像是对齐操作，总之效果就是将esp的后四位置0，使esp指针向下移动，又由图2知此时esp寄存器值为0xffff0070，后四位为0，所以将它与0xfffffff0按位与后esp位置不变</p>
+<p><img src="image-20220413105821968.png" alt="image-20220413105821968"></p>
+<p>图5：假设函数中间的汇编使esp执行到了向下的任意位置，但ebp是不会变的</p>
+<p><img src="image-20220413110344050.png" alt="image-20220413110344050"></p>
+<p>图6（函数尾）：mov  esp， ebp  ，效果：ebp的值赋给esp，导致esp指向0xffff0070</p>
+<p><img src="image-20220413110623204.png" alt="image-20220413110623204"></p>
+<p>图7（函数尾）：pop  ebp   ，效果：取出esp指向的栈上的数据赋给ebp，esp再自增四个字节</p>
+<p><img src="image-20220413111149492.png" alt="image-20220413111149492"></p>
+<p>图8（函数尾）：pop  eip  ，效果：此时eip被赋值为0xffff0074地址处的值0x????????</p>
+<p><img src="image-20220413111516961.png" alt="image-20220413111516961"></p>
+<p>最后：  jmp  eip  ，效果：程序跳转到eip寄存器上的地址开始执行，这也是为什么说ebp的上一栈位置为ret指令的原因，通过栈溢出将system(“/bin/sh”)的地址覆盖到ebp指针的上一栈位置处，我们就能执行system函数拿到shell。</p>
+<br/>
+
+<p>上述过程没有列出函数中间部分的汇编指令对esp、ebp的影响，甚至中间有一些call指令，对于call指令，它就是调用别的函数做一些必要操作吧，调用过程中会改变ebp的值，但调用完后，ebp值又会恢复到调用call指令前的位置，所以可以视为在执行函数中间部分（非函数头、函数尾的部分）的前后，ebp寄存器的值不变</p>
+<p><img src="image-20220413112154187.png" alt="image-20220413112154187"></p>
+<br/>
+
+<p>总结：若此文你是在博客中看到的，可以试试 ctrl+滚轮 放大观看</p>
+<p><img src="image-20220413115522038.png" alt="image-20220413115522038"></p>
+<br/>
+
+<h2 id="以源码中的程序为例"><a href="#以源码中的程序为例" class="headerlink" title="以源码中的程序为例"></a>以源码中的程序为例</h2><p>请自行分析</p>
+<br/>
+
+<br/>
+
+<h1 id="libc库函数调用时栈况-plt、got"><a href="#libc库函数调用时栈况-plt、got" class="headerlink" title="libc库函数调用时栈况(plt、got)"></a>libc库函数调用时栈况(plt、got)</h1><p>因为lala()函数中带有libc库函数printf（动态链接库，啥是动态链接？，自己想办法了解或者我的博客里去翻）</p>
+<p><img src="image-20220413120044419.png" alt="image-20220413120044419"></p>
+<p>所以我们就拿这个printf举例</p>
+<h2 id="不跟进printf-plt，观察ebp、esp前后变化"><a href="#不跟进printf-plt，观察ebp、esp前后变化" class="headerlink" title="不跟进printf@plt，观察ebp、esp前后变化"></a>不跟进printf@plt，观察ebp、esp前后变化</h2><p>因为开启了地址随机化保护，所以我们就直接在lala()函数下断点，再ni单步执行到call printf</p>
+<p><img src="image-20220413141235714.png" alt="image-20220413141235714"></p>
+<p><img src="image-20220413141341649.png" alt="image-20220413141341649"></p>
+<p>ok，马上就要进入到plt表中了，此时ebp指向0xffffd028（由下图可知0xffffd028上存的是0xffffd038，0xffffd038上存的是0xffffd048，担心你们不懂什么意思，我再补一张栈图），esp指向0xffffd010</p>
+<p><img src="image-20220413141719535.png" alt="image-20220413141719535"></p>
+<p><img src="image-20220413142706205.png" alt="image-20220413142706205"></p>
+<p>其实上图也好理解，0xffffd048至0xffffd038是main()函数占用的栈空间，0xffffd038至0xffffd028是haha()函数占用的栈空间，剩下的就是目前lala()函数占用的栈空间，若lala()执行完，ebp从0xffffd028回退到0xffffd038，就相当于haha()中调用lala()，而lala()此时执行完毕要回到haha()函数，当然，若haha()也执行完毕，那么ebp就会回到0xffffd048，就相当于回到main()函数。</p>
+<br/>
+
+<p>好了，接下来我们用 x/130wx &lt;地址&gt; 打印栈上存储的信息进行查看，地址就填esp指向的栈地址0xffffd010，ok记录，继续ni执行</p>
+<p><img src="image-20220413144048372.png" alt="image-20220413144048372"></p>
+<p><img src="image-20220413144315964.png" alt="image-20220413144315964"></p>
+<p>我们用 x/30wx 0xffffd010 打印看看，的确没变，好的，可以总结了</p>
+<p><img src="image-20220413144430194.png" alt="image-20220413144430194"></p>
+<p><strong>总结：</strong></p>
+<p>调用libc库中未载入的 printf 函数的 plt 表后ebp、esp值与调用前无异，当然，调用普通函数也一样，因为有个词叫“保持栈平衡”，意思就是函数调用前后，esp 和 ebp 要保持一致，retn 其实除了 jmp eip ，还会做栈平衡操作。n代表参数个数，从而平衡函数调用的时候push 参数时 esp 的变化，具体深入的了解话，请自行探索。</p>
+<br/>
+
+<br/>
+
+<h2 id="跟进printf-plt表"><a href="#跟进printf-plt表" class="headerlink" title="跟进printf@plt表"></a>跟进printf@plt表</h2><p>之前用的都是ni，单步不进入函数体执行，想要查看进入后是什么情况的话，我们在call printf那一句处使用 si 进行单步执行就行</p>
+<p><img src="image-20220413145312729.png" alt="image-20220413145312729"></p>
+<p><img src="image-20220413145430209.png" alt="image-20220413145430209"></p>
+<p>之后便是plt、got表相关的知识了，探索暂时中止，plt与got表我也是一知半解，只知道表层原理描述，深层具体的运行实现并不是很懂</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/12/New-start/" rel="prev" title="New start">
+                  <i class="fa fa-chevron-left"></i> New start
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/04/13/%E5%8A%A8-%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5/" rel="next" title="动/静态链接">
+                  动/静态链接 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaoxiaoxy</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
