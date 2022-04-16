@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xiaoxiaoxy1.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="pwn-基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux动态链接">
+<meta property="og:url" content="http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/index.html">
+<meta property="og:site_name" content="xiaoxiaoxy">
+<meta property="og:description" content="pwn-基础">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/1574510177475-db49a7d5-6909-421e-a868-6829c9a7b4a4.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/1574513788142-e66171f3-6300-4e14-ab57-cc301c936829.jpeg">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/1580779496150-487cd998-b4af-4bb0-ad41-9ab376a7f8ff.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/1580780401627-53526fc2-3646-4478-b040-8f1fb30ca0dc.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/1580780428606-42b2c58b-1809-43dc-8b4e-afa79a1456cf.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/1580780626820-92e99da4-b8f0-43c7-b9df-1ba09342a0ff.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/1580739542097-a6d2738b-9a08-4b5f-acd8-d5f2c4d77278.jpeg">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/1580739570228-64997692-8003-4c10-acf2-2c8d91095e3c-165011977946810.jpeg">
+<meta property="article:published_time" content="2022-04-16T14:30:41.000Z">
+<meta property="article:modified_time" content="2022-04-16T14:36:40.765Z">
+<meta property="article:author" content="xiaoxiaoxy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/1574510177475-db49a7d5-6909-421e-a868-6829c9a7b4a4.png">
+
+
+<link rel="canonical" href="http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/","path":"2022/04/16/Linux动态链接/","title":"Linux动态链接"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Linux动态链接 | xiaoxiaoxy</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="xiaoxiaoxy" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">xiaoxiaoxy</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">Linux动态链接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PLT-amp-GOT"><span class="nav-number">1.1.</span> <span class="nav-text">PLT&amp;GOT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%B6%E8%BF%9F%E7%BB%91%E5%AE%9A"><span class="nav-number">1.2.</span> <span class="nav-text">延迟绑定</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">xiaoxiaoxy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xiaoxiaoxy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xiaoxiaoxy">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux动态链接
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-04-16 22:30:41 / Modified: 22:36:40" itemprop="dateCreated datePublished" datetime="2022-04-16T22:30:41+08:00">2022-04-16</time>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">pwn-基础</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>文章转自：<a target="_blank" rel="noopener" href="https://www.yuque.com/hxfqg9/bin/ug9gx5#5dvaL">Basic-ROP · 语雀 (yuque.com)</a></p>
+<br/>
+
+<h2 id="Linux动态链接"><a href="#Linux动态链接" class="headerlink" title="Linux动态链接"></a>Linux动态链接</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/linyt/article/details/51635768">参考博文</a></p>
+<p>关于动态链接与静态链接，可以打个比方就是：如果我的文章引用了别人的一部分文字，在我发布文章的时候把别人的段落复制到我的文章里面就属于静态连接，而做一个超链接让你们自己去看就属于动态链接了</p>
+<h3 id="PLT-amp-GOT"><a href="#PLT-amp-GOT" class="headerlink" title="PLT&amp;GOT"></a>PLT&amp;GOT</h3><p>linux下的动态链接是通过PLT&amp;GOT来实现的，这里做一个实验，通过这个实验来理解</p>
+<p>使用如下源代码 test.c：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_banner</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Welcome to World of PLT and GOT\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    print_banner();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>依次使用下列命令进行编译：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -Wall -g -o test.o -c test.c -m32</span><br><span class="line">gcc -o test test.o -m32</span><br></pre></td></tr></table></figure>
+
+
+
+<p>这样除了原有的 test.c 还有个 test.o 以及可执行文件 test</p>
+<p>通过 <code>objdump -d test.o</code> 可以查看反汇编</p>
+<p><img src="1574510177475-db49a7d5-6909-421e-a868-6829c9a7b4a4.png" alt="img"></p>
+<p>printf() 和函数是在 glibc 动态库里面的，只有当程序运行起来的时候才能确定地址，所以此时的 printf() 函数先用 fc ff ff ff 也就是有符号数的 -4 代替</p>
+<p>运行时进行重定位是无法修改代码段的，只能将 printf 重定位到数据段，但是已经编译好的程序，调用 printf 的时候怎么才能找到这个地址呐？</p>
+<p>链接器会额外生成一小段代码，通过这段代码来获取 printf() 的地址，像下面这样，进行链接的时候只需要对printf_stub() 进行重定位操作就可以</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.text</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">// 调用printf的call指令</span><br><span class="line">call printf_stub</span><br><span class="line">...</span><br><span class="line">printf_stub:</span><br><span class="line">    mov rax, [printf函数的储存地址] // 获取printf重定位之后的地址</span><br><span class="line">    jmp rax // 跳过去执行printf函数</span><br><span class="line"></span><br><span class="line">.data</span><br><span class="line">...</span><br><span class="line">printf函数的储存地址,这里储存printf函数重定位后的地址</span><br></pre></td></tr></table></figure>
+
+
+
+<p>总体来说，动态链接每个函数需要两个东西：</p>
+<p>1、用来存放外部函数地址的数据段</p>
+<p>2、用来获取数据段记录的外部函数地址的代码</p>
+<p>对应有两个表，一个用来存放外部的函数地址的数据表称为<strong>全局偏移表</strong>（<strong>GOT</strong>, Global Offset Table），那个存放额外代码的表称为<strong>程序链接表</strong>（<strong>PLT</strong>，Procedure Link Table）</p>
+<p><img src="1574513788142-e66171f3-6300-4e14-ab57-cc301c936829.jpeg" alt="img"></p>
+<p>可执行文件里面保存的是 PLT 表的地址，对应 PLT 地址指向的是 GOT 的地址，GOT 表指向的就是 glibc 中的地址</p>
+<p>那我们可以发现，在这里面想要通过 plt 表获取函数的地址，首先要保证 got 表已经获取了正确的地址，但是在一开始就进行所有函数的重定位是比较麻烦的，为此，linux 引入了延迟绑定机制</p>
+<h3 id="延迟绑定"><a href="#延迟绑定" class="headerlink" title="延迟绑定"></a>延迟绑定</h3><p>只有动态库函数在被调用时，才会地址解析和重定位工作，为此可以使用类似这样的代码来实现：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一开始没有重定位的时候将 printf@got 填成 lookup_printf 的地址</span></span><br><span class="line"><span class="keyword">void</span> <span class="built_in">printf</span>@plt()</span><br><span class="line">&#123;</span><br><span class="line">address_good:</span><br><span class="line">    jmp *<span class="built_in">printf</span>@got   </span><br><span class="line">lookup_printf:</span><br><span class="line">    调用重定位函数查找 <span class="built_in">printf</span> 地址，并写到 <span class="built_in">printf</span>@got</span><br><span class="line">	<span class="keyword">goto</span> address_good;<span class="comment">//再返回去执行address_good</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>说明一下这段代码工作流程，一开始，printf@got 是 lookup_printf 函数的地址，这个函数用来寻找 printf() 的地址，然后写入 printf@got，lookup_printf 执行完成后会返回到 address_good，这样再 jmp 的话就可以直接跳到printf 来执行了</p>
+<p>也就是说这样的机制的话如果不知道 printf 的地址，就去找一下，知道的话就直接去 jmp 执行 printf 了</p>
+<p>接下来，我们就来看一下这个“找”的工作是怎么实现的：</p>
+<p>通过 <code>objdump -d test &gt; test.asm</code> 可以看到其中 plt 表项有三条指令</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Disassembly of section .plt:</span><br><span class="line"></span><br><span class="line"><span class="number">080482</span>d0 &lt;common@plt&gt;:</span><br><span class="line"> <span class="number">80482</span>d0:	ff <span class="number">35</span> <span class="number">04</span> a0 <span class="number">04</span> <span class="number">08</span>    	pushl  <span class="number">0x804a004</span></span><br><span class="line"> <span class="number">80482</span>d6:	ff <span class="number">25</span> <span class="number">08</span> a0 <span class="number">04</span> <span class="number">08</span>    	jmp    *<span class="number">0x804a008</span></span><br><span class="line"> <span class="number">80482</span>dc:	<span class="number">00</span> <span class="number">00</span>                	add    %al,(%eax)</span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line"><span class="number">080482e0</span> &lt;<span class="built_in">puts</span>@plt&gt;:</span><br><span class="line"> <span class="number">80482e0</span>:	ff <span class="number">25</span> <span class="number">0</span>c a0 <span class="number">04</span> <span class="number">08</span>    	jmp    *<span class="number">0x804a00c</span></span><br><span class="line"> <span class="number">80482e6</span>:	<span class="number">68</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span>       	push   $<span class="number">0x0</span></span><br><span class="line"> <span class="number">80482</span>eb:	e9 e0 ff ff ff       	jmp    <span class="number">80482</span>d0 &lt;_init+<span class="number">0x28</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="number">080482f</span>0 &lt;__libc_start_main@plt&gt;:</span><br><span class="line"> <span class="number">80482f</span>0:	ff <span class="number">25</span> <span class="number">10</span> a0 <span class="number">04</span> <span class="number">08</span>    	jmp    *<span class="number">0x804a010</span></span><br><span class="line"> <span class="number">80482f</span>6:	<span class="number">68</span> <span class="number">08</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span>       	push   $<span class="number">0x8</span></span><br><span class="line"> <span class="number">80482f</span>b:	e9 d0 ff ff ff       	jmp    <span class="number">80482</span>d0 &lt;_init+<span class="number">0x28</span>&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>ps.这里 plt 表的第一项使用 objdump 的时候给没有符号名的一项自动改成了离他最近的一项，为了避免引起误会，改成了 common，而且随着不断深入，会发现，确实可以叫 common</p>
+<p>其中除第一个表项以外，plt 表的第一条都是跳转到对应的 got 表项，而 got 表项的内容我们可以通过 gdb 来看一下，如果函数还没有执行的时候，这里的地址是对应 plt 表项的下一条命令，即 push 0x0</p>
+<p>（说一下怎么查看，先 <code>gdb test</code> 然后 <code>b main</code>，再 <code>run</code>， 再 <code>x/x jmp的那个地址</code> 就可以）</p>
+<p><img src="1580779496150-487cd998-b4af-4bb0-ad41-9ab376a7f8ff.png" alt="img"></p>
+<p>还记得之前我们说的，在还没有执行过函数之前 printf@got 的内容是 lookup_printf 函数的地址吗，这就是要去找 printf 函数的地址了</p>
+<p>现在要做的是：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">push   $<span class="number">0x0</span>    <span class="comment">//将数据压到栈上，作为将要执行的函数的参数</span></span><br><span class="line">jmp    <span class="number">0x80482d0</span>   <span class="comment">//去到了第一个表项</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>接下来继续</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">080482</span>d0 &lt;common@plt&gt;:</span><br><span class="line">pushl  <span class="number">0x804a004</span>  <span class="comment">//将数据压到栈上，作为后面函数的参数</span></span><br><span class="line">jmp    *<span class="number">0x804a008</span> <span class="comment">//跳转到函数</span></span><br><span class="line">add    %al,(%eax)</span><br><span class="line">	...</span><br></pre></td></tr></table></figure>
+
+
+
+<p>我们同样可以使用 gdb 来看一下这里面到底是什么，可以看到，在没有执行之前是全 0</p>
+<p><img src="1580780401627-53526fc2-3646-4478-b040-8f1fb30ca0dc.png" alt="img"></p>
+<p>当执行后他有了值</p>
+<p><img src="1580780428606-42b2c58b-1809-43dc-8b4e-afa79a1456cf.png" alt="img"></p>
+<p>这个值对应的函数是 <code>_dl_runtime_resolve</code></p>
+<p>那现在做一个小总结：</p>
+<p>在想要调用的函数没有被调用过，想要调用他的时候，是按照这个过程来调用的</p>
+<p>xxx@plt -&gt; xxx@got -&gt; xxx@plt -&gt; 公共@plt -&gt; _dl_runtime_resolve</p>
+<p>到这里我们还需要知道</p>
+<ol>
+<li>_dl_runtime_resolve 是怎么知道要查找 printf 函数的</li>
+<li>_dl_runtime_resolve 找到 printf 函数地址之后，它怎么知道回填到哪个 GOT 表项</li>
+</ol>
+<p>第一个问题，在 xxx@plt 中，我们在 jmp 之前 push 了一个参数，每个 xxx@plt 的 push 的操作数都不一样，那个参数就相当于函数的 id，告诉了 _dl_runtime_resolve 要去找哪一个函数的地址</p>
+<p>在 elf 文件中 .rel.plt 保存了重定位表的信息，使用 <code>readelf -r test</code> 命令可以查看 test 可执行文件中的重定位信息</p>
+<p><img src="1580780626820-92e99da4-b8f0-43c7-b9df-1ba09342a0ff.png" alt="img"></p>
+<p>这里有些问题，对应着大佬博客说 plt 中 push 的操作数，就是对应函数在.rel.plt 段的偏移量，但是没对比出来</p>
+<p>第二个问题，看 .rel.plt 的位置就对应着 xxx@plt 里 jmp 的地址</p>
+<p>在 i386 架构下，除了每个函数占用一个 GOT 表项外，GOT 表项还保留了３个公共表项，也即 got 的前３项，分别保存：</p>
+<p><strong>got [0]: 本 ELF 动态段 (.dynamic 段）的装载地址</strong> </p>
+<p><strong>got [1]：本 ELF 的 link_map 数据结构描述符地址</strong> </p>
+<p><strong>got [2]：_dl_runtime_resolve 函数的地址</strong></p>
+<p>动态链接器在加载完 ELF 之后，都会将这３地址写到 GOT 表的前３项</p>
+<p><strong>跟着大佬的流程图来走一遍：</strong></p>
+<p>第一次调用</p>
+<p><img src="1580739542097-a6d2738b-9a08-4b5f-acd8-d5f2c4d77278.jpeg" alt="img"></p>
+<p>之后再次调用<img src="1580739570228-64997692-8003-4c10-acf2-2c8d91095e3c-165011977946810.jpeg" alt="img"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/13/%E5%8A%A8-%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5/" rel="prev" title="动/静态链接">
+                  <i class="fa fa-chevron-left"></i> 动/静态链接
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaoxiaoxy</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
