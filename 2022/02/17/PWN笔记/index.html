@@ -49,7 +49,7 @@
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/640-164925199247626.jpeg">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/640-164925199651728.jpeg">
 <meta property="article:published_time" content="2022-02-17T08:00:21.000Z">
-<meta property="article:modified_time" content="2022-04-17T14:48:35.826Z">
+<meta property="article:modified_time" content="2022-04-20T09:38:38.044Z">
 <meta property="article:author" content="xiaoxiaoxy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/02/17/PWN%E7%AC%94%E8%AE%B0/image-20220316102359067.png">
@@ -130,7 +130,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#float%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">float类型的存储方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">寄存器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#x86%E5%AF%84%E5%AD%98%E5%99%A8-32%E4%BD%8D"><span class="nav-number">2.1.</span> <span class="nav-text">x86寄存器(32位)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#x86%E5%AF%84%E5%AD%98%E5%99%A8-64%E4%BD%8D"><span class="nav-number">2.2.</span> <span class="nav-text">x86寄存器(64位)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80"><span class="nav-number">3.</span> <span class="nav-text">汇编基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%AC%A6%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">指令符：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hello-world"><span class="nav-number">3.2.</span> <span class="nav-text">hello world</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%82"><span class="nav-number">3.3.</span> <span class="nav-text">杂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dword-ptr-ecx-4"><span class="nav-number">3.4.</span> <span class="nav-text">dword ptr [ecx-4]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#esp"><span class="nav-number">3.5.</span> <span class="nav-text">esp</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux%E5%AD%97%E7%AC%A6"><span class="nav-number">4.</span> <span class="nav-text">linux字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GDB"><span class="nav-number">5.</span> <span class="nav-text">GDB</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pwntools"><span class="nav-number">6.</span> <span class="nav-text">pwntools</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="nav-number">7.</span> <span class="nav-text">系统调用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ROPgadget%E5%B7%A5%E5%85%B7"><span class="nav-number">8.</span> <span class="nav-text">ROPgadget工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%81%8F%E7%A7%BB%E8%AE%A1%E7%AE%97"><span class="nav-number">9.</span> <span class="nav-text">偏移计算</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux%E7%BC%96%E8%AF%9132%E4%BD%8D%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">linux编译32位文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#float%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">float类型的存储方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">寄存器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#x86%E5%AF%84%E5%AD%98%E5%99%A8-32%E4%BD%8D"><span class="nav-number">3.1.</span> <span class="nav-text">x86寄存器(32位)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#x86%E5%AF%84%E5%AD%98%E5%99%A8-64%E4%BD%8D"><span class="nav-number">3.2.</span> <span class="nav-text">x86寄存器(64位)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80"><span class="nav-number">4.</span> <span class="nav-text">汇编基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%AC%A6%EF%BC%9A"><span class="nav-number">4.1.</span> <span class="nav-text">指令符：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hello-world"><span class="nav-number">4.2.</span> <span class="nav-text">hello world</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%82"><span class="nav-number">4.3.</span> <span class="nav-text">杂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dword-ptr-ecx-4"><span class="nav-number">4.4.</span> <span class="nav-text">dword ptr [ecx-4]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#esp"><span class="nav-number">4.5.</span> <span class="nav-text">esp</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux%E5%AD%97%E7%AC%A6"><span class="nav-number">5.</span> <span class="nav-text">linux字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GDB"><span class="nav-number">6.</span> <span class="nav-text">GDB</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pwntools"><span class="nav-number">7.</span> <span class="nav-text">pwntools</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="nav-number">8.</span> <span class="nav-text">系统调用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ROPgadget%E5%B7%A5%E5%85%B7"><span class="nav-number">9.</span> <span class="nav-text">ROPgadget工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%81%8F%E7%A7%BB%E8%AE%A1%E7%AE%97"><span class="nav-number">10.</span> <span class="nav-text">偏移计算</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -214,7 +214,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-04-17 22:48:35" itemprop="dateModified" datetime="2022-04-17T22:48:35+08:00">2022-04-17</time>
+        <time title="Modified: 2022-04-20 17:38:38" itemprop="dateModified" datetime="2022-04-20T17:38:38+08:00">2022-04-20</time>
       </span>
 
   
@@ -228,7 +228,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="float类型的存储方式"><a href="#float类型的存储方式" class="headerlink" title="float类型的存储方式"></a>float类型的存储方式</h1><p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/wuing2/article/details/90143635?utm_source=app&app_version=5.1.1">float类型的存储方式_wuing2的博客-CSDN博客_float的存储</a></p>
+        <h1 id="linux编译32位文件"><a href="#linux编译32位文件" class="headerlink" title="linux编译32位文件"></a>linux编译32位文件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ gcc -o &lt;生成的文件的文件名，不写则默认为a.out&gt; &lt;要编译的文件的文件名&gt; -m32</span><br><span class="line"></span><br><span class="line"><span class="comment">#例：</span></span><br><span class="line">$ gcc -o hawala.out hawala.c -m32</span><br></pre></td></tr></table></figure>
+
+
+
+<br/>
+
+<br/>
+
+<h1 id="float类型的存储方式"><a href="#float类型的存储方式" class="headerlink" title="float类型的存储方式"></a>float类型的存储方式</h1><p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/wuing2/article/details/90143635?utm_source=app&app_version=5.1.1">float类型的存储方式_wuing2的博客-CSDN博客_float的存储</a></p>
 <br/>
 
 <p><strong>float的存储格式：</strong><br>float类型又称为单精度浮点类型，在 IEEE 754-2008 中是这样定义它的结构的：<br>S EEEEEEEE FFFFFFFFFFFFFFFFFFFFFFF<br>31 30 23 22 0</p>
