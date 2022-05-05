@@ -36,7 +36,7 @@
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/16/%E5%8D%9A%E6%96%87%E6%94%B6%E8%97%8F/1580739542097-a6d2738b-9a08-4b5f-acd8-d5f2c4d77278.jpeg">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/16/%E5%8D%9A%E6%96%87%E6%94%B6%E8%97%8F/1580739570228-64997692-8003-4c10-acf2-2c8d91095e3c-165011977946810.jpeg">
 <meta property="article:published_time" content="2022-04-16T14:30:41.000Z">
-<meta property="article:modified_time" content="2022-05-05T08:26:13.175Z">
+<meta property="article:modified_time" content="2022-05-05T08:29:42.719Z">
 <meta property="article:author" content="xiaoxiaoxy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/04/16/%E5%8D%9A%E6%96%87%E6%94%B6%E8%97%8F/1574510177475-db49a7d5-6909-421e-a868-6829c9a7b4a4.png">
@@ -117,7 +117,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">Linux动态链接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PLT-amp-GOT"><span class="nav-number">1.1.</span> <span class="nav-text">PLT&amp;GOT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%B6%E8%BF%9F%E7%BB%91%E5%AE%9A"><span class="nav-number">1.2.</span> <span class="nav-text">延迟绑定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shellcode"><span class="nav-number">2.</span> <span class="nav-text">shellcode</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">2.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#64%E4%BD%8Dshellcode%E7%BC%96%E5%86%99"><span class="nav-number">2.2.</span> <span class="nav-text">64位shellcode编写</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5pwntools%E7%94%9F%E6%88%90%E9%BB%98%E8%AE%A4shellcode"><span class="nav-number">2.2.1.</span> <span class="nav-text">直接pwntools生成默认shellcode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E7%BC%96%E5%86%99shellcode"><span class="nav-number">2.2.2.</span> <span class="nav-text">手动编写shellcode</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BD%E5%90%8D%E5%8D%95%E7%BB%95%E8%BF%87"><span class="nav-number">2.3.</span> <span class="nav-text">白名单绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AF%E6%89%93%E5%8D%B0ascii"><span class="nav-number">2.3.1.</span> <span class="nav-text">可打印ascii</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%AF%E6%95%B0%E5%AD%97%E5%AD%97%E6%AF%8Dshellcode"><span class="nav-number">2.3.2.</span> <span class="nav-text">纯数字字母shellcode</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">* Linux动态链接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PLT-amp-GOT"><span class="nav-number">1.1.</span> <span class="nav-text">PLT&amp;GOT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%B6%E8%BF%9F%E7%BB%91%E5%AE%9A"><span class="nav-number">1.2.</span> <span class="nav-text">延迟绑定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shellcode"><span class="nav-number">2.</span> <span class="nav-text">* shellcode</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">2.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#64%E4%BD%8Dshellcode%E7%BC%96%E5%86%99"><span class="nav-number">2.2.</span> <span class="nav-text">64位shellcode编写</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5pwntools%E7%94%9F%E6%88%90%E9%BB%98%E8%AE%A4shellcode"><span class="nav-number">2.2.1.</span> <span class="nav-text">直接pwntools生成默认shellcode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E7%BC%96%E5%86%99shellcode"><span class="nav-number">2.2.2.</span> <span class="nav-text">手动编写shellcode</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BD%E5%90%8D%E5%8D%95%E7%BB%95%E8%BF%87"><span class="nav-number">2.3.</span> <span class="nav-text">白名单绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AF%E6%89%93%E5%8D%B0ascii"><span class="nav-number">2.3.1.</span> <span class="nav-text">可打印ascii</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%AF%E6%95%B0%E5%AD%97%E5%AD%97%E6%AF%8Dshellcode"><span class="nav-number">2.3.2.</span> <span class="nav-text">纯数字字母shellcode</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dynamic-and-Static-Link"><span class="nav-number"></span> <span class="nav-text">Dynamic and Static Link</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">编译过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%BA%93"><span class="nav-number">3.</span> <span class="nav-text">静态库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%BA%93"><span class="nav-number">4.</span> <span class="nav-text">动态库</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -201,7 +201,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-05-05 16:26:13" itemprop="dateModified" datetime="2022-05-05T16:26:13+08:00">2022-05-05</time>
+        <time title="Modified: 2022-05-05 16:29:42" itemprop="dateModified" datetime="2022-05-05T16:29:42+08:00">2022-05-05</time>
       </span>
 
   
@@ -219,7 +219,7 @@
 <p>文章转自：<a target="_blank" rel="noopener" href="https://www.yuque.com/hxfqg9/bin/ug9gx5#5dvaL">Basic-ROP · 语雀 (yuque.com)</a></p>
 <br/>
 
-<h2 id="Linux动态链接"><a href="#Linux动态链接" class="headerlink" title="Linux动态链接"></a>Linux动态链接</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/linyt/article/details/51635768">参考博文</a></p>
+<h2 id="Linux动态链接"><a href="#Linux动态链接" class="headerlink" title="* Linux动态链接"></a>* Linux动态链接</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/linyt/article/details/51635768">参考博文</a></p>
 <p>关于动态链接与静态链接，可以打个比方就是：如果我的文章引用了别人的一部分文字，在我发布文章的时候把别人的段落复制到我的文章里面就属于静态连接，而做一个超链接让你们自己去看就属于动态链接了</p>
 <h3 id="PLT-amp-GOT"><a href="#PLT-amp-GOT" class="headerlink" title="PLT&amp;GOT"></a>PLT&amp;GOT</h3><p>linux下的动态链接是通过PLT&amp;GOT来实现的，这里做一个实验，通过这个实验来理解</p>
 <p>使用如下源代码 test.c：</p>
@@ -310,7 +310,7 @@
 
 <br/>
 
-<h2 id="shellcode"><a href="#shellcode" class="headerlink" title="shellcode"></a>shellcode</h2><p>文章转自：<a target="_blank" rel="noopener" href="https://nuoye-blog.github.io/2020/05/09/dea90f48/">64位shellcode编写 | nuoye’s blog (nuoye-blog.github.io)</a></p>
+<h2 id="shellcode"><a href="#shellcode" class="headerlink" title="* shellcode"></a>* shellcode</h2><p>文章转自：<a target="_blank" rel="noopener" href="https://nuoye-blog.github.io/2020/05/09/dea90f48/">64位shellcode编写 | nuoye’s blog (nuoye-blog.github.io)</a></p>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>目前网上主要是各种32位的shellcode编写教程，64位的比较少，这篇文章主要讲解一下64位shellcode的编写以及介绍几种比较常见的白名单绕过方法</p>
 <h3 id="64位shellcode编写"><a href="#64位shellcode编写" class="headerlink" title="64位shellcode编写"></a>64位shellcode编写</h3><h4 id="直接pwntools生成默认shellcode"><a href="#直接pwntools生成默认shellcode" class="headerlink" title="直接pwntools生成默认shellcode"></a>直接pwntools生成默认shellcode</h4><p>这一种方法是最简单的，通过下面的代码即可生成一段64位shellcode代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.arch = <span class="string">&#x27;amd64&#x27;</span></span><br><span class="line">shellcode = asm(shellcraft.sh())</span><br></pre></td></tr></table></figure>
@@ -349,6 +349,59 @@
 <h4 id="纯数字字母shellcode"><a href="#纯数字字母shellcode" class="headerlink" title="纯数字字母shellcode"></a>纯数字字母shellcode</h4><p>文章：<a target="_blank" rel="noopener" href="https://hama.hatenadiary.jp/entry/2017/04/04/190129">https://hama.hatenadiary.jp/entry/2017/04/04/190129</a></p>
 <p>这里就不具体分析了，直接给出最终的shellcode，感兴趣的可以自行阅读学习</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PPYh00AAX1A0hA004X1A4hA00AX1A8QX44Pj0X40PZPjAX4znoNDnRYZnCXA</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<h1 id="Dynamic-and-Static-Link"><a href="#Dynamic-and-Static-Link" class="headerlink" title="Dynamic and Static Link"></a>Dynamic and Static Link</h1><p>原文链接：<a target="_blank" rel="noopener" href="https://lantern.cool/note-binary-dynamic-static-link/">Dynamic and Static Link | Lantern’s 小站</a></p>
+<br/>
+
+<br/>
+
+<h2 id="库"><a href="#库" class="headerlink" title="库"></a>库</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;库是写好的现有的，成熟的，可以复用的代码。现实中每个程序都要依赖很多基础的底层库，不可能每个人的代码都从零开始，因此库的存在意义非同寻常。</p>
+<p>本质上来说库是一种可执行代码的二进制形式，可以被操作系统载入内存执行。</p>
+<p>库有两种：静态库（.a、.lib）和动态库（.so、.dll）。</p>
+<p>windows 上对应的是.lib .dll linux 上对应的是.a .so</p>
+<br/>
+
+<br/>
+
+<h2 id="编译过程"><a href="#编译过程" class="headerlink" title="编译过程"></a>编译过程</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;源文件（.h, .cpp 等） =&gt; 预编译 =&gt; 编译 =&gt; 汇编 =&gt; 链接 =&gt; 可执行文件</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;而静态库、动态库区别来自<code>链接阶段</code>如何处理库从而链接成可执行文件，分别称为静态链接和动态链接</p>
+<p><br/><br/></p>
+<h2 id="静态库"><a href="#静态库" class="headerlink" title="静态库"></a>静态库</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;在链接阶段，会将汇编生成的目标文件.o 与引用到的库一起链接打包到可执行文件中。因此对应的链接方式称为静态链接。</p>
+<p>特点:</p>
+<ul>
+<li>静态库对函数库的链接是在<code>编译阶段</code>完成的</li>
+<li>程序在运行时与函数库再无关系，移植方便</li>
+<li>浪费空间和资源，因为所有相关的目标文件与涉及到的函数库将被链接合成一个可执行文件</li>
+</ul>
+<p>问题:</p>
+<ul>
+<li>空间浪费：如果静态库再内存中存在多份拷贝，例如该静态库占用 1 内存，有 2000 个程序运用了该静态库，将占用将近 2GB 内存</li>
+<li>对程序更新、部署和发布带来麻烦：如果静态库 liba.lib 更新将导致它的应用程序都需重新编译、发布给用户。对用户而言可能是一个很小的改动，却导致整个程序重新下载，全量更新</li>
+</ul>
+<p><br/><br/></p>
+<h2 id="动态库"><a href="#动态库" class="headerlink" title="动态库"></a>动态库</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;动态库在程序编译时并不会被连接到目标代码中，而是在程序运行是才被载入。不同的应用程序如果调用相同的库，那么在内存里只需要有一份该共享库的实例，规避了空间浪费问题。动态库在程序运行是才被载入，也解决了静态库对程序的更新、部署和发布页会带来麻烦。用户只需要更新动态库即可，增量更新。</p>
+<p>特点:</p>
+<ul>
+<li>动态库把对一些库函数的链接载入推迟到程序运行的时期</li>
+<li>可以实现进程之间的资源共享（因此动态库也称为共享库）</li>
+<li>程序升级变得简单</li>
+<li>可以真正做到链接载入完全由程序员在程序代码中控制（显示调用）</li>
+</ul>
+<p>问题:</p>
+<ul>
+<li>“DLL 地狱”: 如果较新的版本不能正确地向后兼容，则不兼容的更新库将破坏依赖于库以前版本的可执行文件</li>
+<li>程序及其使用的库可以作为软件包进行认证（例如，关于正确性，文档要求或性能）, 但是，如果可以更换组件，则不能。（这也反对在关键系统中自动进行操作系统更新；在两种情况下，操作系统和库均构成合格环境的一部分）</li>
+</ul>
+<br/>
+
+<p>参考:</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20484931">Linux 中的动态链接库和静态链接库是干什么的？</a></p>
 
     </div>
 
