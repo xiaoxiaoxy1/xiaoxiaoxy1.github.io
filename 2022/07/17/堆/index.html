@@ -36,8 +36,10 @@
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/07/17/%E5%A0%86/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDI0MDY3,size_16,color_FFFFFF,t_70.png">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/07/17/%E5%A0%86/image-20220718135030412.png">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/07/17/%E5%A0%86/image-20220718133927099.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/07/17/%E5%A0%86/image-20220718193419657.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/07/17/%E5%A0%86/image-20220718200732624.png">
 <meta property="article:published_time" content="2022-07-17T12:40:03.000Z">
-<meta property="article:modified_time" content="2022-07-18T08:23:45.907Z">
+<meta property="article:modified_time" content="2022-07-18T12:18:35.419Z">
 <meta property="article:author" content="xiaoxiaoxy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/07/17/%E5%A0%86/image-20220718144652105.png">
@@ -118,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86%EF%BC%882022-07-17%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">堆（2022&#x2F;07&#x2F;17）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E5%A0%86%E4%B8%8A%E6%95%B0%E6%8D%AE%E7%9A%84%E7%A0%94%E7%A9%B6-%EF%BC%882022-07-17%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">一些关于堆上数据的研究 （2022&#x2F;07&#x2F;17）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#one%EF%BC%88%E5%A0%86%E4%B8%8A%E7%9A%84%E6%95%B0%E6%8D%AE%E6%80%8E%E4%B9%88%E5%AD%98%E7%9A%84%EF%BC%9F%EF%BC%89%EF%BC%882022-07-18%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">one（堆上的数据怎么存的？）（2022&#x2F;07&#x2F;18）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#two%EF%BC%88%E7%94%B3%E8%AF%B7chunk%E5%90%8E%E5%A0%86%E4%B8%8A%E7%9A%84chunk%E5%88%86%E5%B8%83%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E7%9A%84%EF%BC%9F%EF%BC%89%EF%BC%882022-07-18%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">two（申请chunk后堆上的chunk分布是怎么样的？）（2022&#x2F;07&#x2F;18）</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A0%86%EF%BC%882022-07-17%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">堆（2022&#x2F;07&#x2F;17）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%85%B3%E4%BA%8E%E5%A0%86%E4%B8%8A%E6%95%B0%E6%8D%AE%E7%9A%84%E7%A0%94%E7%A9%B6-%EF%BC%882022-07-17%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">一些关于堆上数据的研究 （2022&#x2F;07&#x2F;17）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#one%EF%BC%88%E5%A0%86%E4%B8%8A%E7%9A%84%E6%95%B0%E6%8D%AE%E6%80%8E%E4%B9%88%E5%AD%98%E7%9A%84%EF%BC%9F%EF%BC%89%EF%BC%882022-07-18%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">one（堆上的数据怎么存的？）（2022&#x2F;07&#x2F;18）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#two%EF%BC%88%E7%94%B3%E8%AF%B7chunk%E5%90%8E%E5%A0%86%E4%B8%8A%E7%9A%84chunk%E5%88%86%E5%B8%83%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E7%9A%84%EF%BC%9F%EF%BC%89%EF%BC%882022-07-18%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">two（申请chunk后堆上的chunk分布是怎么样的？）（2022&#x2F;07&#x2F;18）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#three%EF%BC%88%E5%AE%9E%E6%93%8D-%E7%9C%8B%E6%96%87%E7%AB%A0%E5%90%8E%E5%AF%B9alloced-chunk%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%89%EF%BC%882022-07-18%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">three（实操+看文章后对alloced chunk的理解）（2022&#x2F;07&#x2F;18）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#four%EF%BC%88free-chunk%EF%BC%89%EF%BC%882022-07-18%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">four（free chunk）（2022&#x2F;07&#x2F;18）</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -202,7 +204,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-07-18 16:23:45" itemprop="dateModified" datetime="2022-07-18T16:23:45+08:00">2022-07-18</time>
+        <time title="Modified: 2022-07-18 20:18:35" itemprop="dateModified" datetime="2022-07-18T20:18:35+08:00">2022-07-18</time>
       </span>
 
   
@@ -235,6 +237,7 @@
 
 <p><img src="image-20220718144652105.png" alt="image-20220718144652105"></p>
 <p><img src="image-20220718145936405.png" alt="image-20220718145936405"></p>
+<p><strong>小结：经过对指针附近数据的变化可以看出，我们指向chunk的指针是指在User_data这一段起始的地方</strong></p>
 <br/>
 
 <h3 id="two（申请chunk后堆上的chunk分布是怎么样的？）（2022-07-18）"><a href="#two（申请chunk后堆上的chunk分布是怎么样的？）（2022-07-18）" class="headerlink" title="two（申请chunk后堆上的chunk分布是怎么样的？）（2022/07/18）"></a>two（申请chunk后堆上的chunk分布是怎么样的？）（2022/07/18）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//源C代码  cs1e.c</span><br><span class="line">//gcc -g cs1e.c -o cs1e</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    void *hollk, *hollk1; //0之前vmmap指令查看不到heap堆</span><br><span class="line">    hollk = malloc(0x10); //0 分配第一个0x10的chunk 此时vmmap可以查看到内存上分出了堆空间</span><br><span class="line">    malloc(0x10);    //1 分配第二个0x10的chunk</span><br><span class="line">    </span><br><span class="line">    malloc(0x20);    //2</span><br><span class="line">    malloc(0x30);    //3</span><br><span class="line">    malloc(0x40);    //4  heap此时大小为0x21000字节</span><br><span class="line">    malloc(0x42000); //5  现在申请0x42000字节看heap增大到多少。 结果：heap并未增长</span><br><span class="line">    </span><br><span class="line">    *(long long *)((long long)hollk - 0x8) = 0x41;// 修改第一个块的size域</span><br><span class="line">    free(hollk);</span><br><span class="line">    hollk1 = malloc(0x30);// 实现extend，控制了第二个块的内容</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -253,6 +256,30 @@
 <p><img src="image-20220718133927099.png" alt="image-20220718133927099"></p>
 <p><strong>发现只有prev_size、size、user_data三段，fd、bk未发现。思考+百度后个人在想：可能只有free掉chunk后，chunk进入bin中才会出现fd、bk字段</strong></p>
 <p>看到了一篇文章，事实证明我的猜测没有错[机智]：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/unr4v31/p/14446412.html">Glibc堆管理机制基础 - unr4v31 - 博客园 (cnblogs.com)</a></p>
+<br/>
+
+<h3 id="three（实操-看文章后对alloced-chunk的理解）（2022-07-18）"><a href="#three（实操-看文章后对alloced-chunk的理解）（2022-07-18）" class="headerlink" title="three（实操+看文章后对alloced chunk的理解）（2022/07/18）"></a>three（实操+看文章后对alloced chunk的理解）（2022/07/18）</h3><p>ctf-wiki中说到：</p>
+<ul>
+<li><strong>prev_size</strong>, 如果该 chunk 的<strong>物理相邻的前一地址 chunk（两个指针的地址差值为前一 chunk 大小）</strong>是空闲的话，那该字段记录的是前一个 chunk 的大小 (包括 chunk 头)。否则，该字段可以用来存储物理相邻的前一个 chunk 的数据。<strong>这里的前一 chunk 指的是较低地址的 chunk</strong> 。</li>
+</ul>
+<p><img src="image-20220718193419657.png" alt="image-20220718193419657"></p>
+<ul>
+<li>size，该 chunk 的大小，大小必须是 2 * SIZE_SZ 的整数倍。如果申请的内存大小不是 2 * SIZE_SZ 的整数倍，会被转换满足大小的最小的 2 * SIZE_SZ 的倍数。32 位系统中，SIZE_SZ 是 4；64 位系统中，SIZE_SZ 是 8。 该字段的低三个比特位对 chunk 的大小没有影响，它们从高到低分别表示<ul>
+<li>NON_MAIN_ARENA，记录当前 chunk 是否不属于主线程，1 表示不属于，0 表示属于。</li>
+<li>IS_MAPPED，记录当前 chunk 是否是由 mmap 分配的。</li>
+<li>PREV_INUSE，记录前一个 chunk 块是否被分配。一般来说，堆中第一个被分配的内存块的 size 字段的 P 位都会被设置为 1，以便于防止访问前面的非法内存。当一个 chunk 的 size 的 P 位为 0 时，我们能通过 prev_size 字段来获取上一个 chunk 的大小以及地址。这也方便进行空闲 chunk 之间的合并。</li>
+</ul>
+</li>
+</ul>
+<p>对于fd、bk、fd_nextsize、bk_nextsize，到了相应类型的chunk再提，以上是alloced chunk（已分配且正在使用）</p>
+<br/>
+
+<h3 id="four（free-chunk）（2022-07-18）"><a href="#four（free-chunk）（2022-07-18）" class="headerlink" title="four（free chunk）（2022/07/18）"></a>four（free chunk）（2022/07/18）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//源C代码  cs1.c</span><br><span class="line">//gcc -g cs1.c -o cs1</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    void *hollk, *hollk1; //0之前vmmap指令查看不到heap堆</span><br><span class="line">    hollk = malloc(0x10); //0 分配第一个0x10的chunk 此时vmmap可以查看到内存上分出了堆空间</span><br><span class="line">    malloc(0x10);    //1 分配第二个0x10的chunk</span><br><span class="line">    *(long long *)((long long)hollk - 0x8) = 0x41;// 修改第一个块的size域</span><br><span class="line">    free(hollk);</span><br><span class="line">    hollk1 = malloc(0x30);// 实现extend，控制了第二个块的内容</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20220718200732624.png" alt="image-20220718200732624"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;free(hollk); 过后，上图中的bin中的tcachebins出现了记录，并没有出现在fastbins中，应该是Ubuntu20.04版本用到了新的堆管理机制。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目前我要实验学习的东西与我的现有环境不匹配，所以后续实验只能暂时打住。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;之后呢先看看理论，试着做做堆题，要是能把握住，暂时就带着这点基础深入学习堆漏洞，若学着吃力学得慢，有些细节弄不明白的话我再考虑装个Ubuntu16.04虚拟机然后继续实验，底层逻辑都搞懂了再继续深入</p>
 <br/>
 
 <br/>
