@@ -120,7 +120,7 @@
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220725131709271.png">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220725125321240.png">
 <meta property="article:published_time" content="2022-03-26T09:42:17.000Z">
-<meta property="article:modified_time" content="2022-08-05T06:53:29.286Z">
+<meta property="article:modified_time" content="2022-08-05T09:48:57.566Z">
 <meta property="article:author" content="xiaoxiaoxy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/03/26/ubuntu20-04%E5%AE%89%E8%A3%85/image-20220326175648163.png">
@@ -285,7 +285,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-08-05 14:53:29" itemprop="dateModified" datetime="2022-08-05T14:53:29+08:00">2022-08-05</time>
+        <time title="Modified: 2022-08-05 17:48:57" itemprop="dateModified" datetime="2022-08-05T17:48:57+08:00">2022-08-05</time>
       </span>
 
   
@@ -637,6 +637,16 @@
 <p>解决方案：将LibcSearcher目录下的LibcSearcher.py复制到相应目录即可</p>
 <p><img src="image-20220805145240531.png" alt="image-20220805145240531"></p>
 <p><img src="image-20220805145121595.png" alt="image-20220805145121595"></p>
+<br/>
+
+<p><strong>后期问题2：</strong>(2022/8/5)</p>
+<p>以上方法下载的LibcSearcher貌似不支持python3，现在想办法弄个别的</p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/csdn546229768/article/details/121177641">LibcSearch报错 LibcSearcher找不到合适libc 最新解决方案_HNHuangJingYu的博客-CSDN博客_libcsearcher报错没有libc版本</a></p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://pypi.org/project/LibcSearcher/">LibcSearcher · PyPI</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一条指令够了</span></span><br><span class="line">$ pip3 install LibcSearcher</span><br></pre></td></tr></table></figure>
+
+
+
 <br/>
 
 <h2 id="patchelf"><a href="#patchelf" class="headerlink" title="patchelf"></a>patchelf</h2><p>链接1：[<a target="_blank" rel="noopener" href="https://bbs.pediy.com/thread-254868.htm">原创]关于不同版本 glibc 更换的一些问题-Pwn-看雪论坛-安全社区|安全招聘|bbs.pediy.com</a></p>
