@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="xiaoxiaoxy">
 <meta property="og:description" content="个人见解">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="c:/blog/source_posts/汇编角度理解C代码.assets/image-20220811164044550.png">
-<meta property="og:image" content="c:/blog/source_posts/汇编角度理解C代码.assets/image-20220811164028199.png">
-<meta property="og:image" content="c:/blog/source_posts/汇编角度理解C代码.assets/image-20220811164848543.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/08/11/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E7%90%86%E8%A7%A3C%E4%BB%A3%E7%A0%81/image-20220811164044550.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/08/11/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E7%90%86%E8%A7%A3C%E4%BB%A3%E7%A0%81/image-20220811164028199.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/08/11/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E7%90%86%E8%A7%A3C%E4%BB%A3%E7%A0%81/image-20220811164848543.png">
 <meta property="article:published_time" content="2022-08-11T03:45:37.000Z">
-<meta property="article:modified_time" content="2022-08-25T16:42:11.249Z">
+<meta property="article:modified_time" content="2022-08-26T04:26:02.016Z">
 <meta property="article:author" content="xiaoxiaoxy">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:/blog/source_posts/汇编角度理解C代码.assets/image-20220811164044550.png">
+<meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/08/11/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E7%90%86%E8%A7%A3C%E4%BB%A3%E7%A0%81/image-20220811164044550.png">
 
 
 <link rel="canonical" href="http://xiaoxiaoxy1.github.io/2022/08/11/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E7%90%86%E8%A7%A3C%E4%BB%A3%E7%A0%81/">
@@ -207,7 +207,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-08-26 00:42:11" itemprop="dateModified" datetime="2022-08-26T00:42:11+08:00">2022-08-26</time>
+        <time title="Modified: 2022-08-26 12:26:02" itemprop="dateModified" datetime="2022-08-26T12:26:02+08:00">2022-08-26</time>
       </span>
 
   
@@ -258,13 +258,13 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在main函数ia = ib下方加一句ia = ic;后bss段变化如下，自己体会</span></span><br></pre></td></tr></table></figure>
 
 <p>图1：</p>
-<p><img src="C:\blog\source_posts\汇编角度理解C代码.assets\image-20220811164044550.png" alt="image-20220811164044550"></p>
+<p><img src="image-20220811164044550.png" alt="image-20220811164044550"></p>
 <p>图2：</p>
-<p><img src="C:\blog\source_posts\汇编角度理解C代码.assets\image-20220811164028199.png" alt="image-20220811164028199"></p>
+<p><img src="image-20220811164028199.png" alt="image-20220811164028199"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#int小结：（个人理解）</span></span><br><span class="line"><span class="comment">#注：全局变量</span></span><br><span class="line">常量a：未赋值、赋值为<span class="number">0</span>时，存储在bss段，赋值后存在data段</span><br><span class="line">数组a[n]：数组未赋值、赋值为<span class="number">0</span>时，存储在bss段，赋值后存在data段</span><br><span class="line">指针 *a ：空指针存在bss段，赋值后存在data段</span><br><span class="line">函数a() ：不管有无定义，函数变量都不在bss段，有定义的函数写在代码段(text段)，无定义的函数无了，*ik</span><br><span class="line">函数指针(* a)()：未赋值存储在bss段，赋值则存在data段</span><br><span class="line"></span><br><span class="line"><span class="comment">#其次，对于函数内部变量，上面的是针对全局变量的</span></span><br><span class="line">运行时存储在栈上</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>图3：</p>
-<p><img src="C:\blog\source_posts\汇编角度理解C代码.assets\image-20220811164848543.png" alt="image-20220811164848543"></p>
+<p><img src="image-20220811164848543.png" alt="image-20220811164848543"></p>
 
     </div>
 
