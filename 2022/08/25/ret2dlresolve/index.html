@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/08/25/ret2dlresolve/1.jpeg">
 <meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/08/25/ret2dlresolve/2.jpeg">
 <meta property="article:published_time" content="2022-08-25T14:57:54.000Z">
-<meta property="article:modified_time" content="2022-08-25T16:12:47.160Z">
+<meta property="article:modified_time" content="2022-08-26T14:56:57.952Z">
 <meta property="article:author" content="xiaoxiaoxy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/08/25/ret2dlresolve/1.jpeg">
@@ -120,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#32%E4%BD%8D"><span class="nav-number">1.</span> <span class="nav-text">32位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NO-RELRO"><span class="nav-number">1.1.</span> <span class="nav-text">NO RELRO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E9%A2%98%E7%9B%AEC%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.1.</span> <span class="nav-text">1、题目C代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E8%A7%A3%E9%A2%98exp"><span class="nav-number">1.1.2.</span> <span class="nav-text">2、解题exp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A"><span class="nav-number">1.1.3.</span> <span class="nav-text">3、知识点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Partial-RELRO"><span class="nav-number">1.2.</span> <span class="nav-text">Partial RELRO</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pwntools-rop%E6%A8%A1%E5%9D%97"><span class="nav-number">1.</span> <span class="nav-text">pwntools rop模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#32%E4%BD%8D"><span class="nav-number">2.</span> <span class="nav-text">32位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NO-RELRO"><span class="nav-number">2.1.</span> <span class="nav-text">NO RELRO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E9%A2%98%E7%9B%AEC%E4%BB%A3%E7%A0%81"><span class="nav-number">2.1.1.</span> <span class="nav-text">1、题目C代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E8%A7%A3%E9%A2%98exp"><span class="nav-number">2.1.2.</span> <span class="nav-text">2、解题exp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A"><span class="nav-number">2.1.3.</span> <span class="nav-text">3、知识点：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Partial-RELRO"><span class="nav-number">2.2.</span> <span class="nav-text">Partial RELRO</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -135,7 +135,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -206,7 +206,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-08-26 00:12:47" itemprop="dateModified" datetime="2022-08-26T00:12:47+08:00">2022-08-26</time>
+        <time title="Modified: 2022-08-26 22:56:57" itemprop="dateModified" datetime="2022-08-26T22:56:57+08:00">2022-08-26</time>
       </span>
 
   
@@ -220,7 +220,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="32位"><a href="#32位" class="headerlink" title="32位"></a>32位</h2><h3 id="NO-RELRO"><a href="#NO-RELRO" class="headerlink" title="NO RELRO"></a>NO RELRO</h3><p>解题场景：ubuntu18.04（注：ubuntu20.04 gcc版本过高，存在一些保护机制）</p>
+        <h2 id="pwntools-rop模块"><a href="#pwntools-rop模块" class="headerlink" title="pwntools rop模块"></a>pwntools rop模块</h2><p>参考链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/0d45e2025d97">https://www.jianshu.com/p/0d45e2025d97</a></p>
+<br/>
+
+<h2 id="32位"><a href="#32位" class="headerlink" title="32位"></a>32位</h2><h3 id="NO-RELRO"><a href="#NO-RELRO" class="headerlink" title="NO RELRO"></a>NO RELRO</h3><p>解题场景：ubuntu18.04（注：ubuntu20.04 gcc版本过高，存在一些保护机制）</p>
 <h4 id="1、题目C代码"><a href="#1、题目C代码" class="headerlink" title="1、题目C代码"></a>1、题目C代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">vuln</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> buf[<span class="number">100</span>];</span><br><span class="line">    setbuf(<span class="built_in">stdin</span>, buf);</span><br><span class="line">    read(<span class="number">0</span>, buf, <span class="number">256</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> buf[<span class="number">100</span>] = <span class="string">&quot;Welcome to XDCTF2015~!\n&quot;</span>;</span><br><span class="line">    setbuf(<span class="built_in">stdout</span>, buf);</span><br><span class="line">    write(<span class="number">1</span>, buf, <span class="built_in">strlen</span>(buf));</span><br><span class="line">    vuln();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>编译指令：</p>
@@ -263,6 +266,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2022/09/15/BUUctf/" rel="next" title="BUUctf">
+                  BUUctf <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
